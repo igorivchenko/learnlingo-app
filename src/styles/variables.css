@@ -1,8 +1,17 @@
 :root {
+  /* Font family for the app */
   --font-family: 'Roboto', sans-serif;
 
+  /* Colors */
   --bcg-main-color: #ffffff;
   --color-main: #121417;
   --secondary-color: #8a8a89;
   --accent-color: #fbe9ba;
+
+  /* Container width */
+  --container-width-main: 1312px;
+  --container-width-secondary: 1184px;
+  --container-padding-x: 16px;
+
+  --transition-duration: 0.2s;
 }

@@ -1,13 +1,24 @@
-.container-main {
-  max-width: calc(var(--container-width-main) + var(--container-padding-x) * 2);
+.container {
   margin-inline: auto;
   padding-inline: var(--container-padding-x);
 }
 
-.container-secondary {
+.container {
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+
+.large {
+  max-width: calc(var(--container-width-main) + var(--container-padding-x) * 2);
+}
+
+.medium {
   max-width: calc(
     var(--container-width-secondary) + var(--container-padding-x) * 2
   );
-  margin-inline: auto;
-  padding-inline: var(--container-padding-x);
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
 }

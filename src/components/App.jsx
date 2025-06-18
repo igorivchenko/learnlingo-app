@@ -5,11 +5,12 @@ import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import PrivateRoute from './private-route/PrivateRoute';
 import NotFoundPage from '@/pages/not-found/NotFoundPage';
+import Loader from './loader/Loader';
 
 function App() {
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/teachers" element={<Teachers />} />

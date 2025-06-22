@@ -3,10 +3,12 @@ import RegisterButton from '@/components/auth-buttons/register-button/RegisterBu
 import s from '@/components/auth-buttons/AuthButtons.module.css';
 
 const AuthButtons = () => {
+  const isLoggedIn = false; // Replace with actual authentication logic
+
   return (
     <div className={s['auth-buttons']}>
-      <LoginButton />
-      <RegisterButton />
+      {!isLoggedIn && <LoginButton />}
+      {!isLoggedIn && <RegisterButton />}
     </div>
   );
 };

@@ -3,3 +3,8 @@
   align-items: center;
   gap: 28px;
 }
+
+.active {
+  color: var(--color-button);
+  font-weight: 600;
+}

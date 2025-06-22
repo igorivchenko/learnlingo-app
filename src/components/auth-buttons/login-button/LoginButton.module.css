@@ -12,5 +12,11 @@
   background-color: transparent;
   border: none;
 
+  transition: color 0.2s;
   cursor: pointer;
+}
+
+.button:hover {
+  color: var(--color-accent);
+  background-color: transparent;
 }

@@ -7,13 +7,7 @@ import NavBar from '@/components/nav-bar/NavBar';
 const Home = () => {
   return (
     <>
-      <Header>
-        <Container size="medium" display="flex">
-          <Logo />
-          <NavBar />
-          <AuthButtons />
-        </Container>
-      </Header>
+      <Header />
     </>
   );
 };

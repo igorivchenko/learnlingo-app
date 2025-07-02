@@ -15,7 +15,6 @@ import {
 } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { IoMdClose } from 'react-icons/io';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -186,7 +185,9 @@ const AuthModal = ({ mode = 'login', open, handleClose }) => {
             className={s['close-button']}
             onClick={handleClose}
           >
-            <IoMdClose size={27} />
+            <svg width={32} height={32}>
+              <use href="/icons.svg#icon-close"></use>
+            </svg>
           </button>
         </Box>
       </Modal>

@@ -20,3 +20,15 @@
   color: var(--color-accent);
   background-color: transparent;
 }
+
+.modal-button {
+  padding: 14px 47px;
+
+  color: white;
+  background-color: var(--color-main);
+  border-radius: 12px;
+}
+
+.modal-button:active {
+  color: var(--color-main);
+}

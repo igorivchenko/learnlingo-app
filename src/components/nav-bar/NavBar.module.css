@@ -8,3 +8,14 @@
   color: var(--color-button);
   font-weight: 600;
 }
+
+.listDrawer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+
+  font-size: 20px;
+  font-weight: 700;
+}

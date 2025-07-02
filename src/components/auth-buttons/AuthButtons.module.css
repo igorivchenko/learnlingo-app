@@ -3,3 +3,10 @@
   align-items: center;
   gap: 16px;
 }
+
+.auth-buttons-modal {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}

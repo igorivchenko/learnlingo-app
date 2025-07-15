@@ -1,0 +1,9 @@
+.heroSection {
+  padding-bottom: 24px;
+}
+
+.heroWrapper {
+  display: grid;
+  grid-template-columns: 54.88% auto;
+  gap: 24px;
+}

@@ -1,15 +1,23 @@
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
+import { IoMdHome } from 'react-icons/io';
+import { LiaChalkboardTeacherSolid } from 'react-icons/lia';
 import s from './NotFoundPage.module.css';
-import { FaArrowLeftLong } from 'react-icons/fa6';
 
 const NotFoundPage = () => {
   return (
     <div className={s.container}>
-      <Link className={s.link} to="/">
-        <FaArrowLeftLong />
-        HomePage
-      </Link>
-      <img className={s.image} src="/images/NotFound.png" alt="404 Not Found" />
+      <h2 className={s.title}>404</h2>
+      <span className={s.description}>Sorry, this page is not found</span>
+      <div className={s.linkWrapper}>
+        <Link className={s.link} to="/">
+          <IoMdHome />
+          Home
+        </Link>
+        <Link className={s.link} to="/teachers">
+          <LiaChalkboardTeacherSolid />
+          Teachers
+        </Link>
+      </div>
     </div>
   );
 };

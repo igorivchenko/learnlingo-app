@@ -1,30 +1,66 @@
 .container {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
 }
 
 .title {
-  text-align: center;
-  color: red;
   margin-bottom: 10px;
+
+  font-size: 72px;
+  font-weight: 900;
+
+  color: red;
+  text-align: center;
+}
+
+.description {
+  display: block;
+
+  margin-bottom: 30px;
+
+  font-size: 36px;
+  font-weight: 700;
+
+  text-align: center;
+}
+
+.linkWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 .link {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  display: flex;
-  align-items: center;
-  column-gap: 4px;
-  color: inherit;
-  width: 200px;
+  display: inline-flex;
+  column-gap: 8px;
+
+  padding-block: 10px;
+  padding-inline: 40px;
+
   font-size: 18px;
-  text-decoration: none;
   text-align: center;
-  transition: color 0.3s ease-in-out;
+  text-decoration: none;
+
+  color: inherit;
+  background-color: var(--color-button);
+  border-radius: 12px;
+
+  transition-duration: var(--transition-duration);
+}
+
+.link svg {
+  width: 24px;
+  height: 24px;
 }
 
 .link:hover {
-  color: red;
+  color: var(--color-main);
+  background-color: var(--color-accent);
 }
 
 .image {

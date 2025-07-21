@@ -2,6 +2,18 @@
   display: flex;
   align-items: center;
   gap: 8px;
+
+  transition-duration: var(--transition-duration);
+}
+
+.logo svg {
+  rotate: 0deg;
+  transition-duration: var(--transition-duration);
+}
+
+.logo:hover svg {
+  rotate: 180deg;
+  transition-duration: var(--transition-duration);
 }
 
 .logo-text {

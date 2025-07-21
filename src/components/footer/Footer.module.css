@@ -1,0 +1,42 @@
+footer {
+  margin-bottom: 20px;
+}
+
+.footerWrapper {
+  padding: 40px 122px;
+  border: 2px solid transparent;
+  border-image: repeating-linear-gradient(
+      45deg,
+      var(--color-accent),
+      var(--color-accent) 10px,
+      transparent 10px,
+      transparent 20px
+    )
+    1;
+  border-radius: 50%;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.integer {
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.14;
+}
+
+.text {
+  max-width: 96px;
+  font-size: 14px;
+  line-height: 1.28;
+  color: rgba(18, 20, 23, 0.7);
+}

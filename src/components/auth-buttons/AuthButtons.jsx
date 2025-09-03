@@ -1,14 +1,23 @@
-import LoginButton from '@/components/auth-buttons/login-button/LoginButton';
-import RegisterButton from '@/components/auth-buttons/register-button/RegisterButton';
-import s from '@/components/auth-buttons/AuthButtons.module.css';
 import clsx from 'clsx';
+import s from './AuthButtons.module.css';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from '@/redux/auth/selectors';
+import UserBar from '../user-panel/user-bar/UserBar';
+import LogoutButton from './logout-button/LogoutButton';
+import LoginButton from './login-button/LoginButton';
+import RegisterButton from './register-button/RegisterButton';
 
 const AuthButtons = ({ isAuthButtons = false }) => {
-  const isLoggedIn = false; // Replace with actual authentication logic
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <>
-      {!isLoggedIn && (
+      {isLoggedIn ? (
+        <div className={s.userBarWrapper}>
+          <UserBar />
+          <LogoutButton />
+        </div>
+      ) : (
         <div
           className={clsx(
             s['auth-buttons'],

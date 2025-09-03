@@ -4,9 +4,29 @@
   gap: 28px;
 }
 
-.active {
+.link {
+  position: relative;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  translate: -50%;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 0.2s ease-in-out;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+.active::after {
   color: var(--color-button);
-  font-weight: 600;
+  width: 100%;
 }
 
 .listDrawer {

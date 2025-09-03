@@ -1,12 +1,14 @@
 import s from '@/components/nav-bar/NavBar.module.css';
+import { selectIsLoggedIn } from '@/redux/auth/selectors';
 import clsx from 'clsx';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 const NavBar = ({ isDrawer = false, onLinkClick }) => {
   const buildLinkClass = ({ isActive }) => {
     return clsx(s.link, isActive && s.active);
   };
-  const isLoggedIn = false; // Replace with actual logic to check if user is logged in
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const navLinks = [
     { to: '/', label: 'Home' },

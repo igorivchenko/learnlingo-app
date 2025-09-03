@@ -4,12 +4,14 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useState } from 'react';
 import NavBar from '../nav-bar/NavBar';
 import AuthButtons from '../auth-buttons/AuthButtons';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from '@/redux/auth/selectors';
 
 const BurgerMenu = () => {
   const [openMenu, setOpenMenu] = useState(null);
   const isMobile = useMediaQuery('(max-width:767.98px)');
 
-  const isLoggedIn = false; // Replace with actual logic to check if user is logged in
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const handleOpenMenu = type => {
     setOpenMenu(type);

@@ -1,0 +1,18 @@
+.userBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.userBar svg {
+  width: 20px;
+  height: 20px;
+  background-color: wheat;
+  border-radius: 50%;
+}
+
+.userName {
+  font-size: 18px;
+  font-weight: 700;
+  transform: translateY(1px);
+}

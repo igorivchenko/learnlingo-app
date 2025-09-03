@@ -10,3 +10,9 @@
   align-items: center;
   flex-grow: 1;
 }
+
+.userBarWrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}

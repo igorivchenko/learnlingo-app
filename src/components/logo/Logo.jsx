@@ -1,9 +1,9 @@
-import s from '@/components/logo/Logo.module.css';
-import { Link } from 'react-router-dom';
+import { ROUTES } from '@/constants';
+import s from './Logo.module.css';
 
 const Logo = () => {
   return (
-    <a href="/" className={s.logo}>
+    <a href={ROUTES.HOME} className={s.logo}>
       <svg width="28" height="28">
         <use href="/icons.svg#icon-logo"></use>
       </svg>

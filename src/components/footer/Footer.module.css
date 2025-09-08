@@ -3,7 +3,7 @@ footer {
 }
 
 .footerWrapper {
-  padding: 40px 122px;
+  padding: 25px 122px;
   border: 2px solid transparent;
   border-image: repeating-linear-gradient(
       45deg,

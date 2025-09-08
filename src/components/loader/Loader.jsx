@@ -1,5 +1,5 @@
 import { ScaleLoader } from 'react-spinners';
-import s from '@/components/loader/Loader.module.css';
+import s from './Loader.module.css';
 
 const Loader = () => {
   return (

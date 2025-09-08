@@ -7,7 +7,7 @@ import {
 } from 'firebase/auth';
 import { ref, set } from 'firebase/database';
 import { handleHttpError } from '@/utils/handleHttpError';
-import { auth, db } from '@/firebase/firebase.config';
+import { auth, db } from '@/config/firebase.config';
 
 export const signUpUser = createAsyncThunk(
   'auth/signUpUser',

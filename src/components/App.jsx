@@ -1,23 +1,25 @@
-import Favorites from '@/pages/favorites/Favorites';
-import Home from '@/pages/home/Home';
-import Teachers from '@/pages/teachers/Teachers';
-import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import PrivateRoute from './private-route/PrivateRoute';
-import NotFoundPage from '@/pages/not-found/NotFoundPage';
-import Loader from './loader/Loader';
+import { ROUTES } from '@/constants';
+import { lazy, Suspense } from 'react';
+import PrivateRoute from './PrivateRoute';
+import Loader from './Loader';
+
+const HomePage = lazy(() => import('@/pages/HomePage'));
+const FavoritesPage = lazy(() => import('@/pages/FavoritesPage'));
+const TeachersPage = lazy(() => import('@/pages/TeachersPage'));
+const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 
 function App() {
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/teachers" element={<Teachers />} />
+        <Route path={ROUTES.HOME} element={<HomePage />} />
+        <Route path={ROUTES.TEACHERS} element={<TeachersPage />} />
         <Route
-          path="/favorites"
+          path={ROUTES.FAVORITES}
           element={
             <PrivateRoute>
-              <Favorites />
+              <FavoritesPage />
             </PrivateRoute>
           }
         />

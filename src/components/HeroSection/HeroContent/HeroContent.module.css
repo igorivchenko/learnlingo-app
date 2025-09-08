@@ -1,0 +1,50 @@
+.heroContentWrapper {
+  padding: 80px 108px 80px 64px;
+  background-color: #f8f8f8;
+  border-radius: 30px;
+}
+
+.heroContentWrapper > * {
+  margin-bottom: 32px;
+}
+
+.heroContentWrapper > *:last-child {
+  margin-bottom: 0;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.16;
+  letter-spacing: -1px;
+}
+
+.description {
+  margin-bottom: 64px;
+  max-width: 471px;
+  line-height: 1.4;
+}
+
+.italic {
+  position: relative;
+  z-index: 0;
+}
+
+.italic::after {
+  content: '';
+  position: absolute;
+  top: 13px;
+  left: -6px;
+  z-index: -2;
+
+  display: inline-block;
+  width: 195px;
+  height: 40px;
+
+  background-color: #fbe9ba;
+  border-radius: 8px;
+}
+
+.hiddenText {
+  visibility: hidden;
+}

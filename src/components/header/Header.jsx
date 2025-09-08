@@ -1,9 +1,9 @@
-import s from '@/components/header/Header.module.css';
-import Container from '@/components/container/Container';
-import Logo from '@/components/logo/Logo';
-import NavBar from '@/components/nav-bar/NavBar';
-import AuthButtons from '@/components/auth-buttons/AuthButtons';
-import BurgerMenu from '@/components/burger-menu/BurgerMenu';
+import s from './Header.module.css';
+import Container from '@/components/Container';
+import Logo from '@/components/Logo';
+import NavBar from '@/components/NavBar';
+import AuthButtons from '@/components/AuthButtons';
+import BurgerMenu from '@/components/BurgerMenu';
 import { useMediaQuery } from '@mui/material';
 
 const Header = () => {
@@ -11,7 +11,7 @@ const Header = () => {
 
   return (
     <header className={s.header}>
-      <Container size="medium" display="flex">
+      <Container size="medium" display="flex" className={s.headerContainer}>
         <Logo />
         {isMobile && <NavBar />}
         {isMobile && <AuthButtons />}

@@ -2,7 +2,7 @@ import s from './Header.module.css';
 import Container from '@/components/Container';
 import Logo from '@/components/Logo';
 import NavBar from '@/components/NavBar';
-import AuthButtons from '@/components/AuthButtons';
+import AuthButtons from '@/components/Buttons';
 import BurgerMenu from '@/components/BurgerMenu';
 import { useMediaQuery } from '@mui/material';
 

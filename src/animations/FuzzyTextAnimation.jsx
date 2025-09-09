@@ -71,10 +71,19 @@ const FuzzyTextAnimation = ({
       offscreen.width = offscreenWidth;
       offscreen.height = tightHeight;
 
+      let resolvedColor = color;
+      if (color.startsWith('var(')) {
+        const span = document.createElement('span');
+        span.style.color = color;
+        document.body.appendChild(span);
+        resolvedColor = getComputedStyle(span).color;
+        document.body.removeChild(span);
+      }
+
       const xOffset = extraWidthBuffer / 2;
       offCtx.font = `${fontWeight} ${fontSizeStr} ${computedFontFamily}`;
       offCtx.textBaseline = 'alphabetic';
-      offCtx.fillStyle = color;
+      offCtx.fillStyle = resolvedColor;
       offCtx.fillText(text, xOffset - actualLeft, actualAscent);
 
       const horizontalMargin = 50;

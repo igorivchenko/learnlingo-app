@@ -2,17 +2,79 @@
   /* Font family for the app */
   --font-family: 'Roboto', sans-serif;
 
-  /* Colors */
-  --bcg-main-color: #ffffff;
-  --color-main: #121417;
-  --color-secondary: #8a8a89;
-  --color-accent: #ffdc86;
-  --color-button: #f4c550;
-
   /* Container width */
   --container-width-main: 1312px;
   --container-width-secondary: 1184px;
   --container-padding-x: 16px;
 
   --transition-duration: 0.2s;
+}
+
+/* Light theme */
+:root[data-theme='light'] {
+  --color-scrollbar: rgba(0, 0, 0, 0.3);
+  --color-main: #121417;
+  --color-secondary: #222831;
+  --color-accent: #ffdc86;
+  --color-accent-bright: #f4c550;
+  --color-border-accent: #f4c550;
+  --color-border-error: #d32f2f;
+  --color-label-error: #d32f2f;
+  --color-button: #f4c550;
+  --color-footer-text: rgba(18, 20, 23, 0.7);
+  --color-register-btn: #ffffff;
+  --color-bg-register-btn: #222831;
+  --color-bg-toggleTheme-btn: hsla(210, 14%, 13%, 0.8);
+  --color-bg-toggleTheme-btn-hover: hsl(215, 15%, 95%);
+  --color-bg-main: #ffffff;
+  --color-bg-hero-content: #f8f8f8;
+}
+
+/* Dark theme */
+:root[data-theme='dark'] {
+  --color-scrollbar: rgba(150, 145, 145, 0.3);
+  --color-main: #ffffff;
+  --color-secondary: #222831;
+  --color-accent: #ffdc86;
+  --color-accent-bright: #f4c550;
+  --color-border-accent: #f4c550;
+  --color-border-error: #d32f2f;
+  --color-label-error: #d32f2f;
+  --color-button: #f4c550;
+  --color-footer-text: #adb5bd;
+  --color-register-btn: #222831;
+  --color-bg-register-btn: #ffdc86;
+  --color-bg-toggleTheme-btn: #ffdc86;
+  --color-bg-toggleTheme-btn-hover: hsla(210, 14%, 13%, 0.7);
+  --color-bg-main: rgb(15, 18, 20);
+  --color-bg-hero-content: #222831;
+}
+
+/* System theme */
+:root[data-theme='system'] {
+  --color-scrollbar: light-dark(rgba(0, 0, 0, 0.3), rgba(150, 145, 145, 0.3));
+  --color-main: light-dark(#121417, #ffffff);
+  --color-secondary: #222831;
+  --color-accent: #ffdc86;
+  --color-accent-bright: #f4c550;
+  --color-border-accent: #f4c550;
+  --color-border-error: #d32f2f;
+  --color-label-error: #d32f2f;
+  --color-label-accent: light-dark(#121417, #f4c550);
+  --color-button: #f4c550;
+  --color-description: light-dark(rgba(18, 20, 23, 0.8), #ffffff);
+  --color-register-btn: light-dark(#ffffff, #222831);
+  --color-bg-register-btn: light-dark(#121417, #ffdc86);
+  --color-bg-toggleTheme-btn: light-dark(hsla(210, 14%, 13%, 0.8), #ffdc86);
+  --color-bg-toggleTheme-btn-hover: light-dark(
+    hsl(215, 15%, 95%),
+    hsla(210, 14%, 13%, 0.8)
+  );
+  --color-footer-text: light-dark(
+    hsl(215, 15%, 97%),
+    rgba(18, 20, 23, 0.7),
+    #adb5bd
+  );
+  --color-bg-main: light-dark(#ffffff, rgb(15, 18, 20));
+  --color-bg-hero-content: light-dark(#f8f8f8, #222831);
 }

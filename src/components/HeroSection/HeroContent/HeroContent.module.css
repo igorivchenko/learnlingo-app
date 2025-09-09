@@ -1,6 +1,6 @@
 .heroContentWrapper {
   padding: 80px 108px 80px 64px;
-  background-color: #f8f8f8;
+  background-color: var(--color-bg-hero-content);
   border-radius: 30px;
 }
 
@@ -28,6 +28,8 @@
 .italic {
   position: relative;
   z-index: 0;
+  margin-inline: 6px;
+  color: var(--color-secondary);
 }
 
 .italic::after {

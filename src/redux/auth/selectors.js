@@ -1,5 +1,5 @@
 export const selectFavoriteTeachers = state => state.auth.favoriteTeachers;
-export const selectIsLoggedIn = state => state.auth.isLoggedIn;
+export const selectIsAuth = state => state.auth.isAuth;
 export const selectIsLoading = state => state.auth.isLoading;
 export const selectError = state => state.auth.error;
 export const selectName = state => state.auth.user.name;

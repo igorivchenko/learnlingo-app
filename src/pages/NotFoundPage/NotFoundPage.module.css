@@ -7,16 +7,6 @@
   height: 100vh;
 }
 
-.title {
-  margin-bottom: 10px;
-
-  font-size: 72px;
-  font-weight: 900;
-
-  color: red;
-  text-align: center;
-}
-
 .description {
   display: block;
 
@@ -46,7 +36,7 @@
   text-align: center;
   text-decoration: none;
 
-  color: inherit;
+  color: var(--color-secondary);
   background-color: var(--color-button);
   border-radius: 12px;
 
@@ -59,16 +49,6 @@
 }
 
 .link:hover {
-  color: var(--color-main);
+  color: var(--color-secondary);
   background-color: var(--color-accent);
-}
-
-.image {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: contain;
-  z-index: -10;
 }

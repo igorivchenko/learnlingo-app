@@ -8,10 +8,10 @@ const initialState = {
     email: null,
   },
   favoriteTeachers: [],
-  isLoggedIn: false,
+  isAuth: false,
   error: null,
   isLoading: false,
-  token: null,
+  accessToken: null,
 };
 
 const slice = createSlice({
@@ -21,42 +21,42 @@ const slice = createSlice({
     build
       .addCase(signUpUser.pending, state => {
         state.isLoading = true;
-        state.isLoggedIn = false;
+        state.isAuth = false;
       })
       .addCase(signUpUser.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.isLoggedIn = true;
+        state.isAuth = true;
         state.error = null;
         state.user = {
           name: payload.name,
           email: payload.email,
           id: payload.id,
         };
-        state.token = payload.token;
+        state.accessToken = payload.token;
       })
       .addCase(signUpUser.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.isLoggedIn = false;
+        state.isAuth = false;
         state.error = payload;
       })
       .addCase(signInUser.pending, state => {
         state.isLoading = true;
-        state.isLoggedIn = false;
+        state.isAuth = false;
       })
       .addCase(signInUser.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.isLoggedIn = true;
+        state.isAuth = true;
         state.error = null;
         state.user = {
           name: payload.name,
           email: payload.email,
           id: payload.id,
         };
-        state.token = payload.token;
+        state.accessToken = payload.token;
       })
       .addCase(signInUser.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.isLoggedIn = false;
+        state.isAuth = false;
         state.error = payload.message;
       });
   },

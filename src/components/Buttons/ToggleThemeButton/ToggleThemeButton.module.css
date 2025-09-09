@@ -1,0 +1,37 @@
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 12px;
+  height: 32px;
+  width: 32px;
+  margin-left: 8px;
+  color: var(--color-bg-toggleTheme-btn);
+  background-color: var(--color-register-btn);
+  border: 1px solid hsl(210, 14%, 22%);
+  border-color: hsla(210, 14%, 22%, 0.5);
+  outline: 0;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--color-bg-toggleTheme-btn-hover);
+}
+
+.icon {
+  position: absolute;
+  transition: opacity 0.2s ease;
+  width: 24px;
+  height: 24px;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.visible {
+  opacity: 1;
+}

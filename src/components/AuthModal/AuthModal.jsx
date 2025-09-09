@@ -98,7 +98,7 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
           sx={{
             mb: '40px',
             lineHeight: 1.35,
-            color: 'rgba(18, 20, 23, 0.8)',
+            color: 'var(--color-description)',
           }}
         >
           {mode === MODES.LOGIN
@@ -117,9 +117,36 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '12px',
                   height: '54px',
+                  borderColor: 'var(--color-main)',
+                  '& input': {
+                    color: 'var(--color-main)',
+                  },
+                  '& fieldset': {
+                    borderColor: 'var(--color-main)',
+                  },
+                  '&:hover fieldset': {
+                    borderColor: 'var(--color-border-accent)',
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: 'var(--color-border-accent)',
+                  },
+                  '&.Mui-error fieldset': {
+                    borderColor: 'var(--color-border-error)',
+                  },
+                },
+                '& .MuiInputLabel-root': {
+                  color: 'var(--color-main)',
+                  '&.Mui-error': {
+                    color: 'var(--color-label-error)',
+                  },
+                },
+                '& .MuiInputLabel-root.Mui-focused': {
+                  color: 'var(--color-label-accent)',
+                  '&.Mui-error': {
+                    color: 'var(--color-label-error)',
+                  },
                 },
               }}
-              color="warning"
             />
           )}
           <TextField
@@ -132,22 +159,75 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
               '& .MuiOutlinedInput-root': {
                 borderRadius: '12px',
                 height: '54px',
+                borderColor: 'var(--color-main)',
+                '& input': {
+                  color: 'var(--color-main)',
+                },
+                '& fieldset': {
+                  borderColor: 'var(--color-main)',
+                },
+                '&:hover fieldset': {
+                  borderColor: 'var(--color-border-accent)',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: 'var(--color-border-accent)',
+                },
+                '&.Mui-error fieldset': {
+                  borderColor: 'var(--color-border-error)',
+                },
+              },
+              '& .MuiInputLabel-root': {
+                color: 'var(--color-main)',
+                '&.Mui-error': {
+                  color: 'var(--color-label-error)',
+                },
+              },
+              '& .MuiInputLabel-root.Mui-focused': {
+                color: 'var(--color-label-accent)',
+                '&.Mui-error': {
+                  color: 'var(--color-label-error)',
+                },
               },
             }}
-            color="warning"
           />
           <FormControl variant="outlined" fullWidth sx={{ mb: '22px' }}>
             <InputLabel
               htmlFor="password"
               color="warning"
               error={!!errors.password}
+              sx={{
+                color: 'var(--color-main)',
+                '&.Mui-focused': { color: 'var(--color-label-accent)' },
+                '&.Mui-error': { color: 'var(--color-border-error)' },
+              }}
             >
               Password
             </InputLabel>
             <OutlinedInput
-              color="warning"
               id="password"
-              sx={{ height: '54px', borderRadius: '12px' }}
+              sx={{
+                borderRadius: '12px',
+                height: '54px',
+
+                // текст інпуту
+                '& input': {
+                  color: 'var(--color-main) !important',
+                },
+
+                // бордери
+                '& fieldset': {
+                  borderColor: 'var(--color-main)',
+                },
+                '&:hover .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'var(--color-border-accent)',
+                },
+                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'var(--color-border-accent)',
+                },
+                '&.Mui-error .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'var(--color-border-error)',
+                },
+              }}
               type={showPassword ? 'text' : 'password'}
               {...register('password')}
               endAdornment={
@@ -161,6 +241,9 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
                     onClick={() => setShowPassword(show => !show)}
                     onMouseDown={handleMouseDownPassword}
                     edge="end"
+                    sx={{
+                      color: 'var(--color-main)',
+                    }}
                   >
                     {!showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
@@ -186,7 +269,7 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
               fontWeight: 700,
               lineHeight: 1.5,
               textTransform: 'capitalize',
-              color: 'var(--color-main)',
+              color: 'var(--color-secondary)',
               backgroundColor: 'var(--color-button)',
               borderRadius: '12px',
             }}

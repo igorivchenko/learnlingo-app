@@ -1,5 +1,5 @@
 * {
-  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+  scrollbar-color: var(--color-scrollbar) transparent;
 }
 
 .modal {
@@ -13,7 +13,7 @@
   max-width: 566px;
   max-height: max-content;
 
-  background-color: var(--bcg-main-color);
+  background-color: var(--color-bg-hero-content);
   border-radius: 12px;
   padding: 64px;
 

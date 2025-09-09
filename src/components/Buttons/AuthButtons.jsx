@@ -1,19 +1,21 @@
 import clsx from 'clsx';
 import s from './AuthButtons.module.css';
 import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from '@/redux/auth/selectors';
+import { selectIsAuth } from '@/redux/auth/selectors';
 import RegisterButton from './RegisterButton';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
 import UserBar from '@/components/UserPanel/UserBar';
+import ToggleThemeButton from './ToggleThemeButton';
 
 const AuthButtons = ({ isAuthButtons = false }) => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isAuth = useSelector(selectIsAuth);
 
   return (
     <>
-      {isLoggedIn ? (
+      {isAuth ? (
         <div className={s.userBarWrapper}>
+          <ToggleThemeButton />
           <UserBar />
           <LogoutButton />
         </div>
@@ -24,6 +26,7 @@ const AuthButtons = ({ isAuthButtons = false }) => {
             isAuthButtons && s['auth-buttons-modal']
           )}
         >
+          <ToggleThemeButton />
           <LoginButton />
           <RegisterButton />
         </div>

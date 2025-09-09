@@ -3,16 +3,16 @@ import { MENU_TYPES } from '@/constants';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useState } from 'react';
-import AuthButtons from '@/components/AuthButtons';
+import AuthButtons from '@/components/Buttons';
 import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from '@/redux/auth/selectors';
+import { selectIsAuth } from '@/redux/auth/selectors';
 import NavBar from '@/components/NavBar';
 
 const BurgerMenu = () => {
   const [openMenu, setOpenMenu] = useState(null);
   const isMobile = useMediaQuery('(max-width:767.98px)');
 
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isAuth = useSelector(selectIsAuth);
 
   const handleOpenMenu = type => {
     setOpenMenu(type);
@@ -62,7 +62,7 @@ const BurgerMenu = () => {
           },
         }}
       >
-        {!isLoggedIn && openMenu === MENU_TYPES.ACCOUNT && (
+        {!isAuth && openMenu === MENU_TYPES.ACCOUNT && (
           <AuthButtons isAuthButtons={true} />
         )}
         {openMenu === MENU_TYPES.MAIN && (

@@ -4,16 +4,27 @@ import 'modern-normalize';
 import './index.css';
 import App from '@/components/App.jsx';
 import { BrowserRouter } from 'react-router-dom';
+import { persistor, store } from './redux/store';
 import { Provider } from 'react-redux';
-import { store } from './redux/store';
+import { Toaster } from 'react-hot-toast';
+import { PersistGate } from 'redux-persist/integration/react';
 import ThemeProvider from './components/ThemeProvider';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        toastOptions={{
+          duration: 2000,
+        }}
+      />
       <Provider store={store}>
-        <ThemeProvider />
-        <App />
+        <PersistGate loading={null} persistor={persistor}>
+          <ThemeProvider />
+          <App />
+        </PersistGate>
       </Provider>
     </BrowserRouter>
   </StrictMode>

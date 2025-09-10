@@ -12,6 +12,8 @@ import {
   Modal,
   OutlinedInput,
   TextField,
+  Tooltip,
+  tooltipClasses,
   Typography,
 } from '@mui/material';
 import { useForm } from 'react-hook-form';
@@ -20,6 +22,7 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signInUser, signUpUser } from '@/redux/auth/operations';
 import { useDispatch } from 'react-redux';
+import { errorToast, successToast } from '@/utils/toastUtils';
 
 const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -56,7 +59,7 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
     event.preventDefault();
   };
 
-  const onSubmit = data => {
+  const onSubmit = async data => {
     const trimmedData = {
       ...data,
       name: data.name?.trim(),
@@ -64,10 +67,18 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
       password: data.password.trim(),
     };
 
-    mode === MODES.LOGIN
-      ? dispatch(signInUser(trimmedData))
-      : dispatch(signUpUser(trimmedData));
-    handleClose();
+    try {
+      if (mode === MODES.LOGIN) {
+        await dispatch(signInUser(trimmedData)).unwrap();
+        successToast('Вхід успішний');
+      } else {
+        await dispatch(signUpUser(trimmedData)).unwrap();
+        successToast('Реєстрація успішна');
+      }
+      handleClose();
+    } catch (err) {
+      errorToast(err);
+    }
   };
 
   return (
@@ -231,23 +242,38 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
               type={showPassword ? 'text' : 'password'}
               {...register('password')}
               endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label={
-                      showPassword
-                        ? 'hide the password'
-                        : 'display the password'
-                    }
-                    onClick={() => setShowPassword(show => !show)}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                    sx={{
-                      color: 'var(--color-main)',
-                    }}
-                  >
-                    {!showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
+                <Tooltip
+                  title={showPassword ? 'Hide' : 'Show'}
+                  placement="top"
+                  slotProps={{
+                    popper: {
+                      sx: {
+                        [`&.${tooltipClasses.popper}[data-popper-placement*="top"] .${tooltipClasses.tooltip}`]:
+                          {
+                            marginBottom: '4px',
+                          },
+                      },
+                    },
+                  }}
+                >
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label={
+                        showPassword
+                          ? 'hide the password'
+                          : 'display the password'
+                      }
+                      onClick={() => setShowPassword(show => !show)}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                      sx={{
+                        color: 'var(--color-main)',
+                      }}
+                    >
+                      {!showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                </Tooltip>
               }
               label="Password"
               error={!!errors.password}

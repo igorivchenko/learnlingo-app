@@ -5,6 +5,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { getSystemTheme } from '@/utils/getSystemTheme';
 import { useEffect, useState } from 'react';
+import { Tooltip, tooltipClasses } from '@mui/material';
 
 const ToggleThemeButton = () => {
   const theme = useSelector(selectTheme);
@@ -44,14 +45,29 @@ const ToggleThemeButton = () => {
     theme === 'dark' || (theme === 'system' && systemTheme === 'dark');
 
   return (
-    <button className={s.button} type="button" onClick={handleToggleTheme}>
-      <span className={`${s.icon} ${!isDark ? s.visible : s.hidden}`}>
-        <DarkModeIcon />
-      </span>
-      <span className={`${s.icon} ${isDark ? s.visible : s.hidden}`}>
-        <LightModeIcon />
-      </span>
-    </button>
+    <Tooltip
+      title={!isDark ? 'Turn off the light' : 'Turn on the light'}
+      placement="bottom"
+      slotProps={{
+        popper: {
+          sx: {
+            [`&.${tooltipClasses.popper}[data-popper-placement*="bottom"] .${tooltipClasses.tooltip}`]:
+              {
+                marginTop: '4px',
+              },
+          },
+        },
+      }}
+    >
+      <button className={s.button} type="button" onClick={handleToggleTheme}>
+        <span className={`${s.icon} ${!isDark ? s.visible : s.hidden}`}>
+          <DarkModeIcon />
+        </span>
+        <span className={`${s.icon} ${isDark ? s.visible : s.hidden}`}>
+          <LightModeIcon />
+        </span>
+      </button>
+    </Tooltip>
   );
 };
 

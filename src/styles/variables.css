@@ -28,6 +28,7 @@
   --color-bg-toggleTheme-btn-hover: hsl(215, 15%, 95%);
   --color-bg-main: #ffffff;
   --color-bg-hero-content: #f8f8f8;
+  --color-bg-burgerMenu: #fbe9ba;
 }
 
 /* Dark theme */
@@ -48,6 +49,7 @@
   --color-bg-toggleTheme-btn-hover: hsla(210, 14%, 13%, 0.7);
   --color-bg-main: rgb(15, 18, 20);
   --color-bg-hero-content: #222831;
+  --color-bg-burgerMenu: #222831;
 }
 
 /* System theme */
@@ -77,4 +79,5 @@
   );
   --color-bg-main: light-dark(#ffffff, rgb(15, 18, 20));
   --color-bg-hero-content: light-dark(#f8f8f8, #222831);
+  --color-bg-burgerMenu: light-dark(#fbe9ba, #222831);
 }

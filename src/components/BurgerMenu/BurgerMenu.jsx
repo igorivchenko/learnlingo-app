@@ -56,8 +56,8 @@ const BurgerMenu = () => {
         onClose={handleClose}
         sx={{
           '& .MuiDrawer-paper': {
-            width: '60vw',
-            backgroundColor: '#FBE9BA',
+            width: '50vw',
+            backgroundColor: 'var(--color-bg-burgerMenu)',
             color: 'var(--color-main)',
           },
         }}

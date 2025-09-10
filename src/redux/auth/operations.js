@@ -3,7 +3,7 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
   signInWithEmailAndPassword,
-  // signOut,
+  signOut,
 } from 'firebase/auth';
 import { ref, set } from 'firebase/database';
 import { handleHttpError } from '@/utils/handleHttpError';
@@ -63,6 +63,17 @@ export const signInUser = createAsyncThunk(
         id: user.uid,
         token: await user.getIdToken(),
       };
+    } catch (err) {
+      return rejectWithValue(handleHttpError(err));
+    }
+  }
+);
+
+export const signOutUser = createAsyncThunk(
+  'auth/signOutUser',
+  async (_, { rejectWithValue }) => {
+    try {
+      await signOut(auth);
     } catch (err) {
       return rejectWithValue(handleHttpError(err));
     }

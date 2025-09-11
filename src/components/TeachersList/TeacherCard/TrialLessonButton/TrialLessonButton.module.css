@@ -1,0 +1,15 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  max-width: max-content;
+  padding: 16px 48px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--card-color-main);
+  background-color: var(--color-accent-bright);
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+}

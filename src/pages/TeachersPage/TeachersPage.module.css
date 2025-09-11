@@ -1,0 +1,11 @@
+.section {
+  min-height: 100vh;
+  padding-block: 96px;
+  background-color: var(--color-bg-teachers-page);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+}

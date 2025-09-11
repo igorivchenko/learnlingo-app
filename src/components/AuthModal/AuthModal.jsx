@@ -308,7 +308,7 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
           className={s['close-button']}
           onClick={handleClose}
         >
-          <svg width={32} height={32}>
+          <svg width="32" height="32">
             <use href="/icons.svg#icon-close"></use>
           </svg>
         </button>

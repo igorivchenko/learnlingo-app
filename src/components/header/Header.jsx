@@ -11,7 +11,7 @@ const Header = () => {
 
   return (
     <header className={s.header}>
-      <Container size="medium" display="flex" className={s.headerContainer}>
+      <Container size="medium" className={s.headerContainer}>
         <Logo />
         {isMobile && <NavBar />}
         {isMobile && <AuthButtons />}

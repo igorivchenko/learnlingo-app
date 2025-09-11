@@ -1,12 +1,12 @@
 import { Drawer, IconButton, useMediaQuery } from '@mui/material';
 import { MENU_TYPES } from '@/constants';
 import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useState } from 'react';
 import AuthButtons from '@/components/Buttons';
 import { useSelector } from 'react-redux';
 import { selectIsAuth } from '@/redux/auth/selectors';
 import NavBar from '@/components/NavBar';
+import UserBar from '@/components/UserBar';
 
 const BurgerMenu = () => {
   const [openMenu, setOpenMenu] = useState(null);
@@ -29,16 +29,7 @@ const BurgerMenu = () => {
   return (
     <>
       <div style={{ display: 'flex', gap: '20px' }}>
-        <IconButton
-          color="inherit"
-          edge="start"
-          onClick={() => handleOpenMenu(MENU_TYPES.ACCOUNT)}
-          sx={{
-            padding: '6px',
-          }}
-        >
-          <AccountCircleIcon />
-        </IconButton>
+        <UserBar />
         <IconButton
           color="inherit"
           edge="start"
@@ -81,7 +72,7 @@ const BurgerMenu = () => {
             padding: 0,
           }}
         >
-          <svg width={32} height={32}>
+          <svg width="32" height="32">
             <use href="/icons.svg#icon-close"></use>
           </svg>
         </IconButton>

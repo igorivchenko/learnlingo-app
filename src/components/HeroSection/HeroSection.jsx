@@ -1,31 +1,32 @@
-import HeroWrapperAnimation from '@/animations/HeroWrapperAnimation';
+import SlideAnimation from '@/animations/SlideAnimation';
 import s from './HeroSection.module.css';
 import Container from '@/components/Container';
 import HeroImage from './HeroImage';
 import HeroContent from './HeroContent';
+import Section from '@/components/Section';
 
 const HeroSection = () => {
   return (
-    <section className={s.heroSection} aria-label="Hero section">
+    <Section className={s.heroSection} aria-label="Hero section">
       <Container>
         <div className={s.heroWrapper}>
-          <HeroWrapperAnimation
+          <SlideAnimation
             initial={{ opacity: 0, x: -80 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, y: 80 }}
+            exit={{ opacity: 0, x: -80 }}
           >
             <HeroContent />
-          </HeroWrapperAnimation>{' '}
-          <HeroWrapperAnimation
+          </SlideAnimation>{' '}
+          <SlideAnimation
             initial={{ opacity: 0, x: 80 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, y: -80 }}
+            exit={{ opacity: 0, x: 80 }}
           >
             <HeroImage />
-          </HeroWrapperAnimation>
+          </SlideAnimation>
         </div>
       </Container>
-    </section>
+    </Section>
   );
 };
 

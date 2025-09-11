@@ -1,0 +1,22 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  margin-bottom: 16px;
+}
+
+.label {
+  font-weight: 500;
+  color: var(--card-color-secondary);
+}
+
+.value {
+  display: inline-block;
+  font-weight: 500;
+  color: var(--card-color-main);
+}
+
+.value:first-child {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}

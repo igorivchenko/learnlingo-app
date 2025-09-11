@@ -1,0 +1,9 @@
+* {
+  scrollbar-color: var(--color-scrollbar) transparent;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+}

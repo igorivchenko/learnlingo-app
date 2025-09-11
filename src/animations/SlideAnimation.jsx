@@ -1,11 +1,11 @@
 import { motion } from 'motion/react';
 
-const HeroWrapperAnimation = ({
+const SlideAnimation = ({
   children,
   initial,
   animate,
   exit,
-  transition = { duration: 0.6 },
+  transition = { duration: 0.4 },
 }) => {
   return (
     <motion.div
@@ -19,4 +19,4 @@ const HeroWrapperAnimation = ({
   );
 };
 
-export default HeroWrapperAnimation;
+export default SlideAnimation;

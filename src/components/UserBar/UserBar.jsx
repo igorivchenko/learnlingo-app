@@ -1,7 +1,7 @@
-import { selectName } from '@/redux/auth/selectors';
 import { useSelector } from 'react-redux';
-import { FaRegCircleUser } from 'react-icons/fa6';
 import s from './UserBar.module.css';
+import { selectName } from '@/redux/auth/selectors';
+import UserAvatar from './UserAvatar';
 
 const UserBar = () => {
   const userName = useSelector(selectName);
@@ -10,10 +10,10 @@ const UserBar = () => {
 
   return (
     <>
-      <div className={s.userBar}>
-        <FaRegCircleUser />
+      <button type="button" className={s.userBar}>
+        <UserAvatar />
         <span className={s.userName}>{firstName}</span>
-      </div>
+      </button>
     </>
   );
 };

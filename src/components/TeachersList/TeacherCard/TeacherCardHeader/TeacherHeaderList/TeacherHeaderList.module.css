@@ -1,0 +1,31 @@
+.headerList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.headerItem {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: var(--card-color-main);
+}
+
+.headerItem:not(:last-child)::after {
+  content: '';
+  height: 16px;
+  width: 1px;
+  background-color: var(--card-color-secondary);
+  margin-inline: 16px;
+}
+
+.label {
+  margin-left: 8px;
+}
+
+.value {
+  margin-left: 3px;
+}
+
+.headerItem:last-child .value {
+  color: var(--color-accent-green);
+}

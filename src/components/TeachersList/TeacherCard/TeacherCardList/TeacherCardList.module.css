@@ -1,0 +1,14 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  height: 32px;
+  padding: 8px 12px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  color: var(--card-color-main);
+  border: 1px solid var(--card-color-secondary);
+  border-radius: 35px;
+}

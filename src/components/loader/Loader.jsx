@@ -4,7 +4,11 @@ import s from './Loader.module.css';
 const Loader = () => {
   return (
     <div className={s.loader}>
-      <ScaleLoader barCount={7} color="#F4C550" speedMultiplier={0.7} />
+      <ScaleLoader
+        barCount={7}
+        color="var(--color-accent)"
+        speedMultiplier={0.7}
+      />
     </div>
   );
 };

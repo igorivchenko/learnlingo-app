@@ -1,0 +1,20 @@
+.button {
+  display: flex;
+  align-items: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+.icon {
+  fill: none;
+  stroke: var(--card-icon-stroke-color);
+  cursor: pointer;
+}
+
+.iconActive {
+  fill: red;
+  stroke: none;
+}

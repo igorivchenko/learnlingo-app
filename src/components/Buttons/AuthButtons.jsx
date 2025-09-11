@@ -5,7 +5,7 @@ import { selectIsAuth } from '@/redux/auth/selectors';
 import RegisterButton from './RegisterButton';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
-import UserBar from '@/components/UserPanel/UserBar';
+import UserBar from '@/components/UserBar';
 import ToggleThemeButton from './ToggleThemeButton';
 
 const AuthButtons = ({ isAuthButtons = false }) => {

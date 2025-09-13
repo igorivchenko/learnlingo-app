@@ -1,14 +1,11 @@
 import { ScaleLoader } from 'react-spinners';
 import s from './Loader.module.css';
+import clsx from 'clsx';
 
-const Loader = () => {
+const Loader = ({ top, ...props }) => {
   return (
-    <div className={s.loader}>
-      <ScaleLoader
-        barCount={7}
-        color="var(--color-accent)"
-        speedMultiplier={0.7}
-      />
+    <div className={clsx(s.loader, top && s.top)}>
+      <ScaleLoader barCount={7} {...props} />
     </div>
   );
 };

@@ -40,6 +40,7 @@
   --card-image-border-color: #fbe9ba;
   --card-icon-stroke-color: #121417;
   --card-icon-favorite-color: #ffc531;
+  --color-bg-popper: #f8f8f8;
 }
 
 /* Dark theme */
@@ -72,6 +73,7 @@
   --card-image-border-color: #ffc531;
   --card-icon-stroke-color: #121417;
   --card-icon-favorite-color: #ffc531;
+  --color-bg-popper: #222831;
 }
 
 /* System theme */
@@ -104,6 +106,7 @@
   --color-bg-select: light-dark(#ffffff, rgb(228, 232, 235));
   --color-bg-user-avatar: #fbe9ba;
   --color-bg-card: light-dark(#ffffff, rgb(228, 232, 235));
+  --color-bg-popper: light-dark(#f8f8f8, #222831);
   --card-color-main: #121417;
   --card-color-secondary: light-dark(#8a8a89, hsla(210, 14%, 13%, 0.5));
   --card-image-border-color: light-dark(#fbe9ba, #ffc531);

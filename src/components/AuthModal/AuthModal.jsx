@@ -21,12 +21,15 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signInUser, signUpUser } from '@/redux/auth/operations';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { errorToast, successToast } from '@/utils/toastUtils';
+import Loader from '@/components/Loader';
+import { selectIsLoading } from '@/redux/auth/selectors';
 
 const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
-  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = useState(false);
+  const isLoading = useSelector(selectIsLoading);
 
   const validationSchema = Yup.object().shape({
     ...(mode === MODES.REGISTER && {
@@ -87,6 +90,9 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
       onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
+      sx={{
+        backdropFilter: 'blur(2px)',
+      }}
     >
       <Box className={s.modal}>
         <Typography
@@ -300,7 +306,13 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
               borderRadius: '12px',
             }}
           >
-            {mode === MODES.LOGIN ? 'Log In' : 'Sign Up'}
+            {isLoading ? (
+              <Loader height={22} width={3} margin={1.5} />
+            ) : mode === MODES.LOGIN ? (
+              'Log In'
+            ) : (
+              'Sign Up'
+            )}
           </Button>
         </form>
         <button

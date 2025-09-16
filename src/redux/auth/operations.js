@@ -5,7 +5,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
-import { ref, set } from 'firebase/database';
+import { setDoc, doc, getDoc } from 'firebase/firestore';
+
 import { handleHttpError } from '@/utils/handleHttpError';
 import { auth, db } from '@/config/firebase.config';
 
@@ -25,7 +26,7 @@ export const signUpUser = createAsyncThunk(
 
       const user = userCredential.user;
 
-      await set(ref(db, `users/${user.uid}`), {
+      await setDoc(doc(db, 'users', user.uid), {
         name: user.displayName,
         email: user.email,
         favorites: [],
@@ -57,11 +58,16 @@ export const signInUser = createAsyncThunk(
 
       const user = userCredential.user;
 
+      const userRef = doc(db, 'users', user.uid);
+      const userSnap = await getDoc(userRef);
+      const userData = userSnap.exists() ? userSnap.data() : {};
+
       return {
         name: user.displayName,
         email: user.email,
         id: user.uid,
         token: await user.getIdToken(),
+        ...userData,
       };
     } catch (err) {
       return rejectWithValue(handleHttpError(err));

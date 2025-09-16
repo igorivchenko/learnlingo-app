@@ -1,6 +1,9 @@
+import { useTeacher } from '@/context/TeacherContext';
 import s from './TeacherHeaderList.module.css';
 
-const TeacherHeaderList = ({ value }) => {
+const TeacherHeaderList = () => {
+  const { lessons_done, rating, price_per_hour } = useTeacher();
+
   const items = [
     {
       icon: (
@@ -12,6 +15,7 @@ const TeacherHeaderList = ({ value }) => {
     },
     {
       label: 'Lessons done:',
+      value: lessons_done,
     },
     {
       icon: (
@@ -20,15 +24,17 @@ const TeacherHeaderList = ({ value }) => {
         </svg>
       ),
       label: 'Rating:',
+      value: rating,
     },
     {
       label: 'Price / 1 hour:',
+      value: ` ${price_per_hour}$`,
     },
   ];
 
   return (
     <ul className={s.headerList}>
-      {items.map(({ icon, label }, idx) => (
+      {items.map(({ icon, label, value }, idx) => (
         <li className={s.headerItem} key={idx}>
           {icon}
           <span className={s.label}>{label}</span>

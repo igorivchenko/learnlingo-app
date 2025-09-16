@@ -3,7 +3,7 @@ import s from './TrialLessonButton.module.css';
 const TrialLessonButton = () => {
   return (
     <button className={s.button} type="button">
-      Book trial lesson
+      <span>Book trial lesson</span>
     </button>
   );
 };

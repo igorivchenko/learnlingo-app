@@ -12,6 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import authReducer from './auth/slice';
 import themeReducer from './theme/slice';
+import teachersReducer from './teachers/slice';
 
 const persistConfig = {
   key: 'auth',
@@ -31,7 +32,7 @@ export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
     // filters: filtersReducer,
-    // teachers: teachersReducer,
+    teachers: teachersReducer,
     theme: persistedThemeReducer,
   },
   middleware: getDefaultMiddleware =>

@@ -51,7 +51,7 @@ const LogoutButton = () => {
         onConfirm={handleLogOut}
         sx={{
           '& .MuiPaper-root': {
-            padding: 1,
+            padding: 1.3,
             backgroundColor: 'var(--color-bg-popper)',
             borderRadius: 2,
             maxWidth: 280,

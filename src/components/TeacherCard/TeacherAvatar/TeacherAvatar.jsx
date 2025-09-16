@@ -1,4 +1,5 @@
 import s from './TeacherAvatar.module.css';
+import { useTeacher } from '@/context/TeacherContext';
 import Avatar from '@mui/material/Avatar';
 import { styled } from '@mui/material/styles';
 import Badge from '@mui/material/Badge';
@@ -38,8 +39,8 @@ const StyledBadge = styled(Badge)(() => ({
   },
 }));
 
-const TeacherAvatar = ({ data }) => {
-  //   const { avatar_url, name } = data;
+const TeacherAvatar = () => {
+  const { avatar_url, name } = useTeacher();
 
   return (
     <div className={s.wrapper}>
@@ -49,7 +50,10 @@ const TeacherAvatar = ({ data }) => {
         variant="dot"
       >
         <Avatar
-          src={'/swADjAuobin2RubX.jpg'}
+          src={
+            avatar_url ||
+            'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'
+          }
           alt={name || ''}
           sx={{
             borderRadius: '100%',

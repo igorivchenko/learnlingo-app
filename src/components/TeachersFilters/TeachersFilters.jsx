@@ -6,7 +6,6 @@ import SlideAnimation from '@/animations/SlideAnimation';
 const TeachersFilters = () => {
   const {
     register,
-    handleSubmit,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -15,10 +14,6 @@ const TeachersFilters = () => {
       price: '30',
     },
   });
-
-  const onSubmit = data => {
-    console.log(data);
-  };
 
   const languageOptions = [
     { value: 'french', label: 'French' },
@@ -52,7 +47,7 @@ const TeachersFilters = () => {
       transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
     >
       <header>
-        <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+        <form className={s.form}>
           <SelectField
             label="Languages"
             name="language"

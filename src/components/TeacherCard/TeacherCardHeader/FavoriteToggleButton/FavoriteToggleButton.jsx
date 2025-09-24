@@ -1,12 +1,31 @@
-import { useState } from 'react';
 import s from './FavoriteToggleButton.module.css';
 import { motion } from 'motion/react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useTeacher } from '@/context/TeacherContext';
+import { selectIsAuth, selectUserId } from '@/redux/auth/selectors';
+import { selectFavoriteTeachers } from '@/redux/favorite/selectors';
+import { errorToast } from '@/utils/toastUtils';
+import {
+  addFavoriteTeacher,
+  removeFavoriteTeacher,
+} from '@/redux/favorite/operations';
 
 const FavoriteToggleButton = () => {
-  const [isFavorite, setIsFavorite] = useState(false);
+  const dispatch = useDispatch();
+  const { id } = useTeacher();
+  const userId = useSelector(selectUserId);
+  const isAuth = useSelector(selectIsAuth);
+  const favorites = useSelector(selectFavoriteTeachers);
+  const isFavorite = favorites.some(fav => fav.id === id);
 
   const handleClick = () => {
-    setIsFavorite(prev => !prev);
+    if (!isAuth) {
+      return errorToast('Please log in to add a teacher to your favorites');
+    }
+
+    isFavorite
+      ? dispatch(removeFavoriteTeacher({ userId: userId, teacherId: id }))
+      : dispatch(addFavoriteTeacher({ userId: userId, teacherId: id }));
   };
 
   return (
@@ -23,8 +42,10 @@ const FavoriteToggleButton = () => {
         animate={{
           scale: 1,
           opacity: 1,
-          fill: isFavorite ? 'var(--card-icon-favorite-color)' : 'none',
-          stroke: isFavorite ? 'none' : 'var(--card-icon-stroke-color)',
+          fill:
+            isFavorite && isAuth ? 'var(--card-icon-favorite-color)' : 'none',
+          stroke:
+            isFavorite && isAuth ? 'none' : 'var(--card-icon-stroke-color)',
         }}
         transition={{
           type: 'spring',

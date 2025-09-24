@@ -1,4 +1,3 @@
-export const selectFavoriteTeachers = state => state.auth.favoriteTeachers;
 export const selectIsAuth = state => state.auth.isAuth;
 export const selectIsLoading = state => state.auth.isLoading;
 export const selectError = state => state.auth.error;

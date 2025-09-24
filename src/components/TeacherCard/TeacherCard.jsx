@@ -35,7 +35,6 @@ const TeacherCard = ({ teacher }) => {
 
           {!isExpanded && (
             <motion.button
-              layout
               className={s.button}
               type="button"
               onClick={toggleExpanded}
@@ -50,7 +49,6 @@ const TeacherCard = ({ teacher }) => {
 
           {isExpanded && (
             <motion.div
-              layout
               initial={{ opacity: 0, y: -40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}

@@ -7,7 +7,6 @@ const initialState = {
     name: null,
     email: null,
   },
-  favoriteTeachers: [],
   isAuth: false,
   error: null,
   isLoading: false,

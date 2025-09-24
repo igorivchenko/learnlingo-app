@@ -1,0 +1,42 @@
+.badgeWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.badgeItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-secondary);
+  border-radius: 50%;
+}
+
+.name {
+  font-weight: 500;
+  color: var(--color-teacher-badge);
+}
+
+.label {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+  color: #8a8a89;
+}

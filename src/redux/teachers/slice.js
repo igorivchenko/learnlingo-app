@@ -15,6 +15,7 @@ const slice = createSlice({
   reducers: {
     resetList: state => {
       state.items = [];
+      state.lastVisibleDoc = null;
       state.hasMore = true;
     },
   },

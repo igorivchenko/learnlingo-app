@@ -1,7 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { ROUTES } from '@/constants';
-import { lazy, Suspense } from 'react';
+import { lazy } from 'react';
 import PrivateRoute from './PrivateRoute';
+import BackToTop from './ScrollToTop';
 
 const HomePage = lazy(() => import('@/pages/HomePage'));
 const FavoritesPage = lazy(() => import('@/pages/FavoritesPage'));
@@ -10,19 +11,22 @@ const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 
 function App() {
   return (
-    <Routes>
-      <Route path={ROUTES.HOME} element={<HomePage />} />
-      <Route path={ROUTES.TEACHERS} element={<TeachersPage />} />
-      <Route
-        path={ROUTES.FAVORITES}
-        element={
-          <PrivateRoute>
-            <FavoritesPage />
-          </PrivateRoute>
-        }
-      />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path={ROUTES.HOME} element={<HomePage />} />
+        <Route path={ROUTES.TEACHERS} element={<TeachersPage />} />
+        <Route
+          path={ROUTES.FAVORITES}
+          element={
+            <PrivateRoute>
+              <FavoritesPage />
+            </PrivateRoute>
+          }
+        />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+      <BackToTop />
+    </>
   );
 }
 

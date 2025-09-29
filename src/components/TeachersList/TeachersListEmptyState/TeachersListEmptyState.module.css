@@ -42,12 +42,12 @@
   border-right: 0.12em solid currentColor;
   overflow: hidden;
   white-space: nowrap;
-  animation: typing 2s steps(22, end) forwards, blink 1s step-end infinite;
+  animation: typing 2s steps(37, end) forwards, blink 1s step-end infinite;
 }
 
 @keyframes typing {
   to {
-    width: 22.2ch;
+    width: 37.2ch;
   }
 }
 

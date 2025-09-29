@@ -60,6 +60,7 @@ input,
 textarea,
 svg * {
   transition-duration: var(--transition-duration);
+  -webkit-tap-highlight-color: transparent;
 }
 
 a {

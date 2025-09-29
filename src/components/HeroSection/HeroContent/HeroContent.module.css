@@ -2,6 +2,21 @@
   padding: 80px 108px 80px 64px;
   background-color: var(--color-bg-hero-content);
   border-radius: 30px;
+
+  @media (width < 1023.98px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 64px 80px 64px;
+  }
+
+  @media (width < 767.98px) {
+    padding: 50px 44px 50px 44px;
+  }
+
+  @media (width < 479.98px) {
+    padding: 30px 24px 30px 24px;
+  }
 }
 
 .heroContentWrapper > * {
@@ -17,12 +32,34 @@
   font-weight: 500;
   line-height: 1.16;
   letter-spacing: -1px;
+
+  @media (width < 1023.98px) {
+    text-align: center;
+  }
+
+  @media (width < 767.98px) {
+    font-size: 38px;
+  }
+
+  @media (width < 479.98px) {
+    font-size: 24px;
+  }
 }
 
 .description {
   margin-bottom: 64px;
   max-width: 471px;
   line-height: 1.4;
+
+  @media (width < 1023.98px) {
+    text-align: center;
+    margin-bottom: 44px;
+  }
+
+  @media (width < 767.98px) {
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
 }
 
 .italic {
@@ -45,6 +82,18 @@
 
   background-color: #fbe9ba;
   border-radius: 8px;
+
+  @media (width < 767.98px) {
+    top: 7px;
+    width: 156px;
+    height: 37px;
+  }
+
+  @media (width < 479.98px) {
+    top: 4px;
+    width: 100px;
+    height: 24px;
+  }
 }
 
 .hiddenText {

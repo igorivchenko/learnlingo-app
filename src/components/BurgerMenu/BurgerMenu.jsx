@@ -50,6 +50,16 @@ const BurgerMenu = () => {
             width: '50vw',
             backgroundColor: 'var(--color-bg-burgerMenu)',
             color: 'var(--color-main)',
+            '@media (max-width:479.98px)': {
+              width: '65vw',
+            },
+          },
+        }}
+        slotProps={{
+          backdrop: {
+            sx: {
+              backdropFilter: 'blur(1.5px)',
+            },
           },
         }}
       >

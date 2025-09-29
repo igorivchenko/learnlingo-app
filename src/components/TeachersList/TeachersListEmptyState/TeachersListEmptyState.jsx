@@ -6,7 +6,9 @@ import { LiaChalkboardTeacherSolid } from 'react-icons/lia';
 const TeachersListEmptyState = () => {
   return (
     <>
-      <p className={s.emptyState}>Sorry, no teachers available!</p>
+      <p className={s.emptyState}>
+        No favorite teachers found. Add your favorites!
+      </p>
       <div className={s.linkWrapper}>
         <Link className={s.link} to="/">
           <IoMdHome />

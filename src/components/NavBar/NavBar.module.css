@@ -2,6 +2,10 @@
   display: flex;
   align-items: center;
   gap: 28px;
+
+  @media (width < 1023.98px) {
+    gap: 6px;
+  }
 }
 
 .link {
@@ -10,6 +14,7 @@
   padding: 6px 8px;
   transition: 0.5s;
   z-index: 1;
+
   &:before {
     content: '';
     position: absolute;
@@ -23,6 +28,7 @@
     opacity: 0;
     transition: 0.3s;
   }
+
   &:after {
     content: '';
     position: absolute;
@@ -36,16 +42,19 @@
     transition: 0.3s;
     z-index: -1;
   }
-  &:hover {
-    color: var(--color-secondary);
-    text-decoration: none;
-    &:before {
-      transform: scaleY(1);
-      opacity: 1;
-    }
-    &:after {
-      transform: scaleY(1);
-      opacity: 1;
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--color-secondary);
+      text-decoration: none;
+      &:before {
+        transform: scaleY(1);
+        opacity: 1;
+      }
+      &:after {
+        transform: scaleY(1);
+        opacity: 1;
+      }
     }
   }
 }

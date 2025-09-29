@@ -6,4 +6,9 @@
   display: grid;
   grid-template-columns: 54.88% auto;
   gap: 24px;
+
+  @media (width < 1023.98px) {
+    display: flex;
+    flex-direction: column;
+  }
 }

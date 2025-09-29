@@ -17,23 +17,27 @@ const initialState = {
     sortBy: 'name',
     direction: 'asc',
   },
+  currentContext: 'teachers',
 };
 
 const slice = createSlice({
-  name: 'teachers',
+  name: 'filters',
   initialState,
   reducers: {
     setFilters: (state, { payload }) => {
       state.filters = { ...state.filters, ...payload };
     },
     resetFilters: state => {
-      state.filters = {};
+      state.filters = initialState.filters;
     },
     setFavoritesFilter: (state, { payload }) => {
       state.favoritesFilters = { ...state.favoritesFilters, ...payload };
     },
     resetFavoritesFilters: state => {
-      state.favoritesFilters = {};
+      state.favoritesFilters = initialState.favoritesFilters;
+    },
+    setCurrentContext: (state, action) => {
+      state.currentContext = action.payload;
     },
   },
 });
@@ -44,4 +48,5 @@ export const {
   setFavoritesFilter,
   resetFilters,
   resetFavoritesFilters,
+  setCurrentContext,
 } = slice.actions;

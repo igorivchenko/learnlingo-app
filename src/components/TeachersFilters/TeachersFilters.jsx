@@ -3,7 +3,7 @@ import s from './TeachersFilters.module.css';
 import SelectField from './SelectField';
 import SlideAnimation from '@/animations/SlideAnimation';
 
-const TeachersFilters = ({ context }) => {
+const TeachersFilters = () => {
   const {
     register,
     formState: { errors },
@@ -48,7 +48,6 @@ const TeachersFilters = ({ context }) => {
             options={languageOptions}
             register={register}
             errors={errors}
-            context={context}
             sxFormControl={{ minWidth: 221 }}
             sxSelect={{
               backgroundColor: 'var(--color-bg-select)',
@@ -61,7 +60,6 @@ const TeachersFilters = ({ context }) => {
             options={knowledgeOptions}
             register={register}
             errors={errors}
-            context={context}
             sxFormControl={{ minWidth: 198 }}
             sxSelect={{
               backgroundColor: 'var(--color-bg-select)',
@@ -74,7 +72,6 @@ const TeachersFilters = ({ context }) => {
             options={priceOptions}
             register={register}
             errors={errors}
-            context={context}
             sxFormControl={{ minWidth: 124 }}
             sxSelect={{
               backgroundColor: 'var(--color-bg-select)',

@@ -3,6 +3,7 @@ import { FormControl, Select, MenuItem, FormHelperText } from '@mui/material';
 import CustomSelectIcon from './CustomSelectIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  selectCurrentContext,
   selectFavoritesFilters,
   selectTeachersFilters,
 } from '@/redux/filters/selectors';
@@ -14,20 +15,22 @@ const SelectField = ({
   options,
   register,
   errors,
-  context = 'teachers',
   sxFormControl = {},
   sxSelect = {},
   showDollar = false,
 }) => {
   const dispatch = useDispatch();
+  const currentContext = useSelector(selectCurrentContext);
   const filters = useSelector(
-    context === 'teachers' ? selectTeachersFilters : selectFavoritesFilters
+    currentContext === 'teachers'
+      ? selectTeachersFilters
+      : selectFavoritesFilters
   );
   const selectedValue = useMemo(() => filters[name] || '', [filters, name]);
 
   const handleChange = e => {
     const { value } = e.target;
-    context === 'teachers'
+    currentContext === 'teachers'
       ? dispatch(setFilters({ [name]: value }))
       : dispatch(setFavoritesFilter({ [name]: value }));
   };

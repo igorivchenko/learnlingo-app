@@ -7,14 +7,22 @@ import { selectFavoriteTeachers } from '@/redux/favorite/selectors';
 import { errorToast } from '@/utils/toastUtils';
 import {
   addFavoriteTeacher,
+  getFavoriteTeachers,
   removeFavoriteTeacher,
 } from '@/redux/favorite/operations';
+import {
+  selectCurrentContext,
+  selectFavoritesFilters,
+} from '@/redux/filters/selectors';
+import { resetFavoritesTeachers } from '@/redux/favorite/slice';
 
 const FavoriteToggleButton = () => {
   const dispatch = useDispatch();
   const { id } = useTeacher();
   const userId = useSelector(selectUserId);
   const isAuth = useSelector(selectIsAuth);
+  const currentContext = useSelector(selectCurrentContext);
+  const favoritesFilters = useSelector(selectFavoritesFilters);
   const favorites = useSelector(selectFavoriteTeachers);
   const isFavorite = favorites.some(favorite => favorite.id === id);
 
@@ -24,7 +32,16 @@ const FavoriteToggleButton = () => {
     }
 
     isFavorite
-      ? dispatch(removeFavoriteTeacher({ userId: userId, teacherId: id }))
+      ? dispatch(removeFavoriteTeacher({ userId, teacherId: id })).then(() => {
+          currentContext === 'favorites' && dispatch(resetFavoritesTeachers());
+          dispatch(
+            getFavoriteTeachers({
+              filters: favoritesFilters,
+              lastVisibleDoc: null,
+              userId,
+            })
+          );
+        })
       : dispatch(addFavoriteTeacher({ userId: userId, teacherId: id }));
   };
 

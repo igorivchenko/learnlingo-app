@@ -21,7 +21,6 @@ const slice = createSlice({
       state.favoriteTeachers = [];
       state.lastVisibleDoc = null;
       state.hasMore = true;
-      state.lastActionType = null;
     },
   },
   extraReducers: build => {

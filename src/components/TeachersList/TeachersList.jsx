@@ -4,7 +4,6 @@ import TeacherCard from '@/components/TeacherCard';
 import Loader from '@/components/Loader';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { resetFavoritesTeachers } from '@/redux/favorite/slice';
 import { resetList } from '@/redux/teachers/slice';
 
 const TeachersList = ({ isLoading, teachers, variants }) => {
@@ -12,10 +11,7 @@ const TeachersList = ({ isLoading, teachers, variants }) => {
 
   useEffect(() => {
     dispatch(resetList());
-    dispatch(resetFavoritesTeachers());
   }, [dispatch]);
-
-  console.log('Render');
 
   return (
     <>

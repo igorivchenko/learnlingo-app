@@ -16,6 +16,10 @@ import { selectUserId } from '@/redux/auth/selectors';
 import LoadMoreButton from '@/components/LoadMoreButton';
 import { selectFavoritesFilters } from '@/redux/filters/selectors';
 import { resetFavoritesTeachers } from '@/redux/favorite/slice';
+import {
+  resetFavoritesFilters,
+  setCurrentContext,
+} from '@/redux/filters/slice';
 
 const FavoritesPage = () => {
   const dispatch = useDispatch();
@@ -30,12 +34,17 @@ const FavoritesPage = () => {
   const slideFromLeft = {
     hidden: { opacity: 0, scale: 0.9 },
     visible: { opacity: 1, scale: 1 },
-    exit: { opacity: 0, scale: 0.9 },
   };
 
   useEffect(() => {
+    dispatch(setCurrentContext('favorites'));
+    return () => dispatch(resetFavoritesFilters());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(setCurrentContext('favorites'));
+    dispatch(resetFavoritesTeachers());
     if (userId) {
-      dispatch(resetFavoritesTeachers());
       dispatch(
         getFavoriteTeachers({
           filters: favoritesFilters,
@@ -74,7 +83,7 @@ const FavoritesPage = () => {
   return (
     <Section className={s.section} title="My Favorite Teachers">
       <Container size="medium" className={s.container}>
-        <TeachersFilters context="favorite" />
+        <TeachersFilters />
         <TeachersList
           isLoading={isLoading}
           teachers={teachers}

@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectTeachersFilters } from '@/redux/filters/selectors';
 import { getFavoriteTeachers } from '@/redux/favorite/operations';
 import { selectUserId } from '@/redux/auth/selectors';
+import { resetFilters, setCurrentContext } from '@/redux/filters/slice';
 
 const TeachersPage = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,11 @@ const TeachersPage = () => {
     hidden: { opacity: 0, scale: 0.9 },
     visible: { opacity: 1, scale: 1 },
   };
+
+  useEffect(() => {
+    dispatch(setCurrentContext('teachers'));
+    return () => dispatch(resetFilters());
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(resetList());

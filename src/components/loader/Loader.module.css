@@ -4,6 +4,9 @@
   align-items: center;
 }
 
-.top {
-  margin-top: 100px;
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
 }

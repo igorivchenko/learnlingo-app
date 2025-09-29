@@ -5,6 +5,7 @@ import Loader from '@/components/Loader';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { resetList } from '@/redux/teachers/slice';
+import TeachersListEmptyState from './TeachersListEmptyState';
 
 const TeachersList = ({ isLoading, teachers, variants }) => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const TeachersList = ({ isLoading, teachers, variants }) => {
     <>
       {isLoading && teachers.length === 0 && (
         <Loader
-          top
+          center
           color="var(--color-accent)"
           height={30}
           width={4}
@@ -25,9 +26,7 @@ const TeachersList = ({ isLoading, teachers, variants }) => {
         />
       )}
 
-      {!isLoading && teachers.length === 0 && (
-        <p>Sorry, no teachers available</p>
-      )}
+      {!isLoading && teachers.length === 0 && <TeachersListEmptyState />}
 
       <ul className={s.list}>
         <AnimatePresence>

@@ -83,7 +83,7 @@ const FavoritesPage = () => {
   return (
     <Section className={s.section} title="My Favorite Teachers">
       <Container size="medium" className={s.container}>
-        <TeachersFilters />
+        {!isLoading && teachers.length > 0 && <TeachersFilters />}
         <TeachersList
           isLoading={isLoading}
           teachers={teachers}

@@ -1,0 +1,66 @@
+.linkWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.link {
+  display: inline-flex;
+  column-gap: 8px;
+
+  padding-block: 10px;
+  padding-inline: 40px;
+
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+
+  color: var(--color-secondary);
+  background-color: var(--color-button);
+  border-radius: 12px;
+
+  transition-duration: var(--transition-duration);
+}
+
+.link svg {
+  width: 24px;
+  height: 24px;
+}
+
+.link:hover {
+  color: var(--color-secondary);
+  background-color: var(--color-accent);
+}
+
+.emptyState {
+  display: inline-block;
+  width: 0;
+  margin-inline: auto;
+  font-size: 32px;
+  text-align: center;
+  border-right: 0.12em solid currentColor;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2s steps(22, end) forwards, blink 1s step-end infinite;
+}
+
+@keyframes typing {
+  to {
+    width: 22.2ch;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .emptyState {
+    animation: none;
+    width: auto;
+    border-right: none;
+  }
+}

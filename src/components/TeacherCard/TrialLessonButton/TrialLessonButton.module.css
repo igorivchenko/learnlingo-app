@@ -31,7 +31,7 @@
 
 .button span {
   position: relative;
-  z-index: 1; /* щоб текст був поверх */
+  z-index: 1;
 }
 
 .button:hover::after {

@@ -1,6 +1,12 @@
-import React, { useState } from 'react';
+import React, { useMemo } from 'react';
 import { FormControl, Select, MenuItem, FormHelperText } from '@mui/material';
 import CustomSelectIcon from './CustomSelectIcon';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectFavoritesFilters,
+  selectTeachersFilters,
+} from '@/redux/filters/selectors';
+import { setFavoritesFilter, setFilters } from '@/redux/filters/slice';
 
 const SelectField = ({
   label,
@@ -8,15 +14,22 @@ const SelectField = ({
   options,
   register,
   errors,
+  context = 'teachers',
   sxFormControl = {},
   sxSelect = {},
-  defaultValue = options.length > 0 ? options[0].value : '',
   showDollar = false,
 }) => {
-  const [selectedValue, setSelectedValue] = useState(defaultValue);
+  const dispatch = useDispatch();
+  const filters = useSelector(
+    context === 'teachers' ? selectTeachersFilters : selectFavoritesFilters
+  );
+  const selectedValue = useMemo(() => filters[name] || '', [filters, name]);
 
-  const handleChange = event => {
-    setSelectedValue(event.target.value);
+  const handleChange = e => {
+    const { value } = e.target;
+    context === 'teachers'
+      ? dispatch(setFilters({ [name]: value }))
+      : dispatch(setFavoritesFilter({ [name]: value }));
   };
 
   return (
@@ -39,7 +52,6 @@ const SelectField = ({
         {...register(name)}
         value={selectedValue}
         onChange={handleChange}
-        defaultValue={defaultValue}
         displayEmpty
         IconComponent={CustomSelectIcon}
         sx={{

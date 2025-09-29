@@ -72,8 +72,8 @@ const BookTrialForm = ({ handleClose }) => {
                 control={
                   <Radio
                     sx={{
-                      color: 'var(--color-book-trial-form-border)', // колір коли не вибрано
-                      '&.Mui-checked': { color: 'var(--color-border-accent)' }, // колір коли вибрано
+                      color: 'var(--color-book-trial-form-border)',
+                      '&.Mui-checked': { color: 'var(--color-border-accent)' },
                     }}
                   />
                 }
@@ -84,8 +84,8 @@ const BookTrialForm = ({ handleClose }) => {
                 control={
                   <Radio
                     sx={{
-                      color: 'var(--color-book-trial-form-border)', // колір коли не вибрано
-                      '&.Mui-checked': { color: 'var(--color-border-accent)' }, // колір коли вибрано
+                      color: 'var(--color-book-trial-form-border)',
+                      '&.Mui-checked': { color: 'var(--color-border-accent)' },
                     }}
                   />
                 }
@@ -96,8 +96,8 @@ const BookTrialForm = ({ handleClose }) => {
                 control={
                   <Radio
                     sx={{
-                      color: 'var(--color-book-trial-form-border)', // колір коли не вибрано
-                      '&.Mui-checked': { color: 'var(--color-border-accent)' }, // колір коли вибрано
+                      color: 'var(--color-book-trial-form-border)',
+                      '&.Mui-checked': { color: 'var(--color-border-accent)' },
                     }}
                   />
                 }
@@ -108,8 +108,8 @@ const BookTrialForm = ({ handleClose }) => {
                 control={
                   <Radio
                     sx={{
-                      color: 'var(--color-book-trial-form-border)', // колір коли не вибрано
-                      '&.Mui-checked': { color: 'var(--color-border-accent)' }, // колір коли вибрано
+                      color: 'var(--color-book-trial-form-border)',
+                      '&.Mui-checked': { color: 'var(--color-border-accent)' },
                     }}
                   />
                 }
@@ -120,8 +120,8 @@ const BookTrialForm = ({ handleClose }) => {
                 control={
                   <Radio
                     sx={{
-                      color: 'var(--color-book-trial-form-border)', // колір коли не вибрано
-                      '&.Mui-checked': { color: 'var(--color-border-accent)' }, // колір коли вибрано
+                      color: 'var(--color-book-trial-form-border)',
+                      '&.Mui-checked': { color: 'var(--color-border-accent)' },
                     }}
                   />
                 }
@@ -222,6 +222,7 @@ const BookTrialForm = ({ handleClose }) => {
         helperText={errors.phone?.message}
         sx={{
           '& .MuiOutlinedInput-root': {
+            position: 'relative',
             marginBottom: '20px',
             borderRadius: '12px',
             height: '54px',
@@ -253,6 +254,13 @@ const BookTrialForm = ({ handleClose }) => {
             '&.Mui-error': {
               color: 'var(--color-label-error)',
             },
+          },
+          '& .MuiFormHelperText-root': {
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            lineHeight: 1.2,
+            pointerEvents: 'none',
           },
         }}
       />

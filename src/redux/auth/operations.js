@@ -29,7 +29,6 @@ export const signUpUser = createAsyncThunk(
       await setDoc(doc(db, 'users', user.uid), {
         name: user.displayName,
         email: user.email,
-        favorites: [],
       });
 
       return {

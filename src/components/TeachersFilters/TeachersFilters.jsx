@@ -3,27 +3,21 @@ import s from './TeachersFilters.module.css';
 import SelectField from './SelectField';
 import SlideAnimation from '@/animations/SlideAnimation';
 
-const TeachersFilters = () => {
+const TeachersFilters = ({ context }) => {
   const {
     register,
     formState: { errors },
-  } = useForm({
-    defaultValues: {
-      language: 'english',
-      knowledge: 'A1 Beginner',
-      price: '30',
-    },
-  });
+  } = useForm();
 
   const languageOptions = [
-    { value: 'french', label: 'French' },
-    { value: 'english', label: 'English' },
-    { value: 'german', label: 'German' },
-    { value: 'spanish', label: 'Spanish' },
-    { value: 'italian', label: 'Italian' },
-    { value: 'korean', label: 'Korean' },
-    { value: 'vietnamese', label: 'Vietnamese' },
-    { value: 'chinese', label: 'Mandarin Chinese' },
+    { value: 'French', label: 'French' },
+    { value: 'English', label: 'English' },
+    { value: 'German', label: 'German' },
+    { value: 'Spanish', label: 'Spanish' },
+    { value: 'Italian', label: 'Italian' },
+    { value: 'Korean', label: 'Korean' },
+    { value: 'Vietnamese', label: 'Vietnamese' },
+    { value: 'Mandarin Chinese', label: 'Mandarin Chinese' },
   ];
   const priceOptions = [
     { value: '10', label: '10' },
@@ -50,11 +44,11 @@ const TeachersFilters = () => {
         <form className={s.form}>
           <SelectField
             label="Languages"
-            name="language"
+            name="languages"
             options={languageOptions}
             register={register}
             errors={errors}
-            placeholder="French"
+            context={context}
             sxFormControl={{ minWidth: 221 }}
             sxSelect={{
               backgroundColor: 'var(--color-bg-select)',
@@ -63,10 +57,11 @@ const TeachersFilters = () => {
           />
           <SelectField
             label="Level of knowledge"
-            name="knowledge"
+            name="levels"
             options={knowledgeOptions}
             register={register}
             errors={errors}
+            context={context}
             sxFormControl={{ minWidth: 198 }}
             sxSelect={{
               backgroundColor: 'var(--color-bg-select)',
@@ -75,10 +70,11 @@ const TeachersFilters = () => {
           />
           <SelectField
             label="Price"
-            name="price"
+            name="price_per_hour"
             options={priceOptions}
             register={register}
             errors={errors}
+            context={context}
             sxFormControl={{ minWidth: 124 }}
             sxSelect={{
               backgroundColor: 'var(--color-bg-select)',

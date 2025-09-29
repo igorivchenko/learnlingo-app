@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import TeacherAvatar from './TeacherAvatar';
 import s from './TeacherCard.module.css';
 import TeacherCardHeader from './TeacherCardHeader';
@@ -11,7 +11,6 @@ import { TeacherProvider } from '@/context/TeacherContext';
 
 const TeacherCard = ({ teacher }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-
   const toggleExpanded = () => setIsExpanded(prev => !prev);
 
   return (

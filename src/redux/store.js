@@ -14,6 +14,7 @@ import authReducer from './auth/slice';
 import themeReducer from './theme/slice';
 import teachersReducer from './teachers/slice';
 import favoriteReducer from './favorite/slice';
+import filtersReducer from './filters/slice';
 
 const persistConfig = {
   key: 'auth',
@@ -25,6 +26,7 @@ const themePersistConfig = {
   key: 'theme',
   storage,
 };
+
 const favoritePersistConfig = {
   key: 'favorite',
   storage,
@@ -40,10 +42,10 @@ const persistedFavoriteReducer = persistReducer(
 export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
-    // filters: filtersReducer,
     teachers: teachersReducer,
     favorite: persistedFavoriteReducer,
     theme: persistedThemeReducer,
+    filters: filtersReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

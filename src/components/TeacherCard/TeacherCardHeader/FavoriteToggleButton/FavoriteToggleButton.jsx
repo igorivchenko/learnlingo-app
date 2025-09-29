@@ -16,7 +16,7 @@ const FavoriteToggleButton = () => {
   const userId = useSelector(selectUserId);
   const isAuth = useSelector(selectIsAuth);
   const favorites = useSelector(selectFavoriteTeachers);
-  const isFavorite = favorites.some(fav => fav.id === id);
+  const isFavorite = favorites.some(favorite => favorite.id === id);
 
   const handleClick = () => {
     if (!isAuth) {

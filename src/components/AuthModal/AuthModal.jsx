@@ -25,6 +25,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { errorToast, successToast } from '@/utils/toastUtils';
 import Loader from '@/components/Loader';
 import { selectIsLoading } from '@/redux/auth/selectors';
+import { resetFavoritesTeachers } from '@/redux/favorite/slice';
 
 const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
   const dispatch = useDispatch();
@@ -78,6 +79,8 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
         await dispatch(signUpUser(trimmedData)).unwrap();
         successToast('Реєстрація успішна');
       }
+
+      dispatch(resetFavoritesTeachers());
       handleClose();
     } catch (err) {
       errorToast(err);
@@ -226,12 +229,10 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
                 borderRadius: '12px',
                 height: '54px',
 
-                // текст інпуту
                 '& input': {
                   color: 'var(--color-main) !important',
                 },
 
-                // бордери
                 '& fieldset': {
                   borderColor: 'var(--color-main)',
                 },

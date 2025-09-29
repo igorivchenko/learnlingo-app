@@ -14,25 +14,38 @@ import {
 import { resetList } from '@/redux/teachers/slice';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectTeachersFilters } from '@/redux/filters/selectors';
+import { getFavoriteTeachers } from '@/redux/favorite/operations';
+import { selectUserId } from '@/redux/auth/selectors';
 
 const TeachersPage = () => {
   const dispatch = useDispatch();
+  const userId = useSelector(selectUserId);
   const isLoading = useSelector(selectIsLoading);
   const teachers = useSelector(selectTeachers);
   const lastDoc = useSelector(selectTeachersLastDoc);
   const hasMore = useSelector(selectHasMore);
+  const teacherFilters = useSelector(selectTeachersFilters);
 
   const [shouldScroll, setShouldScroll] = useState(false);
 
+  const fadeInScale = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { opacity: 1, scale: 1 },
+  };
+
   useEffect(() => {
     dispatch(resetList());
-    dispatch(getTeachers({ filters: {}, lastVisibleDoc: null }));
-  }, [dispatch]);
+    dispatch(getTeachers({ filters: teacherFilters, lastVisibleDoc: null }));
+    dispatch(getFavoriteTeachers({ userId }));
+  }, [dispatch, userId, teacherFilters]);
 
   const handleLoadMore = () => {
     if (lastDoc) {
       setShouldScroll(true);
-      dispatch(getTeachers({ filters: {}, lastVisibleDoc: lastDoc }));
+      dispatch(
+        getTeachers({ filters: teacherFilters, lastVisibleDoc: lastDoc })
+      );
     }
   };
 
@@ -52,8 +65,11 @@ const TeachersPage = () => {
     <Section className={s.section} title="Meet Our Language Instructors">
       <Container size="medium" className={s.container}>
         <TeachersFilters />
-        <TeachersList isLoading={isLoading} teachers={teachers} />
-
+        <TeachersList
+          isLoading={isLoading}
+          teachers={teachers}
+          variants={fadeInScale}
+        />
         {teachers.length > 0 && hasMore && (
           <LoadMoreButton onClick={handleLoadMore} isLoading={shouldScroll} />
         )}

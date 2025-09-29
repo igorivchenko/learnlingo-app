@@ -5,47 +5,45 @@ import {
   removeFavoriteTeacher,
 } from './operations';
 
+const initialState = {
+  favoriteTeachers: [],
+  hasMore: true,
+  lastVisibleDoc: null,
+  isLoading: false,
+  error: null,
+};
+
 const slice = createSlice({
   name: 'favorite',
-  initialState: {
-    favoritesTeachers: [],
-    isLoading: false,
-    error: null,
-  },
+  initialState,
   reducers: {
-    toggleFavorite: (state, { payload }) => {
-      const isFav = state.favoritesTeachers.includes(payload);
-
-      state.favoritesTeachers = isFav
-        ? state.favoritesTeachers.filter(id => id !== payload)
-        : [...state.favoritesTeachers, payload];
-    },
-    resetFavorites: state => {
-      state.favoritesTeachers = [];
+    resetFavoritesTeachers: state => {
+      state.favoriteTeachers = [];
+      state.lastVisibleDoc = null;
+      state.hasMore = true;
+      state.lastActionType = null;
     },
   },
   extraReducers: build => {
     build
       .addCase(getFavoriteTeachers.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.favoritesTeachers = payload;
+        state.error = null;
+        state.favoriteTeachers = [...state.favoriteTeachers, ...payload.data];
+        state.lastVisibleDoc = payload.lastVisibleDoc;
+        state.hasMore = payload.hasMore;
       })
       .addCase(addFavoriteTeacher.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        if (!state.favoritesTeachers.includes(payload)) {
-          state.favoritesTeachers.push(payload);
-        }
-      })
-      .addCase(addFavoriteTeacher.rejected, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = payload;
+        state.favoriteTeachers.push(payload);
       })
       .addCase(removeFavoriteTeacher.fulfilled, (state, { payload }) => {
-        state.favoritesTeachers = state.favoritesTeachers.filter(
+        state.isLoading = false;
+        state.error = null;
+        state.favoriteTeachers = state.favoriteTeachers.filter(
           teacher => teacher.id !== payload
         );
-        state.isLoading = false;
       })
       .addMatcher(
         isAnyOf(getFavoriteTeachers.pending, addFavoriteTeacher.pending),
@@ -68,6 +66,6 @@ const slice = createSlice({
   },
 });
 
-export const { toggleFavorite, resetFavorites } = slice.actions;
+export const { resetFavoritesTeachers } = slice.actions;
 
 export default slice.reducer;

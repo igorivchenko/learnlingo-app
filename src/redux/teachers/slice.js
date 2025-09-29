@@ -29,7 +29,7 @@ const slice = createSlice({
         state.isLoading = false;
         state.items = [...state.items, ...payload.data];
         state.lastVisibleDoc = payload.lastVisibleDoc;
-        state.hasMore = payload.data.length === payload.limit;
+        state.hasMore = payload.hasMore;
       })
       .addCase(getTeachers.rejected, (state, { payload }) => {
         state.isLoading = false;

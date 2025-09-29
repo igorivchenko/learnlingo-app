@@ -1,4 +1,3 @@
-import { motion } from 'motion/react';
 import Section from '@/components/Section';
 import s from './FavoritesPage.module.css';
 import Container from '@/components/Container';
@@ -7,70 +6,82 @@ import TeachersList from '@/components/TeachersList';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectFavoriteTeachers,
+  selectHasMore,
   selectIsLoading,
+  selectTeachersLastDoc,
 } from '@/redux/favorite/selectors';
 import { useEffect, useState } from 'react';
 import { getFavoriteTeachers } from '@/redux/favorite/operations';
 import { selectUserId } from '@/redux/auth/selectors';
-import Loader from '@/components/Loader';
 import LoadMoreButton from '@/components/LoadMoreButton';
+import { selectFavoritesFilters } from '@/redux/filters/selectors';
+import { resetFavoritesTeachers } from '@/redux/favorite/slice';
 
 const FavoritesPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const teachers = useSelector(selectFavoriteTeachers);
   const userId = useSelector(selectUserId);
-  const [visibleCount, setVisibleCount] = useState(4);
+  const lastDoc = useSelector(selectTeachersLastDoc);
+  const hasMore = useSelector(selectHasMore);
   const [shouldScroll, setShouldScroll] = useState(false);
+  const favoritesFilters = useSelector(selectFavoritesFilters);
 
-  useEffect(() => {
-    if (userId) {
-      dispatch(getFavoriteTeachers(userId));
-    }
-  }, [dispatch, userId]);
-
-  const handleLoadMore = () => {
-    setShouldScroll(true);
-    setVisibleCount(prev => Math.min(prev + 4, teachers.length));
+  const slideFromLeft = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { opacity: 1, scale: 1 },
+    exit: { opacity: 0, scale: 0.9 },
   };
 
   useEffect(() => {
-    if (shouldScroll) {
+    if (userId) {
+      dispatch(resetFavoritesTeachers());
+      dispatch(
+        getFavoriteTeachers({
+          filters: favoritesFilters,
+          lastVisibleDoc: null,
+          userId,
+        })
+      );
+    }
+  }, [dispatch, userId, favoritesFilters]);
+
+  const handleLoadMore = () => {
+    if (lastDoc) {
+      setShouldScroll(true);
+      dispatch(
+        getFavoriteTeachers({
+          filters: favoritesFilters,
+          lastVisibleDoc: lastDoc,
+          userId,
+        })
+      );
+    }
+  };
+
+  useEffect(() => {
+    if (!isLoading && shouldScroll) {
       const viewportHeight = window.innerHeight;
+
       window.scrollBy({
         top: viewportHeight * 0.69,
         behavior: 'smooth',
       });
       setShouldScroll(false);
     }
-  }, [visibleCount, shouldScroll]);
-
-  const visibleTeachers = teachers.slice(0, visibleCount);
+  }, [isLoading, shouldScroll]);
 
   return (
     <Section className={s.section} title="My Favorite Teachers">
       <Container size="medium" className={s.container}>
-        <TeachersFilters />
-
-        {isLoading ? (
-          <Loader
-            top
-            color="var(--color-accent)"
-            height={30}
-            width={4}
-            margin={2.3}
-          />
-        ) : (
-          <>
-            <TeachersList isLoading={isLoading} teachers={visibleTeachers} />
-
-            {visibleCount < teachers.length && (
-              <LoadMoreButton
-                onClick={handleLoadMore}
-                isLoading={shouldScroll}
-              />
-            )}
-          </>
+        <TeachersFilters context="favorite" />
+        <TeachersList
+          isLoading={isLoading}
+          teachers={teachers}
+          variants={slideFromLeft}
+        />
+        {teachers.length > 0 && hasMore && (
+          <LoadMoreButton onClick={handleLoadMore} isLoading={shouldScroll} />
         )}
       </Container>
     </Section>

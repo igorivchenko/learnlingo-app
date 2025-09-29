@@ -7,6 +7,7 @@ import {
   orderBy,
   startAfter,
   limit,
+  where,
   getDoc,
   doc,
 } from 'firebase/firestore';
@@ -17,47 +18,73 @@ const teachersCollectionRef = collection(db, 'teachers');
 export const getTeachers = createAsyncThunk(
   'teachers/getAll',
   async ({ filters = {}, lastVisibleDoc = null }, { rejectWithValue }) => {
-    const {
-      limit: limitValue = 4,
-      sortBy = 'name',
-      direction = 'asc',
-    } = filters;
-
     try {
-      let teachersQuery = query(
-        teachersCollectionRef,
+      const {
+        languages,
+        levels,
+        price_per_hour,
+        sortBy = 'name',
+        direction = 'asc',
+        limit: limitValue = 4,
+      } = filters;
+
+      let teachersQuery = query(teachersCollectionRef);
+
+      if (languages) {
+        teachersQuery = query(
+          teachersQuery,
+          where('languages', 'array-contains', languages)
+        );
+      }
+
+      if (price_per_hour) {
+        teachersQuery = query(
+          teachersQuery,
+          where('price_per_hour', '<=', Number(price_per_hour))
+        );
+      }
+
+      teachersQuery = query(
+        teachersQuery,
         orderBy(sortBy, direction),
-        limit(limitValue)
+        limit(limitValue + 1)
       );
 
       if (lastVisibleDoc) {
-        const lastVisibleDocRef = doc(db, 'teachers', lastVisibleDoc);
-        const lastVisibleDocSnapshot = await getDoc(lastVisibleDocRef);
-
-        if (lastVisibleDocSnapshot.exists()) {
-          teachersQuery = query(
-            teachersQuery,
-            startAfter(lastVisibleDocSnapshot)
-          );
-        }
+        const lastDocRef = doc(db, 'teachers', lastVisibleDoc);
+        const lastDocSnap = await getDoc(lastDocRef);
+        if (lastDocSnap.exists())
+          teachersQuery = query(teachersQuery, startAfter(lastDocSnap));
       }
 
       const snapshot = await getDocs(teachersQuery);
 
-      const teachers = snapshot.docs.map(doc => ({
+      let teachers = snapshot.docs.slice(0, limitValue).map(doc => ({
         ...doc.data(),
         id: doc.id,
       }));
 
+      if (levels?.length) {
+        const levelsArray = Array.isArray(levels) ? levels : [levels];
+
+        teachers = teachers.filter(t =>
+          t.levels?.some(l => levelsArray.includes(l))
+        );
+      }
+
+      const hasMore = snapshot.docs.length > limitValue;
+
       const newLastVisibleDoc =
-        snapshot.docs[snapshot.docs.length - 1]?.id || null;
+        snapshot.docs.length > 0 ? snapshot.docs[limitValue - 1]?.id : null;
 
       return {
         data: teachers,
         lastVisibleDoc: newLastVisibleDoc,
         limit: limitValue,
+        hasMore,
       };
     } catch (err) {
+      console.error('Error in getTeachers:', err);
       return rejectWithValue(handleHttpError(err));
     }
   }

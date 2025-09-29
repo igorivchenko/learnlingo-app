@@ -11,11 +11,6 @@
   transition-duration: var(--transition-duration);
 }
 
-.logo:hover svg {
-  rotate: 180deg;
-  transition-duration: var(--transition-duration);
-}
-
 .logo-text {
   font-size: 20px;
   font-weight: 500;

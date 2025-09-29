@@ -2,11 +2,24 @@ import { AnimatePresence, motion } from 'motion/react';
 import s from './TeachersList.module.css';
 import TeacherCard from '@/components/TeacherCard';
 import Loader from '@/components/Loader';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { resetFavoritesTeachers } from '@/redux/favorite/slice';
+import { resetList } from '@/redux/teachers/slice';
 
-const TeachersList = ({ isLoading, teachers }) => {
+const TeachersList = ({ isLoading, teachers, variants }) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(resetList());
+    dispatch(resetFavoritesTeachers());
+  }, [dispatch]);
+
+  console.log('Render');
+
   return (
     <>
-      {isLoading && (
+      {isLoading && teachers.length === 0 && (
         <Loader
           top
           color="var(--color-accent)"
@@ -15,19 +28,21 @@ const TeachersList = ({ isLoading, teachers }) => {
           margin={2.3}
         />
       )}
+
       {!isLoading && teachers.length === 0 && (
         <p>Sorry, no teachers available</p>
       )}
+
       <ul className={s.list}>
         <AnimatePresence>
           {teachers.map(teacher => (
             <motion.li
               key={teacher.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, x: 100 }}
+              variants={variants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
               transition={{ duration: 0.5 }}
-              style={{ minHeight: 333 }}
             >
               <TeacherCard teacher={teacher} />
             </motion.li>

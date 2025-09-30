@@ -18,7 +18,7 @@ const LogoutButton = () => {
   const handleLogOut = async () => {
     try {
       await dispatch(signOutUser()).unwrap();
-      successToast('Ви вийшли з аккаунту!');
+      successToast('Logged out successfully');
     } catch (err) {
       errorToast(err);
     }

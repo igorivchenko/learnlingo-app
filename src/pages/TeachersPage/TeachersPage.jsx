@@ -18,6 +18,7 @@ import { selectTeachersFilters } from '@/redux/filters/selectors';
 import { getFavoriteTeachers } from '@/redux/favorite/operations';
 import { selectUserId } from '@/redux/auth/selectors';
 import { resetFilters, setCurrentContext } from '@/redux/filters/slice';
+import { CONTEXTS } from '@/constants';
 
 const TeachersPage = () => {
   const dispatch = useDispatch();
@@ -36,7 +37,7 @@ const TeachersPage = () => {
   };
 
   useEffect(() => {
-    dispatch(setCurrentContext('teachers'));
+    dispatch(setCurrentContext(CONTEXTS.TEACHERS));
     return () => dispatch(resetFilters());
   }, [dispatch]);
 

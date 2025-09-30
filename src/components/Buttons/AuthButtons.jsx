@@ -8,7 +8,7 @@ import LogoutButton from './LogoutButton';
 import UserBar from '@/components/UserBar';
 import ToggleThemeButton from './ToggleThemeButton';
 
-const AuthButtons = ({ isAuthButtons = false }) => {
+const AuthButtons = ({ isAuthButtons = false, noToggleButton = false }) => {
   const isAuth = useSelector(selectIsAuth);
 
   return (
@@ -26,7 +26,7 @@ const AuthButtons = ({ isAuthButtons = false }) => {
             isAuthButtons && s['auth-buttons-modal']
           )}
         >
-          <ToggleThemeButton />
+          {!noToggleButton && <ToggleThemeButton />}
           <LoginButton />
           <RegisterButton />
         </div>

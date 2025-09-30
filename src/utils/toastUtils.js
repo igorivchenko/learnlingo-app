@@ -11,7 +11,9 @@ export const successToast = message =>
 
 export const errorToast = err => {
   const message =
-    typeof err === 'string' ? err : err?.message || 'Сталася помилка';
+    typeof err === 'string'
+      ? err
+      : err?.message || 'An unexpected error occurred';
 
   toast.error(message, {
     style: {

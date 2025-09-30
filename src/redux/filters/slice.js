@@ -1,3 +1,4 @@
+import { CONTEXTS } from '@/constants';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -17,7 +18,7 @@ const initialState = {
     sortBy: 'name',
     direction: 'asc',
   },
-  currentContext: 'teachers',
+  currentContext: CONTEXTS.TEACHERS,
 };
 
 const slice = createSlice({

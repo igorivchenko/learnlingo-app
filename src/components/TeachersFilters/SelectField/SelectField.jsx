@@ -8,6 +8,7 @@ import {
   selectTeachersFilters,
 } from '@/redux/filters/selectors';
 import { setFavoritesFilter, setFilters } from '@/redux/filters/slice';
+import { CONTEXTS } from '@/constants';
 
 const SelectField = ({
   label,
@@ -22,7 +23,7 @@ const SelectField = ({
   const dispatch = useDispatch();
   const currentContext = useSelector(selectCurrentContext);
   const filters = useSelector(
-    currentContext === 'teachers'
+    currentContext === CONTEXTS.TEACHERS
       ? selectTeachersFilters
       : selectFavoritesFilters
   );
@@ -30,7 +31,7 @@ const SelectField = ({
 
   const handleChange = e => {
     const { value } = e.target;
-    currentContext === 'teachers'
+    currentContext === CONTEXTS.TEACHERS
       ? dispatch(setFilters({ [name]: value }))
       : dispatch(setFavoritesFilter({ [name]: value }));
   };

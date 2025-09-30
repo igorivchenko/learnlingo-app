@@ -2,12 +2,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  font-size: 17px;
   font-weight: 500;
   padding: 6px;
   color: var(--color-secondary);
   background-color: var(--color-bg-user-avatar);
   border-radius: 50%;
+}
+
+.userAvatarDrawer {
+  width: 32px;
+  height: 32px;
+  padding: 3px;
+  font-size: 17px;
+  background-color: var(--color-drawer-avatar);
+  border-radius: 50%;
+  border: 1px solid hsl(210, 14%, 22%);
+  border-color: hsla(210, 14%, 22%, 0.5);
 }

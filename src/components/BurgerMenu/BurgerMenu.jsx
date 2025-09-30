@@ -1,18 +1,14 @@
-import { Drawer, IconButton, useMediaQuery } from '@mui/material';
+import s from './BurgerMenu.module.css';
+import { IconButton, useMediaQuery } from '@mui/material';
 import { MENU_TYPES } from '@/constants';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
-import AuthButtons from '@/components/Buttons';
-import { useSelector } from 'react-redux';
-import { selectIsAuth } from '@/redux/auth/selectors';
-import NavBar from '@/components/NavBar';
 import UserBar from '@/components/UserBar';
+import BurgerDrawer from '@/components/BurgerDrawer';
 
 const BurgerMenu = () => {
-  const [openMenu, setOpenMenu] = useState(null);
+  const [openMenu, setOpenMenu] = useState('');
   const isMobile = useMediaQuery('(max-width:767.98px)');
-
-  const isAuth = useSelector(selectIsAuth);
 
   const handleOpenMenu = type => {
     setOpenMenu(type);
@@ -28,8 +24,8 @@ const BurgerMenu = () => {
 
   return (
     <>
-      <div style={{ display: 'flex', gap: '20px' }}>
-        <UserBar />
+      <div className={s.userBar}>
+        <UserBar noName />
         <IconButton
           color="inherit"
           edge="start"
@@ -41,52 +37,7 @@ const BurgerMenu = () => {
           <MenuIcon />
         </IconButton>
       </div>
-      <Drawer
-        anchor="right"
-        open={openMenu}
-        onClose={handleClose}
-        sx={{
-          '& .MuiDrawer-paper': {
-            width: '50vw',
-            backgroundColor: 'var(--color-bg-burgerMenu)',
-            color: 'var(--color-main)',
-            '@media (max-width:479.98px)': {
-              width: '65vw',
-            },
-          },
-        }}
-        slotProps={{
-          backdrop: {
-            sx: {
-              backdropFilter: 'blur(1.5px)',
-            },
-          },
-        }}
-      >
-        {!isAuth && openMenu === MENU_TYPES.ACCOUNT && (
-          <AuthButtons isAuthButtons={true} />
-        )}
-        {openMenu === MENU_TYPES.MAIN && (
-          <NavBar isDrawer={true} onLinkClick={handleClose} />
-        )}
-        <IconButton
-          color="inherit"
-          edge="start"
-          size="md"
-          onClick={handleClose}
-          sx={{
-            position: 'absolute',
-            top: '20px',
-            right: '20px',
-            width: '24px',
-            padding: 0,
-          }}
-        >
-          <svg width="32" height="32">
-            <use href="/icons.svg#icon-close"></use>
-          </svg>
-        </IconButton>
-      </Drawer>
+      <BurgerDrawer open={openMenu} onClose={handleClose} openMenu={openMenu} />
     </>
   );
 };

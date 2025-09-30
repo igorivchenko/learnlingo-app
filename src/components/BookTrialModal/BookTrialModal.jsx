@@ -2,6 +2,7 @@ import s from './BookTrialModal.module.css';
 import { Box, Modal, Typography } from '@mui/material';
 import BookTrialTeacherBadge from './BookTrialTeacherBadge';
 import BookTrialForm from './BookTrialForm';
+import { bookTrialModalSx } from './BookTrialModal.sx';
 
 const BookTrialModal = ({ open, handleClose }) => {
   return (
@@ -10,18 +11,11 @@ const BookTrialModal = ({ open, handleClose }) => {
       onClose={handleClose}
       aria-labelledby="modal-title"
       aria-describedby="modal-description"
-      sx={{
-        backdropFilter: 'blur(2px)',
-      }}
+      sx={bookTrialModalSx.modal}
     >
       <Box className={s.modal}>
         <Typography
-          sx={{
-            fontSize: '40px',
-            fontWeight: 500,
-            lineHeight: 1.2,
-            color: 'var(--color-main)',
-          }}
+          sx={bookTrialModalSx.title}
           className={s.title}
           id="modal-modal-title"
           component="h2"
@@ -31,10 +25,7 @@ const BookTrialModal = ({ open, handleClose }) => {
 
         <Typography
           id="modal-modal-description"
-          sx={{
-            lineHeight: 1.35,
-            color: 'var(--color-description)',
-          }}
+          sx={bookTrialModalSx.description}
         >
           Our experienced tutor will assess your current language level, discuss
           your learning goals, and tailor the lesson to your specific needs.

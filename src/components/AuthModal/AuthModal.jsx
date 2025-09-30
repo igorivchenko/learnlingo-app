@@ -26,6 +26,7 @@ import { errorToast, successToast } from '@/utils/toastUtils';
 import Loader from '@/components/Loader';
 import { selectIsLoading } from '@/redux/auth/selectors';
 import { resetFavoritesTeachers } from '@/redux/favorite/slice';
+import { authModalSx } from './AuthModal.sx';
 
 const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
   const dispatch = useDispatch();
@@ -74,10 +75,10 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
     try {
       if (mode === MODES.LOGIN) {
         await dispatch(signInUser(trimmedData)).unwrap();
-        successToast('Вхід успішний');
+        successToast('Login successful');
       } else {
         await dispatch(signUpUser(trimmedData)).unwrap();
-        successToast('Реєстрація успішна');
+        successToast('Registration successful');
       }
 
       dispatch(resetFavoritesTeachers());
@@ -93,19 +94,11 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
       onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
-      sx={{
-        backdropFilter: 'blur(2px)',
-      }}
+      sx={authModalSx.modal}
     >
       <Box className={s.modal}>
         <Typography
-          sx={{
-            mb: '20px',
-            fontSize: '40px',
-            fontWeight: 500,
-            lineHeight: 1.2,
-            color: 'var(--color-main)',
-          }}
+          sx={authModalSx.modalTitle}
           className={s.title}
           id="modal-modal-title"
           component="h2"
@@ -115,11 +108,7 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
 
         <Typography
           id="modal-modal-description"
-          sx={{
-            mb: '40px',
-            lineHeight: 1.35,
-            color: 'var(--color-description)',
-          }}
+          sx={authModalSx.modalDescription}
         >
           {mode === MODES.LOGIN
             ? 'Welcome back! Please enter your credentials to access your account and continue your search for an teacher.'
@@ -133,40 +122,7 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
               {...register('name')}
               error={!!errors.name}
               helperText={errors.name?.message}
-              sx={{
-                '& .MuiOutlinedInput-root': {
-                  borderRadius: '12px',
-                  height: '54px',
-                  borderColor: 'var(--color-main)',
-                  '& input': {
-                    color: 'var(--color-main)',
-                  },
-                  '& fieldset': {
-                    borderColor: 'var(--color-main)',
-                  },
-                  '&:hover fieldset': {
-                    borderColor: 'var(--color-border-accent)',
-                  },
-                  '&.Mui-focused fieldset': {
-                    borderColor: 'var(--color-border-accent)',
-                  },
-                  '&.Mui-error fieldset': {
-                    borderColor: 'var(--color-border-error)',
-                  },
-                },
-                '& .MuiInputLabel-root': {
-                  color: 'var(--color-main)',
-                  '&.Mui-error': {
-                    color: 'var(--color-label-error)',
-                  },
-                },
-                '& .MuiInputLabel-root.Mui-focused': {
-                  color: 'var(--color-label-accent)',
-                  '&.Mui-error': {
-                    color: 'var(--color-label-error)',
-                  },
-                },
-              }}
+              sx={authModalSx.textField}
             />
           )}
           <TextField
@@ -175,77 +131,20 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
             {...register('email')}
             error={!!errors.email}
             helperText={errors.email?.message}
-            sx={{
-              '& .MuiOutlinedInput-root': {
-                borderRadius: '12px',
-                height: '54px',
-                borderColor: 'var(--color-main)',
-                '& input': {
-                  color: 'var(--color-main)',
-                },
-                '& fieldset': {
-                  borderColor: 'var(--color-main)',
-                },
-                '&:hover fieldset': {
-                  borderColor: 'var(--color-border-accent)',
-                },
-                '&.Mui-focused fieldset': {
-                  borderColor: 'var(--color-border-accent)',
-                },
-                '&.Mui-error fieldset': {
-                  borderColor: 'var(--color-border-error)',
-                },
-              },
-              '& .MuiInputLabel-root': {
-                color: 'var(--color-main)',
-                '&.Mui-error': {
-                  color: 'var(--color-label-error)',
-                },
-              },
-              '& .MuiInputLabel-root.Mui-focused': {
-                color: 'var(--color-label-accent)',
-                '&.Mui-error': {
-                  color: 'var(--color-label-error)',
-                },
-              },
-            }}
+            sx={authModalSx.textField}
           />
           <FormControl variant="outlined" fullWidth sx={{ mb: '22px' }}>
             <InputLabel
               htmlFor="password"
               color="warning"
               error={!!errors.password}
-              sx={{
-                color: 'var(--color-main)',
-                '&.Mui-focused': { color: 'var(--color-label-accent)' },
-                '&.Mui-error': { color: 'var(--color-border-error)' },
-              }}
+              sx={authModalSx.passwordLabel}
             >
               Password
             </InputLabel>
             <OutlinedInput
               id="password"
-              sx={{
-                borderRadius: '12px',
-                height: '54px',
-
-                '& input': {
-                  color: 'var(--color-main) !important',
-                },
-
-                '& fieldset': {
-                  borderColor: 'var(--color-main)',
-                },
-                '&:hover .MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'var(--color-border-accent)',
-                },
-                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'var(--color-border-accent)',
-                },
-                '&.Mui-error .MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'var(--color-border-error)',
-                },
-              }}
+              sx={authModalSx.passwordInput}
               type={showPassword ? 'text' : 'password'}
               {...register('password')}
               endAdornment={
@@ -273,9 +172,7 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
                       onClick={() => setShowPassword(show => !show)}
                       onMouseDown={handleMouseDownPassword}
                       edge="end"
-                      sx={{
-                        color: 'var(--color-main)',
-                      }}
+                      sx={authModalSx.passwordIcon}
                     >
                       {!showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
@@ -296,16 +193,7 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
             variant="contained"
             color="primary"
             fullWidth
-            sx={{
-              height: '60px',
-              fontSize: '18px',
-              fontWeight: 700,
-              lineHeight: 1.5,
-              textTransform: 'capitalize',
-              color: 'var(--color-secondary)',
-              backgroundColor: 'var(--color-button)',
-              borderRadius: '12px',
-            }}
+            sx={authModalSx.submitButton}
           >
             {isLoading ? (
               <Loader height={22} width={3} margin={1.5} />

@@ -14,4 +14,15 @@ export const MODES = {
 export const MENU_TYPES = {
   ACCOUNT: 'account',
   MAIN: 'menu',
+  SETTINGS: 'settings',
+};
+
+export const CONTEXTS = {
+  TEACHERS: 'teachers',
+  FAVORITES: 'favorites',
+};
+
+export const USERBAR_VARIANTS = {
+  HEADER: 'header',
+  DRAWER: 'drawer',
 };

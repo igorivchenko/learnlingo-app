@@ -13,4 +13,9 @@
   font-size: 18px;
   font-weight: 700;
   transform: translateY(1px);
+  transition: color 0.2s;
+}
+
+.userBar:hover > .userName {
+  color: var(--color-accent);
 }

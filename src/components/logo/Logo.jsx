@@ -1,12 +1,11 @@
 import { ROUTES } from '@/constants';
 import s from './Logo.module.css';
+import SchoolIcon from '@mui/icons-material/School';
 
 const Logo = () => {
   return (
     <a href={ROUTES.HOME} className={s.logo}>
-      <svg width="28" height="28">
-        <use href="/icons.svg#icon-logo"></use>
-      </svg>
+      <SchoolIcon sx={{ fontSize: '30px' }} />
 
       <span className={s['logo-text']}>LearnLingo</span>
     </a>

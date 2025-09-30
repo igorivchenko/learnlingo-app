@@ -2,21 +2,21 @@ export function handleHttpError(error) {
   if (error.code) {
     switch (error.code) {
       case 'auth/invalid-credential':
-        return 'Невірний email або пароль.';
+        return 'Invalid email or password.';
       case 'auth/user-not-found':
-        return 'Користувача не знайдено.';
+        return 'User not found.';
       case 'auth/wrong-password':
-        return 'Невірний пароль.';
+        return 'Incorrect password.';
       case 'auth/email-already-in-use':
-        return 'Ця пошта вже використовується.';
+        return 'This email is already in use.';
       case 'auth/weak-password':
-        return 'Пароль занадто слабкий.';
+        return 'Password is too weak.';
       case 'auth/network-request-failed':
-        return 'Сервер не відповідає.';
+        return 'Server is not responding.';
       default:
-        return `Помилка авторизації: ${error.code}`;
+        return `Authorization error: ${error.code}`;
     }
   }
 
-  return 'Сталася непередбачена помилка.';
+  return 'An unexpected error occurred.';
 }

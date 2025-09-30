@@ -15,6 +15,7 @@ import {
   selectFavoritesFilters,
 } from '@/redux/filters/selectors';
 import { resetFavoritesTeachers } from '@/redux/favorite/slice';
+import { CONTEXTS } from '@/constants';
 
 const FavoriteToggleButton = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,8 @@ const FavoriteToggleButton = () => {
 
     isFavorite
       ? dispatch(removeFavoriteTeacher({ userId, teacherId: id })).then(() => {
-          currentContext === 'favorites' && dispatch(resetFavoritesTeachers());
+          currentContext === CONTEXTS.FAVORITES &&
+            dispatch(resetFavoritesTeachers());
           dispatch(
             getFavoriteTeachers({
               filters: favoritesFilters,

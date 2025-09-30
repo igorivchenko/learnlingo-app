@@ -20,6 +20,7 @@ import {
   resetFavoritesFilters,
   setCurrentContext,
 } from '@/redux/filters/slice';
+import { CONTEXTS } from '@/constants';
 
 const FavoritesPage = () => {
   const dispatch = useDispatch();
@@ -37,12 +38,12 @@ const FavoritesPage = () => {
   };
 
   useEffect(() => {
-    dispatch(setCurrentContext('favorites'));
+    dispatch(setCurrentContext(CONTEXTS.FAVORITES));
     return () => dispatch(resetFavoritesFilters());
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(setCurrentContext('favorites'));
+    dispatch(setCurrentContext(CONTEXTS.FAVORITES));
     dispatch(resetFavoritesTeachers());
     if (userId) {
       dispatch(
@@ -83,7 +84,7 @@ const FavoritesPage = () => {
   return (
     <Section className={s.section} title="My Favorite Teachers">
       <Container size="medium" className={s.container}>
-        {!isLoading && teachers.length > 0 && <TeachersFilters />}
+        <TeachersFilters />
         <TeachersList
           isLoading={isLoading}
           teachers={teachers}

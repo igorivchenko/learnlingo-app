@@ -6,8 +6,9 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import { getSystemTheme } from '@/utils/getSystemTheme';
 import { useEffect, useState } from 'react';
 import { Tooltip, tooltipClasses } from '@mui/material';
+import clsx from 'clsx';
 
-const ToggleThemeButton = () => {
+const ToggleThemeButton = ({ className }) => {
   const theme = useSelector(selectTheme);
   const dispatch = useDispatch();
   const [systemTheme, setSystemTheme] = useState(getSystemTheme());
@@ -59,7 +60,11 @@ const ToggleThemeButton = () => {
         },
       }}
     >
-      <button className={s.button} type="button" onClick={handleToggleTheme}>
+      <button
+        className={clsx(s.button, className)}
+        type="button"
+        onClick={handleToggleTheme}
+      >
         <span className={`${s.icon} ${!isDark ? s.visible : s.hidden}`}>
           <DarkModeIcon />
         </span>

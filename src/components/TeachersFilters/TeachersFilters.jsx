@@ -19,12 +19,14 @@ const TeachersFilters = () => {
     { value: 'Vietnamese', label: 'Vietnamese' },
     { value: 'Mandarin Chinese', label: 'Mandarin Chinese' },
   ];
+
   const priceOptions = [
     { value: '10', label: '10' },
     { value: '20', label: '20' },
     { value: '30', label: '30' },
     { value: '40', label: '40' },
   ];
+
   const knowledgeOptions = [
     { value: 'A1 Beginner', label: 'A1 Beginner' },
     { value: 'A2 Elementary', label: 'A2 Elementary' },
@@ -33,6 +35,11 @@ const TeachersFilters = () => {
     { value: 'C1 Advanced', label: 'C1 Advanced' },
     { value: 'C2 Proficient', label: 'C2 Proficient' },
   ];
+
+  const selectSx = {
+    backgroundColor: 'var(--color-bg-select)',
+    border: 'none',
+  };
 
   return (
     <SlideAnimation
@@ -49,10 +56,7 @@ const TeachersFilters = () => {
             register={register}
             errors={errors}
             sxFormControl={{ minWidth: 221 }}
-            sxSelect={{
-              backgroundColor: 'var(--color-bg-select)',
-              border: 'none',
-            }}
+            sxSelect={selectSx}
           />
           <SelectField
             label="Level of knowledge"
@@ -61,10 +65,7 @@ const TeachersFilters = () => {
             register={register}
             errors={errors}
             sxFormControl={{ minWidth: 198 }}
-            sxSelect={{
-              backgroundColor: 'var(--color-bg-select)',
-              border: 'none',
-            }}
+            sxSelect={selectSx}
           />
           <SelectField
             label="Price"
@@ -73,10 +74,7 @@ const TeachersFilters = () => {
             register={register}
             errors={errors}
             sxFormControl={{ minWidth: 124 }}
-            sxSelect={{
-              backgroundColor: 'var(--color-bg-select)',
-              border: 'none',
-            }}
+            sxSelect={selectSx}
             defaultValue={priceOptions[2].value}
             showDollar
           />

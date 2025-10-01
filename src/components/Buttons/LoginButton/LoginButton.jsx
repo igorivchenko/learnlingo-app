@@ -1,22 +1,22 @@
+import { useAuthModal } from '@/context/AuthModalContext';
 import s from './LoginButton.module.css';
-import AuthModal from '@/components/AuthModal';
 import clsx from 'clsx';
-import { useState } from 'react';
 
-const LoginButton = () => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+const LoginButton = ({ className, closeDrawer }) => {
+  const { openModal } = useAuthModal();
 
   return (
     <>
-      <button type="button" className={clsx(s.button)} onClick={handleOpen}>
+      <button
+        type="button"
+        className={clsx(s.button, className)}
+        onClick={() => openModal(closeDrawer?.())}
+      >
         <svg width="20" height="20">
           <use href="/icons.svg#icon-login"></use>
         </svg>
         <span>Log in</span>
       </button>
-      {<AuthModal open={open} handleClose={handleClose} />}
     </>
   );
 };

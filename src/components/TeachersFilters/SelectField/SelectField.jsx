@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
+import s from './SelectField.module.css';
 import { FormControl, Select, MenuItem, FormHelperText } from '@mui/material';
 import CustomSelectIcon from './CustomSelectIcon';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,6 +10,7 @@ import {
 } from '@/redux/filters/selectors';
 import { setFavoritesFilter, setFilters } from '@/redux/filters/slice';
 import { CONTEXTS } from '@/constants';
+import { useResponsive } from '@/hooks/useResponsive';
 
 const SelectField = ({
   label,
@@ -28,6 +30,7 @@ const SelectField = ({
       : selectFavoritesFilters
   );
   const selectedValue = useMemo(() => filters[name] || '', [filters, name]);
+  const { isMobile } = useResponsive();
 
   const handleChange = e => {
     const { value } = e.target;
@@ -46,6 +49,9 @@ const SelectField = ({
           marginLeft: 0,
           marginBottom: '8px',
           color: 'var(--color-select-label)',
+          ...(isMobile && {
+            textAlign: 'center',
+          }),
         }}
       >
         {label}
@@ -61,12 +67,20 @@ const SelectField = ({
         sx={{
           borderRadius: '14px',
           '& fieldset': { border: 'none' },
+
           ...sxSelect,
+          ...(isMobile && {
+            textAlign: 'center',
+            minWidth: '232px',
+            '& .MuiSelect-select': {
+              padding: '14px 12px',
+            },
+          }),
         }}
         renderValue={selected => {
           const option = options.find(o => o.value === selected);
           return option ? (
-            <span style={{ fontSize: '18px', fontWeight: 500 }}>
+            <span className={s.value}>
               {option.label} {showDollar ? '$' : ''}
             </span>
           ) : (

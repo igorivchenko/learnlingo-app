@@ -8,15 +8,17 @@ import TeacherCardList from './TeacherCardList';
 import TeacherDetails from './TeacherDetails';
 import TrialLessonButton from './TrialLessonButton';
 import { TeacherProvider } from '@/context/TeacherContext';
+import { useResponsive } from '@/hooks/useResponsive';
 
 const TeacherCard = ({ teacher }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const toggleExpanded = () => setIsExpanded(prev => !prev);
+  const { isTabletL } = useResponsive();
 
   return (
     <TeacherProvider teacher={teacher}>
       <article className={s.card}>
-        <TeacherAvatar />
+        {!isTabletL && <TeacherAvatar />}
         <div className={s.content}>
           <TeacherCardHeader />
           <TeacherCardInfo />

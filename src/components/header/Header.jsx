@@ -4,17 +4,21 @@ import Logo from '@/components/Logo';
 import NavBar from '@/components/NavBar';
 import AuthButtons from '@/components/Buttons';
 import BurgerMenu from '@/components/BurgerMenu';
-import { useMediaQuery } from '@mui/material';
+import { useResponsive } from '@/hooks/useResponsive';
 
 const Header = () => {
-  const isMobile = useMediaQuery('(min-width:767.98px)');
+  const { isMobile } = useResponsive();
 
   return (
     <header className={s.header}>
       <Container size="medium" className={s.headerContainer}>
         <Logo />
-        {isMobile && <NavBar />}
-        {isMobile && <AuthButtons />}
+        {!isMobile && (
+          <>
+            <NavBar />
+            <AuthButtons />
+          </>
+        )}
         <BurgerMenu />
       </Container>
     </header>

@@ -6,11 +6,13 @@ import {
   Button,
   FormControl,
   FormHelperText,
+  Grow,
   IconButton,
   InputAdornment,
   InputLabel,
   Modal,
   OutlinedInput,
+  Slide,
   TextField,
   Tooltip,
   tooltipClasses,
@@ -27,11 +29,13 @@ import Loader from '@/components/Loader';
 import { selectIsLoading } from '@/redux/auth/selectors';
 import { resetFavoritesTeachers } from '@/redux/favorite/slice';
 import { authModalSx } from './AuthModal.sx';
+import { useResponsive } from '@/hooks/useResponsive';
 
 const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const isLoading = useSelector(selectIsLoading);
+  const { isMobile } = useResponsive();
 
   const validationSchema = Yup.object().shape({
     ...(mode === MODES.REGISTER && {
@@ -88,132 +92,137 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
     }
   };
 
-  return (
-    <Modal
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-      sx={authModalSx.modal}
-    >
-      <Box className={s.modal}>
-        <Typography
-          sx={authModalSx.modalTitle}
-          className={s.title}
-          id="modal-modal-title"
-          component="h2"
-        >
-          {mode === MODES.LOGIN ? 'Log In' : 'Registration'}
-        </Typography>
+  const ModalContent = (
+    <Box className={s.modal}>
+      <Typography
+        sx={authModalSx.modalTitle}
+        className={s.title}
+        id="modal-modal-title"
+        component="h2"
+      >
+        {mode === MODES.LOGIN ? 'Log In' : 'Registration'}
+      </Typography>
 
-        <Typography
-          id="modal-modal-description"
-          sx={authModalSx.modalDescription}
-        >
-          {mode === MODES.LOGIN
-            ? 'Welcome back! Please enter your credentials to access your account and continue your search for an teacher.'
-            : 'Thank you for your interest in our platform! In order to register, we need some information. Please provide following information'}
-        </Typography>
-        <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-          {mode === MODES.REGISTER && (
-            <TextField
-              label="Name"
-              fullWidth
-              {...register('name')}
-              error={!!errors.name}
-              helperText={errors.name?.message}
-              sx={authModalSx.textField}
-            />
-          )}
+      <Typography
+        id="modal-modal-description"
+        sx={authModalSx.modalDescription}
+      >
+        {mode === MODES.LOGIN
+          ? 'Welcome back! Please enter your credentials to access your account and continue your search for an teacher.'
+          : 'Thank you for your interest in our platform! In order to register, we need some information. Please provide following information'}
+      </Typography>
+
+      <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+        {mode === MODES.REGISTER && (
           <TextField
-            label="Email"
+            label="Name"
             fullWidth
-            {...register('email')}
-            error={!!errors.email}
-            helperText={errors.email?.message}
+            {...register('name')}
+            error={!!errors.name}
+            helperText={errors.name?.message}
             sx={authModalSx.textField}
           />
-          <FormControl variant="outlined" fullWidth sx={{ mb: '22px' }}>
-            <InputLabel
-              htmlFor="password"
-              color="warning"
-              error={!!errors.password}
-              sx={authModalSx.passwordLabel}
-            >
-              Password
-            </InputLabel>
-            <OutlinedInput
-              id="password"
-              sx={authModalSx.passwordInput}
-              type={showPassword ? 'text' : 'password'}
-              {...register('password')}
-              endAdornment={
-                <Tooltip
-                  title={showPassword ? 'Hide' : 'Show'}
-                  placement="top"
-                  slotProps={{
-                    popper: {
-                      sx: {
-                        [`&.${tooltipClasses.popper}[data-popper-placement*="top"] .${tooltipClasses.tooltip}`]:
-                          {
-                            marginBottom: '4px',
-                          },
-                      },
-                    },
-                  }}
-                >
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label={
-                        showPassword
-                          ? 'hide the password'
-                          : 'display the password'
-                      }
-                      onClick={() => setShowPassword(show => !show)}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                      sx={authModalSx.passwordIcon}
-                    >
-                      {!showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                </Tooltip>
-              }
-              label="Password"
-              error={!!errors.password}
-            />
-            {errors.password && (
-              <FormHelperText id="component-error-text" error>
-                {errors.password.message}
-              </FormHelperText>
-            )}
-          </FormControl>
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            fullWidth
-            sx={authModalSx.submitButton}
+        )}
+        <TextField
+          label="Email"
+          fullWidth
+          {...register('email')}
+          error={!!errors.email}
+          helperText={errors.email?.message}
+          sx={authModalSx.textField}
+        />
+        <FormControl variant="outlined" fullWidth sx={{ mb: '22px' }}>
+          <InputLabel
+            htmlFor="password"
+            color="warning"
+            error={!!errors.password}
+            sx={authModalSx.passwordLabel}
           >
-            {isLoading ? (
-              <Loader height={22} width={3} margin={1.5} />
-            ) : mode === MODES.LOGIN ? (
-              'Log In'
-            ) : (
-              'Sign Up'
-            )}
-          </Button>
-        </form>
-        <button
-          type="button"
-          className={s['close-button']}
-          onClick={handleClose}
+            Password
+          </InputLabel>
+          <OutlinedInput
+            id="password"
+            sx={authModalSx.passwordInput}
+            type={showPassword ? 'text' : 'password'}
+            {...register('password')}
+            endAdornment={
+              <Tooltip
+                title={showPassword ? 'Hide' : 'Show'}
+                placement="top"
+                slotProps={{
+                  popper: {
+                    sx: {
+                      [`&.${tooltipClasses.popper}[data-popper-placement*="top"] .${tooltipClasses.tooltip}`]:
+                        {
+                          marginBottom: '4px',
+                        },
+                    },
+                  },
+                }}
+              >
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label={
+                      showPassword
+                        ? 'hide the password'
+                        : 'display the password'
+                    }
+                    onClick={() => setShowPassword(show => !show)}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                    sx={authModalSx.passwordIcon}
+                  >
+                    {!showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              </Tooltip>
+            }
+            label="Password"
+            error={!!errors.password}
+          />
+          {errors.password && (
+            <FormHelperText id="component-error-text" error>
+              {errors.password.message}
+            </FormHelperText>
+          )}
+        </FormControl>
+
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          fullWidth
+          sx={authModalSx.submitButton}
         >
-          <svg width="32" height="32">
-            <use href="/icons.svg#icon-close"></use>
-          </svg>
-        </button>
-      </Box>
+          {isLoading ? (
+            <Loader height={22} width={3} margin={1.5} />
+          ) : mode === MODES.LOGIN ? (
+            'Log In'
+          ) : (
+            'Sign Up'
+          )}
+        </Button>
+      </form>
+
+      <button type="button" className={s['close-button']} onClick={handleClose}>
+        <svg width="32" height="32">
+          <use href="/icons.svg#icon-close"></use>
+        </svg>
+      </button>
+    </Box>
+  );
+
+  return (
+    <Modal open={open} onClose={handleClose} sx={authModalSx.modal}>
+      {isMobile ? (
+        <Slide direction="right" in={open} mountOnEnter unmountOnExit>
+          <Box sx={authModalSx.modalBox}>{ModalContent}</Box>
+        </Slide>
+      ) : (
+        <Grow in={open} timeout={200}>
+          <Box sx={authModalSx.modalBox}>{ModalContent}</Box>
+        </Grow>
+      )}
     </Modal>
   );
 };

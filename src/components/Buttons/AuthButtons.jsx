@@ -8,7 +8,12 @@ import LogoutButton from './LogoutButton';
 import UserBar from '@/components/UserBar';
 import ToggleThemeButton from './ToggleThemeButton';
 
-const AuthButtons = ({ isAuthButtons = false, noToggleButton = false }) => {
+const AuthButtons = ({
+  isAuthButtons = false,
+  noToggleButton = false,
+  className,
+  closeDrawer,
+}) => {
   const isAuth = useSelector(selectIsAuth);
 
   return (
@@ -27,8 +32,8 @@ const AuthButtons = ({ isAuthButtons = false, noToggleButton = false }) => {
           )}
         >
           {!noToggleButton && <ToggleThemeButton />}
-          <LoginButton />
-          <RegisterButton />
+          <LoginButton className={className} closeDrawer={closeDrawer} />
+          <RegisterButton closeDrawer={closeDrawer} />
         </div>
       )}
     </>

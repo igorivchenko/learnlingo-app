@@ -1,6 +1,16 @@
 export const authModalSx = {
   modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
     backdropFilter: 'blur(2px)',
+  },
+  modalBox: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
   },
   modalTitle: {
     mb: '20px',
@@ -8,11 +18,19 @@ export const authModalSx = {
     fontWeight: 500,
     lineHeight: 1.2,
     color: 'var(--color-main)',
+    '@media (width < 479.98px)': {
+      fontSize: '32px',
+      textAlign: 'center',
+    },
   },
   modalDescription: {
     mb: '40px',
     lineHeight: 1.35,
     color: 'var(--color-description)',
+    '@media (width < 479.98px)': {
+      fontSize: '14px',
+      textAlign: 'center',
+    },
   },
   textField: {
     '& .MuiOutlinedInput-root': {

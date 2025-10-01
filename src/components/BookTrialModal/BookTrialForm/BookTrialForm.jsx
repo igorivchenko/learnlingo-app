@@ -14,6 +14,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { errorToast, successToast } from '@/utils/toastUtils';
 import Loader from '@/components/Loader';
 import { selectIsLoading } from '@/redux/auth/selectors';
+import { bookTrialFormSx } from './BookTrialForm.sx';
 
 const BookTrialForm = ({ handleClose }) => {
   const isLoading = useSelector(selectIsLoading);
@@ -69,62 +70,27 @@ const BookTrialForm = ({ handleClose }) => {
             <RadioGroup {...field}>
               <FormControlLabel
                 value="career"
-                control={
-                  <Radio
-                    sx={{
-                      color: 'var(--color-book-trial-form-border)',
-                      '&.Mui-checked': { color: 'var(--color-border-accent)' },
-                    }}
-                  />
-                }
+                control={<Radio sx={bookTrialFormSx.radio} />}
                 label="Career and business"
               />
               <FormControlLabel
                 value="kids"
-                control={
-                  <Radio
-                    sx={{
-                      color: 'var(--color-book-trial-form-border)',
-                      '&.Mui-checked': { color: 'var(--color-border-accent)' },
-                    }}
-                  />
-                }
+                control={<Radio sx={bookTrialFormSx.radio} />}
                 label="Lesson for kids"
               />
               <FormControlLabel
                 value="living_abroad"
-                control={
-                  <Radio
-                    sx={{
-                      color: 'var(--color-book-trial-form-border)',
-                      '&.Mui-checked': { color: 'var(--color-border-accent)' },
-                    }}
-                  />
-                }
+                control={<Radio sx={bookTrialFormSx.radio} />}
                 label="Living abroad"
               />
               <FormControlLabel
                 value="exams"
-                control={
-                  <Radio
-                    sx={{
-                      color: 'var(--color-book-trial-form-border)',
-                      '&.Mui-checked': { color: 'var(--color-border-accent)' },
-                    }}
-                  />
-                }
+                control={<Radio sx={bookTrialFormSx.radio} />}
                 label="Exams and coursework"
               />
               <FormControlLabel
                 value="culture_hobby"
-                control={
-                  <Radio
-                    sx={{
-                      color: 'var(--color-book-trial-form-border)',
-                      '&.Mui-checked': { color: 'var(--color-border-accent)' },
-                    }}
-                  />
-                }
+                control={<Radio sx={bookTrialFormSx.radio} />}
                 label="Culture, travel or hobby"
               />
             </RadioGroup>
@@ -137,40 +103,7 @@ const BookTrialForm = ({ handleClose }) => {
         {...register('name')}
         error={!!errors.name}
         helperText={errors.name?.message}
-        sx={{
-          '& .MuiOutlinedInput-root': {
-            borderRadius: '12px',
-            height: '54px',
-            borderColor: 'var(--color-border-input)',
-            '& input': {
-              color: 'var(--color-main)',
-            },
-            '& fieldset': {
-              borderColor: 'var(--color-border-input)',
-            },
-            '&:hover fieldset': {
-              borderColor: 'var(--color-border-accent)',
-            },
-            '&.Mui-focused fieldset': {
-              borderColor: 'var(--color-border-accent)',
-            },
-            '&.Mui-error fieldset': {
-              borderColor: 'var(--color-border-error)',
-            },
-          },
-          '& .MuiInputLabel-root': {
-            color: 'var(--color-main)',
-            '&.Mui-error': {
-              color: 'var(--color-label-error)',
-            },
-          },
-          '& .MuiInputLabel-root.Mui-focused': {
-            color: 'var(--color-label-accent)',
-            '&.Mui-error': {
-              color: 'var(--color-label-error)',
-            },
-          },
-        }}
+        sx={bookTrialFormSx.textField}
       />
       <TextField
         label="Email"
@@ -178,40 +111,7 @@ const BookTrialForm = ({ handleClose }) => {
         {...register('email')}
         error={!!errors.email}
         helperText={errors.email?.message}
-        sx={{
-          '& .MuiOutlinedInput-root': {
-            borderRadius: '12px',
-            height: '54px',
-            borderColor: 'var(--color-border-input)',
-            '& input': {
-              color: 'var(--color-main)',
-            },
-            '& fieldset': {
-              borderColor: 'var(--color-border-input)',
-            },
-            '&:hover fieldset': {
-              borderColor: 'var(--color-border-accent)',
-            },
-            '&.Mui-focused fieldset': {
-              borderColor: 'var(--color-border-accent)',
-            },
-            '&.Mui-error fieldset': {
-              borderColor: 'var(--color-border-error)',
-            },
-          },
-          '& .MuiInputLabel-root': {
-            color: 'var(--color-main)',
-            '&.Mui-error': {
-              color: 'var(--color-label-error)',
-            },
-          },
-          '& .MuiInputLabel-root.Mui-focused': {
-            color: 'var(--color-label-accent)',
-            '&.Mui-error': {
-              color: 'var(--color-label-error)',
-            },
-          },
-        }}
+        sx={bookTrialFormSx.textField}
       />
       <TextField
         label="Phone number"
@@ -220,65 +120,14 @@ const BookTrialForm = ({ handleClose }) => {
         {...register('phone')}
         error={!!errors.phone}
         helperText={errors.phone?.message}
-        sx={{
-          '& .MuiOutlinedInput-root': {
-            position: 'relative',
-            marginBottom: '20px',
-            borderRadius: '12px',
-            height: '54px',
-            borderColor: 'var(--color-border-input)',
-            '& input': {
-              color: 'var(--color-main)',
-            },
-            '& fieldset': {
-              borderColor: 'var(--color-border-input)',
-            },
-            '&:hover fieldset': {
-              borderColor: 'var(--color-border-accent)',
-            },
-            '&.Mui-focused fieldset': {
-              borderColor: 'var(--color-border-accent)',
-            },
-            '&.Mui-error fieldset': {
-              borderColor: 'var(--color-border-error)',
-            },
-          },
-          '& .MuiInputLabel-root': {
-            color: 'var(--color-main)',
-            '&.Mui-error': {
-              color: 'var(--color-label-error)',
-            },
-          },
-          '& .MuiInputLabel-root.Mui-focused': {
-            color: 'var(--color-label-accent)',
-            '&.Mui-error': {
-              color: 'var(--color-label-error)',
-            },
-          },
-          '& .MuiFormHelperText-root': {
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            lineHeight: 1.2,
-            pointerEvents: 'none',
-          },
-        }}
+        sx={bookTrialFormSx.textFieldWithHelper}
       />
       <Button
         type="submit"
         variant="contained"
         color="primary"
         fullWidth
-        sx={{
-          height: '60px',
-          fontSize: '18px',
-          fontWeight: 700,
-          lineHeight: 1.5,
-          textTransform: 'capitalize',
-          color: 'var(--color-secondary)',
-          backgroundColor: 'var(--color-button)',
-          borderRadius: '12px',
-        }}
+        sx={bookTrialFormSx.submitButton}
       >
         {isLoading && <Loader height={22} width={3} margin={1.5} />}
         Book

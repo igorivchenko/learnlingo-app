@@ -1,18 +1,21 @@
-import { useState } from 'react';
-import AuthModal from '@/components/AuthModal';
+import { useAuthModal } from '@/context/AuthModalContext';
 import s from './RegisterButton.module.css';
+import { MODES } from '@/constants';
 
-const RegisterButton = () => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+const RegisterButton = ({ closeDrawer }) => {
+  const { openModal } = useAuthModal();
+
+  const handleClick = () => {
+    openModal(MODES.REGISTER, () => {
+      closeDrawer?.();
+    });
+  };
 
   return (
     <>
-      <button type="button" className={s.button} onClick={handleOpen}>
+      <button type="button" className={s.button} onClick={handleClick}>
         <span>Registration</span>
       </button>
-      {<AuthModal mode={'register'} open={open} handleClose={handleClose} />}
     </>
   );
 };

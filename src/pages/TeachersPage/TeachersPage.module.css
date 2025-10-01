@@ -2,6 +2,14 @@
   min-height: 100vh;
   padding-block: 96px;
   background-color: var(--color-bg-teachers-page);
+
+  @media (width < 767.98px) {
+    padding-block: 66px;
+  }
+
+  @media (width < 479.98px) {
+    padding-block: 46px;
+  }
 }
 
 .container {

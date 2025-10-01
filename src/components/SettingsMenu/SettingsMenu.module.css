@@ -5,22 +5,35 @@
   align-items: center;
   flex-grow: 1;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   gap: 10px;
 }
 
 .button {
-  padding: 8px 22px;
+  display: inline-block;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 92%,
+    var(--color-main) 90%,
+    var(--color-main) 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  background-position-x: right;
+
+  padding: 6px;
 
   line-height: 1.25;
 
   color: var(--color-main);
   background-color: transparent;
   border: none;
-  border-radius: 12px;
   cursor: pointer;
+  transition: background-size 0.3s;
 }
 
 .button:hover {
-  color: var(--color-accent);
+  background-size: 100% 100%;
+  background-position-x: left;
 }

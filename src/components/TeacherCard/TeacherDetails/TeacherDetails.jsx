@@ -4,6 +4,7 @@ import TeacherReviews from './TeacherReviews';
 
 const TeacherDetails = () => {
   const { experience } = useTeacher();
+
   return (
     <>
       <p className={s.description}>{experience}</p>

@@ -1,6 +1,18 @@
 .headerList {
   display: flex;
   flex-wrap: wrap;
+
+  @media (width < 604.98px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  @media (width < 479.98px) {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 .headerItem {
@@ -8,6 +20,12 @@
   align-items: center;
   font-weight: 500;
   color: var(--card-color-main);
+
+  @media (width < 479.98px) {
+    &:nth-child(even) {
+      margin-left: -6px;
+    }
+  }
 }
 
 .headerItem:not(:last-child)::after {
@@ -16,6 +34,10 @@
   width: 1px;
   background-color: var(--card-color-secondary);
   margin-inline: 16px;
+
+  @media (width < 767.98px) {
+    content: none;
+  }
 }
 
 .label {

@@ -3,7 +3,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
   max-width: max-content;
   padding: 16px 48px;
   font-size: 18px;
@@ -14,6 +13,10 @@
   border-radius: 12px;
   cursor: pointer;
   overflow: hidden;
+
+  @media (width < 767.98px) {
+    margin-inline: auto;
+  }
 }
 
 .button::after {
@@ -34,6 +37,8 @@
   z-index: 1;
 }
 
-.button:hover::after {
-  width: 100%;
+@media (hover: hover) {
+  .button:hover::after {
+    width: 100%;
+  }
 }

@@ -9,8 +9,7 @@
   display: inline-flex;
   column-gap: 8px;
 
-  padding-block: 10px;
-  padding-inline: 40px;
+  padding: 10px 40px;
 
   font-size: 18px;
   text-align: center;
@@ -21,6 +20,13 @@
   border-radius: 12px;
 
   transition-duration: var(--transition-duration);
+
+  @media (width < 479.98px) {
+    font-size: 14px;
+    font-weight: 500;
+    align-items: end;
+    padding: 8px 30px;
+  }
 }
 
 .link svg {
@@ -33,21 +39,38 @@
   background-color: var(--color-accent);
 }
 
-.emptyState {
+.emptyStateFavorites,
+.emptyStateTeachers {
   display: inline-block;
   width: 0;
   margin-inline: auto;
-  font-size: 22px;
   text-align: center;
   border-right: 0.12em solid currentColor;
   overflow: hidden;
   white-space: nowrap;
-  animation: typing 2s steps(37, end) forwards, blink 1s step-end infinite;
 }
 
-@keyframes typing {
+.emptyStateFavorites {
+  font-size: clamp(14px, 3vw, 22px);
+  animation: typingFavorites 2s steps(37, end) forwards,
+    blink 1s step-end infinite;
+}
+
+.emptyStateTeachers {
+  font-size: clamp(14px, 3vw, 22px);
+  animation: typingTeachers 1.5s steps(25, end) forwards,
+    blink 1s step-end infinite;
+}
+
+@keyframes typingFavorites {
   to {
     width: 37.2ch;
+  }
+}
+
+@keyframes typingTeachers {
+  to {
+    width: 20ch;
   }
 }
 
@@ -58,7 +81,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .emptyState {
+  .emptyStateFavorites,
+  .emptyStateTeachers {
     animation: none;
     width: auto;
     border-right: none;

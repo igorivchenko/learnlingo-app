@@ -12,7 +12,7 @@
 
   margin-bottom: 30px;
 
-  font-size: 36px;
+  font-size: clamp(22px, 3vw, 36px);
   font-weight: 700;
 
   text-align: center;
@@ -29,8 +29,7 @@
   display: inline-flex;
   column-gap: 8px;
 
-  padding-block: 10px;
-  padding-inline: 40px;
+  padding: 10px 40px;
 
   font-size: 18px;
   text-align: center;
@@ -41,6 +40,13 @@
   border-radius: 12px;
 
   transition-duration: var(--transition-duration);
+
+  @media (width < 479.98px) {
+    font-size: 14px;
+    font-weight: 500;
+    align-items: end;
+    padding: 8px 30px;
+  }
 }
 
 .link svg {

@@ -1,0 +1,8 @@
+.value {
+  font-size: 18px;
+  font-weight: 500;
+
+  @media (width < 479.98px) {
+    font-size: 16px;
+  }
+}

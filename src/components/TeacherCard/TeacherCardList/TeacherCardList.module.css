@@ -1,7 +1,12 @@
 .list {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
+
+  @media (width < 479.98px) {
+    justify-content: center;
+  }
 }
 
 .item {

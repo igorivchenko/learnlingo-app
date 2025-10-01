@@ -4,6 +4,7 @@ import { signOutUser } from '@/redux/auth/operations';
 import { errorToast, successToast } from '@/utils/toastUtils';
 import { useState } from 'react';
 import ConfirmPopover from '@/components/Poppers/ConfirmPopover';
+import { logoutButtonSx } from './LogoutButton.sx';
 
 const LogoutButton = () => {
   const dispatch = useDispatch();
@@ -49,14 +50,7 @@ const LogoutButton = () => {
         anchorEl={confirmState.anchorEl}
         onClose={handleClose}
         onConfirm={handleLogOut}
-        sx={{
-          '& .MuiPaper-root': {
-            padding: 1.3,
-            backgroundColor: 'var(--color-bg-popper)',
-            borderRadius: 2,
-            maxWidth: 280,
-          },
-        }}
+        sx={logoutButtonSx.confirmPopover}
       />
     </>
   );

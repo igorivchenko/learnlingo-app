@@ -1,7 +1,22 @@
 import { motion } from 'framer-motion';
 import s from './SettingsMenu.module.css';
+import { useDispatch } from 'react-redux';
+import { signOutUser } from '@/redux/auth/operations';
+import { errorToast, successToast } from '@/utils/toastUtils';
 
-const SettingsMenu = ({ onSettingsClick, onLogoutClick }) => {
+const SettingsMenu = ({ closeDrawer, onSettingsClick }) => {
+  const dispatch = useDispatch();
+
+  const onLogoutClick = async () => {
+    try {
+      await dispatch(signOutUser()).unwrap();
+      successToast('Logged out successfully');
+    } catch (err) {
+      errorToast(err);
+    }
+    closeDrawer?.();
+  };
+
   const buttons = [
     { label: 'Settings', onClick: onSettingsClick },
     { label: 'Log Out', onClick: onLogoutClick },

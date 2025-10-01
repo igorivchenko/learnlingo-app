@@ -208,7 +208,13 @@ const FuzzyTextAnimation = ({
   return (
     <canvas
       ref={canvasRef}
-      style={{ marginBottom: '40px', display: 'block' }}
+      style={{
+        width: '100%',
+        height: 'auto',
+        maxWidth: '400px',
+        display: 'block',
+        marginBottom: '40px',
+      }}
     />
   );
 };

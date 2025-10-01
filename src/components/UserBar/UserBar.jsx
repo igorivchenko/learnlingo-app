@@ -7,8 +7,9 @@ import { useState } from 'react';
 import { errorToast, successToast } from '@/utils/toastUtils';
 import SettingsPopover from '@/components/Poppers/SettingsPopover';
 import BurgerDrawer from '@/components/BurgerDrawer';
-import { useMediaQuery } from '@mui/material';
 import { MENU_TYPES, USERBAR_VARIANTS } from '@/constants';
+import { useResponsive } from '@/hooks/useResponsive';
+import { userBarSx } from './UserBar.sx';
 
 const UserBar = ({ noName = false, variant = USERBAR_VARIANTS.HEADER }) => {
   const userName = useSelector(selectName);
@@ -17,7 +18,7 @@ const UserBar = ({ noName = false, variant = USERBAR_VARIANTS.HEADER }) => {
   const [confirmState, setConfirmState] = useState({
     anchorEl: null,
   });
-  const isMobile = useMediaQuery('(max-width:767.98px)');
+  const { isMobile } = useResponsive();
 
   const handleOpenDrawer = type => {
     setOpenMenu(type);
@@ -84,14 +85,7 @@ const UserBar = ({ noName = false, variant = USERBAR_VARIANTS.HEADER }) => {
           anchorEl={confirmState.anchorEl}
           onClose={handleClose}
           onConfirm={handleLogOut}
-          sx={{
-            '& .MuiPaper-root': {
-              padding: 1.3,
-              backgroundColor: 'var(--color-bg-popper)',
-              borderRadius: 2,
-              maxWidth: 280,
-            },
-          }}
+          sx={userBarSx.settingsPopover}
         />
       )}
     </>

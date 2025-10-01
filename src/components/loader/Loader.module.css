@@ -4,9 +4,6 @@
   align-items: center;
 }
 
-.center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
+.loaderTop {
+  margin-top: 70px;
 }

@@ -57,16 +57,8 @@ const TeacherAvatar = () => {
           alt={name || ''}
           sx={{
             borderRadius: '100%',
-            width: {
-              xs: 58,
-              sm: 66,
-              lg: 96,
-            },
-            height: {
-              xs: 58,
-              sm: 66,
-              lg: 96,
-            },
+            width: '96px',
+            height: '96px',
           }}
         />
       </StyledBadge>

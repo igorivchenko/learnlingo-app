@@ -6,6 +6,12 @@
   padding: 0;
   background-color: transparent;
   border: none;
+
+  @media (width < 1119.98px) {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
 }
 
 .icon {

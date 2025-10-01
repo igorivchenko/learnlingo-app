@@ -1,4 +1,5 @@
 import { Popover } from '@mui/material';
+import { basePopoverSx } from './BasePopover.sx';
 
 const BasePopover = ({
   id,
@@ -18,16 +19,7 @@ const BasePopover = ({
       onClose={onClose}
       anchorOrigin={anchorOrigin}
       transformOrigin={transformOrigin}
-      sx={{
-        '& .MuiPaper-root': {
-          padding: 1,
-          backgroundColor: 'var(--color-bg-popper)',
-          borderRadius: 2,
-          boxShadow: 'var(--box-shadow-popper)',
-          maxWidth: 280,
-        },
-        ...sx,
-      }}
+      sx={{ ...basePopoverSx.popover, ...sx }}
     >
       {children}
     </Popover>

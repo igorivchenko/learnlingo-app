@@ -18,12 +18,7 @@ const slice = createSlice({
   initialState,
   extraReducers: build => {
     build
-      .addCase(signOutUser.fulfilled, state => {
-        return {
-          ...initialState,
-          favoriteTeachers: state.favoriteTeachers,
-        };
-      })
+      .addCase(signOutUser.fulfilled, () => initialState)
       .addMatcher(
         isAnyOf(signUpUser.pending, signInUser.pending, signOutUser.pending),
         state => {

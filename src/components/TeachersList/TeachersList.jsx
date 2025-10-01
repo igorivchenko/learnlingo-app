@@ -18,32 +18,33 @@ const TeachersList = ({ isLoading, teachers, variants }) => {
     <>
       {isLoading && teachers.length === 0 && (
         <Loader
-          center
+          top
           color="var(--color-accent)"
           height={30}
           width={4}
           margin={2.3}
         />
       )}
-
       {!isLoading && teachers.length === 0 && <TeachersListEmptyState />}
 
-      <ul className={s.list}>
-        <AnimatePresence>
-          {teachers.map(teacher => (
-            <motion.li
-              key={teacher.id}
-              variants={variants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              transition={{ duration: 0.5 }}
-            >
-              <TeacherCard teacher={teacher} />
-            </motion.li>
-          ))}
-        </AnimatePresence>
-      </ul>
+      {teachers.length > 0 && (
+        <ul className={s.list}>
+          <AnimatePresence>
+            {teachers.map(teacher => (
+              <motion.li
+                key={teacher.id}
+                variants={variants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                transition={{ duration: 0.5 }}
+              >
+                <TeacherCard teacher={teacher} />
+              </motion.li>
+            ))}
+          </AnimatePresence>
+        </ul>
+      )}
     </>
   );
 };

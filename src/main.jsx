@@ -11,21 +11,21 @@ import { PersistGate } from 'redux-persist/integration/react';
 import ThemeProvider from './components/ThemeProvider';
 
 createRoot(document.getElementById('root')).render(
-  // <StrictMode>
-  <BrowserRouter>
-    <Toaster
-      position="top-right"
-      reverseOrder={false}
-      toastOptions={{
-        duration: 2000,
-      }}
-    />
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <ThemeProvider />
-        <App />
-      </PersistGate>
-    </Provider>
-  </BrowserRouter>
-  // </StrictMode>
+  <StrictMode>
+    <BrowserRouter>
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        toastOptions={{
+          duration: 2000,
+        }}
+      />
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <ThemeProvider />
+          <App />
+        </PersistGate>
+      </Provider>
+    </BrowserRouter>
+  </StrictMode>
 );

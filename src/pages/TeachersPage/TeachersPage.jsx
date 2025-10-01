@@ -16,13 +16,14 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTeachersFilters } from '@/redux/filters/selectors';
 import { getFavoriteTeachers } from '@/redux/favorite/operations';
-import { selectUserId } from '@/redux/auth/selectors';
+import { selectIsAuth, selectUserId } from '@/redux/auth/selectors';
 import { resetFilters, setCurrentContext } from '@/redux/filters/slice';
 import { CONTEXTS } from '@/constants';
 
 const TeachersPage = () => {
   const dispatch = useDispatch();
   const userId = useSelector(selectUserId);
+  const isAuth = useSelector(selectIsAuth);
   const isLoading = useSelector(selectIsLoading);
   const teachers = useSelector(selectTeachers);
   const lastDoc = useSelector(selectTeachersLastDoc);
@@ -44,8 +45,10 @@ const TeachersPage = () => {
   useEffect(() => {
     dispatch(resetList());
     dispatch(getTeachers({ filters: teacherFilters, lastVisibleDoc: null }));
-    dispatch(getFavoriteTeachers({ userId }));
-  }, [dispatch, userId, teacherFilters]);
+    {
+      isAuth && dispatch(getFavoriteTeachers({ userId }));
+    }
+  }, [dispatch, userId, isAuth, teacherFilters]);
 
   const handleLoadMore = () => {
     if (lastDoc) {

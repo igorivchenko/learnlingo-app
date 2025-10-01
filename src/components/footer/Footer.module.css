@@ -29,7 +29,7 @@ footer {
   align-items: center;
   gap: 10px;
 
-  @media (max-width: 1024px) {
+  @media (width < 1024px) {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     justify-items: center;
@@ -43,7 +43,7 @@ footer {
   align-items: center;
   gap: 16px;
 
-  @media (max-width: 1023.98px) {
+  @media (width < 1023.98px) {
     justify-content: space-between;
     min-width: 240px;
   }
@@ -54,7 +54,7 @@ footer {
   font-weight: 500;
   line-height: 1.14;
 
-  @media (max-width: 479.98px) {
+  @media (width < 479.98px) {
     font-size: 22px;
   }
 }

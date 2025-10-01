@@ -4,6 +4,7 @@ import TeacherReviewItem from './TeacherReviewItem';
 
 const TeacherReviews = () => {
   const { reviews } = useTeacher();
+
   return (
     <ul className={s.list}>
       {reviews.map(review => (

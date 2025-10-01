@@ -5,5 +5,11 @@
 .form {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   column-gap: 20px;
+
+  @media (width < 767.98px) {
+    justify-content: center;
+    row-gap: 10px;
+  }
 }

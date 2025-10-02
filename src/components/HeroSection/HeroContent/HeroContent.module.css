@@ -82,20 +82,24 @@
 
   background-color: #fbe9ba;
   border-radius: 8px;
-
-  @media (width < 767.98px) {
-    top: 7px;
-    width: 156px;
-    height: 37px;
-  }
-
-  @media (width < 479.98px) {
-    top: 4px;
-    width: 100px;
-    height: 24px;
-  }
 }
 
 .hiddenText {
   visibility: hidden;
+}
+
+@media (width < 767.98px) {
+  .italic::after {
+    top: 7px;
+    width: 156px;
+    height: 37px;
+  }
+}
+
+@media (width < 479.98px) {
+  .italic::after {
+    top: 4px;
+    width: 100px;
+    height: 24px;
+  }
 }

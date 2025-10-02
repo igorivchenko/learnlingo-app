@@ -107,6 +107,7 @@ const BookTrialForm = ({ handleClose }) => {
       />
       <TextField
         label="Email"
+        type="email"
         fullWidth
         {...register('email')}
         error={!!errors.email}
@@ -117,10 +118,11 @@ const BookTrialForm = ({ handleClose }) => {
         label="Phone number"
         fullWidth
         type="tel"
+        placeholder="+1XXXXXXXXXX"
         {...register('phone')}
         error={!!errors.phone}
         helperText={errors.phone?.message}
-        sx={bookTrialFormSx.textFieldWithHelper}
+        sx={bookTrialFormSx.textFieldPhone}
       />
       <Button
         type="submit"

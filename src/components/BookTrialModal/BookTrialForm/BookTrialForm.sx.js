@@ -39,7 +39,7 @@ export const bookTrialFormSx = {
     },
   },
 
-  textFieldWithHelper: {
+  textFieldPhone: {
     '& .MuiOutlinedInput-root': {
       position: 'relative',
       marginBottom: '20px',
@@ -48,6 +48,9 @@ export const bookTrialFormSx = {
       borderColor: 'var(--color-border-input)',
       '& input': {
         color: 'var(--color-main)',
+        '&::placeholder': {
+          fontSize: '14px',
+        },
       },
       '& fieldset': {
         borderColor: 'var(--color-border-input)',

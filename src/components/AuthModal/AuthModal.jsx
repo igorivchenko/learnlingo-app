@@ -126,6 +126,7 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
         <TextField
           label="Email"
           fullWidth
+          type="email"
           {...register('email')}
           error={!!errors.email}
           helperText={errors.email?.message}

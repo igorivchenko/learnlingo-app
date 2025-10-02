@@ -1,6 +1,6 @@
 import Section from '@/components/Section';
 import s from './FavoritesPage.module.css';
-import Container from '@/components/Container';
+import Container from '@/components/Container.jsx';
 import TeachersFilters from '@/components/TeachersFilters';
 import TeachersList from '@/components/TeachersList';
 import { useDispatch, useSelector } from 'react-redux';

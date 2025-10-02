@@ -2,7 +2,7 @@ import { useTeacher } from '@/context/TeacherContext';
 import FavoriteToggleButton from './FavoriteToggleButton';
 import s from './TeacherCardHeader.module.css';
 import TeacherHeaderList from './TeacherHeaderList';
-import TeacherAvatar from '../TeacherAvatar';
+import TeacherAvatar from '@/components/TeacherAvatar';
 import { useResponsive } from '@/hooks/useResponsive';
 
 const TeacherCardHeader = () => {

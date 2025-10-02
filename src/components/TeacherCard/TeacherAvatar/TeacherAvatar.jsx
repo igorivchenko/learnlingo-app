@@ -52,7 +52,7 @@ const TeacherAvatar = () => {
         <Avatar
           src={
             avatar_url ||
-            'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'
+            'https:/upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'
           }
           alt={name || ''}
           sx={{

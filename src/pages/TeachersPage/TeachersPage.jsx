@@ -16,13 +16,13 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTeachersFilters } from '@/redux/filters/selectors';
 import { getFavoriteTeachers } from '@/redux/favorite/operations';
-import { selectIsAuth, selectUserId } from '@/redux/auth/selectors';
+import { selectIsAuth, selectUser } from '@/redux/auth/selectors';
 import { resetFilters, setCurrentContext } from '@/redux/filters/slice';
 import { CONTEXTS } from '@/constants';
 
 const TeachersPage = () => {
   const dispatch = useDispatch();
-  const userId = useSelector(selectUserId);
+  const { userId } = useSelector(selectUser);
   const isAuth = useSelector(selectIsAuth);
   const isLoading = useSelector(selectIsLoading);
   const teachers = useSelector(selectTeachers);

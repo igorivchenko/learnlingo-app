@@ -22,6 +22,6 @@ export const errorToast = err => {
       backgroundColor: '#FFCCCC',
       fontWeight: 'medium',
     },
-    iconTheme: { primary: 'white', secondary: 'red' },
+    icon: '⚠️',
   });
 };

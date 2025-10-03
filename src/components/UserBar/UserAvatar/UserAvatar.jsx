@@ -1,15 +1,15 @@
 import { useSelector } from 'react-redux';
 import s from './UserAvatar.module.css';
-import { selectIsAuth, selectName } from '@/redux/auth/selectors';
+import { selectIsAuth, selectUser } from '@/redux/auth/selectors';
 import clsx from 'clsx';
 import { USERBAR_VARIANTS } from '@/constants';
 import PersonIcon from '@mui/icons-material/Person';
 
 const UserAvatar = ({ variant }) => {
-  const userName = useSelector(selectName);
+  const { name } = useSelector(selectUser);
   const isAuth = useSelector(selectIsAuth);
 
-  const avatarLetter = userName?.split('')[0];
+  const avatarLetter = name?.split('')[0];
 
   return (
     <div

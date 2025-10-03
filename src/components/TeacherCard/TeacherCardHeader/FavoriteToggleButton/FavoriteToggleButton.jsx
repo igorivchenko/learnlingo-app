@@ -2,7 +2,7 @@ import s from './FavoriteToggleButton.module.css';
 import { motion } from 'motion/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTeacher } from '@/context/TeacherContext';
-import { selectIsAuth, selectUserId } from '@/redux/auth/selectors';
+import { selectIsAuth, selectUser } from '@/redux/auth/selectors';
 import { selectFavoriteTeachers } from '@/redux/favorite/selectors';
 import { errorToast } from '@/utils/toastUtils';
 import {
@@ -20,7 +20,7 @@ import { CONTEXTS } from '@/constants';
 const FavoriteToggleButton = () => {
   const dispatch = useDispatch();
   const { id } = useTeacher();
-  const userId = useSelector(selectUserId);
+  const { userId } = useSelector(selectUser);
   const isAuth = useSelector(selectIsAuth);
   const currentContext = useSelector(selectCurrentContext);
   const favoritesFilters = useSelector(selectFavoritesFilters);

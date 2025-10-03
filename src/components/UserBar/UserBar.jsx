@@ -1,94 +1,70 @@
 import { useSelector } from 'react-redux';
 import s from './UserBar.module.css';
-import { selectIsAuth, selectName } from '@/redux/auth/selectors';
+import { selectIsAuth, selectUser } from '@/redux/auth/selectors';
 import UserAvatar from './UserAvatar';
-import clsx from 'clsx';
 import { useState } from 'react';
-import { errorToast, successToast } from '@/utils/toastUtils';
-import SettingsPopover from '@/components/Poppers/SettingsPopover';
 import BurgerDrawer from '@/components/BurgerDrawer';
 import { MENU_TYPES, USERBAR_VARIANTS } from '@/constants';
 import { useResponsive } from '@/hooks/useResponsive';
-import { userBarSx } from './UserBar.sx';
+import { IconButton } from '@mui/material';
+import UserMenu from './UserMenu';
 
 const UserBar = ({ noName = false, variant = USERBAR_VARIANTS.HEADER }) => {
-  const userName = useSelector(selectName);
+  const { name } = useSelector(selectUser);
   const isAuth = useSelector(selectIsAuth);
   const [openMenu, setOpenMenu] = useState('');
-  const [confirmState, setConfirmState] = useState({
-    anchorEl: null,
-  });
   const { isMobile } = useResponsive();
 
-  const handleOpenDrawer = type => {
-    setOpenMenu(type);
-  };
+  const [hovered, setHovered] = useState(false);
 
-  const handleCloseDrawer = () => {
-    setOpenMenu(null);
-  };
+  const onOpenDrawer = type => setOpenMenu(type);
+  const onCloseDrawer = () => setOpenMenu(null);
 
-  const handleClose = () => {
-    setConfirmState({ anchorEl: null });
-  };
-
-  const handleLogOut = async () => {
-    try {
-      successToast('Logged out successfully');
-    } catch (err) {
-      errorToast(err);
+  const handleClick = () => {
+    if (isMobile) {
+      onOpenDrawer(!isAuth ? MENU_TYPES.ACCOUNT : MENU_TYPES.SETTINGS);
     }
   };
 
-  const open = Boolean(confirmState.anchorEl);
-  const popoverId = open ? 'confirm-popover' : undefined;
-
-  const firstName = userName?.split(' ')[0];
-
-  const handleOpenPopover = event => {
-    setConfirmState({ anchorEl: event.currentTarget });
-  };
+  const firstName = name?.split(' ')[0];
 
   return (
-    <>
-      <button
-        type="button"
-        className={clsx(
-          s.userBar,
-          variant === USERBAR_VARIANTS.DRAWER && s.userBarDrawer
-        )}
-        onClick={
-          variant === USERBAR_VARIANTS.HEADER && isMobile
-            ? () =>
-                handleOpenDrawer(
-                  !isAuth ? MENU_TYPES.ACCOUNT : MENU_TYPES.SETTINGS
-                )
-            : handleOpenPopover
-        }
+    <div className={s.userBarWrapper}>
+      <IconButton
+        size="small"
+        aria-controls={open ? 'account-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        className={s.userBar}
+        sx={{
+          '&:hover': {
+            backgroundColor: 'transparent',
+          },
+        }}
+        onClick={handleClick}
+        onMouseEnter={() => !isMobile && setHovered(true)}
+        onMouseLeave={() => !isMobile && setHovered(false)}
       >
         <UserAvatar variant={variant} />
-        {!noName && <span className={s.userName}>{firstName}</span>}{' '}
-      </button>
+        {!noName && <span className={s.userName}>{firstName}</span>}
+      </IconButton>
+
+      {!isMobile && (
+        <UserMenu
+          open={hovered}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+        />
+      )}
 
       {isMobile && (
         <BurgerDrawer
           open={openMenu}
-          onClose={handleCloseDrawer}
+          onClose={onCloseDrawer}
           openMenu={openMenu}
         />
       )}
-
-      {!isMobile && (
-        <SettingsPopover
-          id={popoverId}
-          open={open}
-          anchorEl={confirmState.anchorEl}
-          onClose={handleClose}
-          onConfirm={handleLogOut}
-          sx={userBarSx.settingsPopover}
-        />
-      )}
-    </>
+    </div>
   );
 };
 

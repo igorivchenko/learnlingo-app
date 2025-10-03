@@ -3,7 +3,7 @@ import { signInUser, signOutUser, signUpUser } from './operations';
 
 const initialState = {
   user: {
-    id: null,
+    userId: null,
     name: null,
     email: null,
   },
@@ -35,7 +35,7 @@ const slice = createSlice({
           state.user = {
             name: payload.name,
             email: payload.email,
-            id: payload.id,
+            userId: payload.id,
           };
           state.accessToken = payload.token;
         }

@@ -12,7 +12,7 @@ import {
 } from '@/redux/favorite/selectors';
 import { useEffect, useState } from 'react';
 import { getFavoriteTeachers } from '@/redux/favorite/operations';
-import { selectUserId } from '@/redux/auth/selectors';
+import { selectUser } from '@/redux/auth/selectors';
 import LoadMoreButton from '@/components/LoadMoreButton';
 import { selectFavoritesFilters } from '@/redux/filters/selectors';
 import { resetFavoritesTeachers } from '@/redux/favorite/slice';
@@ -26,7 +26,7 @@ const FavoritesPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const teachers = useSelector(selectFavoriteTeachers);
-  const userId = useSelector(selectUserId);
+  const { userId } = useSelector(selectUser);
   const lastDoc = useSelector(selectTeachersLastDoc);
   const hasMore = useSelector(selectHasMore);
   const [shouldScroll, setShouldScroll] = useState(false);

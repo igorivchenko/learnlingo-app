@@ -1,6 +1,4 @@
+export const selectUser = state => state.auth.user;
 export const selectIsAuth = state => state.auth.isAuth;
 export const selectIsLoading = state => state.auth.isLoading;
 export const selectError = state => state.auth.error;
-export const selectName = state => state.auth.user.name;
-export const selectEmail = state => state.auth.user.email;
-export const selectUserId = state => state.auth.user.id;

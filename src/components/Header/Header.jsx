@@ -1,4 +1,5 @@
 import s from './Header.module.css';
+import { motion } from 'motion/react';
 import Container from '@/components/Container';
 import Logo from '@/components/Logo';
 import NavBar from '@/components/NavBar';
@@ -10,7 +11,12 @@ const Header = () => {
   const { isMobile } = useResponsive();
 
   return (
-    <header className={s.header}>
+    <motion.header
+      className={s.header}
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
       <Container size="medium" className={s.headerContainer}>
         <Logo />
         {!isMobile && (
@@ -21,7 +27,7 @@ const Header = () => {
         )}
         <BurgerMenu />
       </Container>
-    </header>
+    </motion.header>
   );
 };
 

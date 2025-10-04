@@ -43,9 +43,9 @@ const TeachersFilters = () => {
 
   return (
     <SlideAnimation
-      initial={{ opacity: 0, y: -40 }}
+      initial={{ opacity: 0, y: -30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
+      transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
     >
       <header>
         <form className={s.form}>

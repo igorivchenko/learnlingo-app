@@ -31,6 +31,7 @@
   --color-register-btn: #ffffff;
   --color-teacher-badge: #121417;
   --color-drawer-avatar: #ffffff;
+  --color-menu-text: #8f8f8f;
   --color-menu-item-hover: #d9d9d9;
   --color-book-trial-form-border: rgba(18, 20, 23, 0.2);
   --color-bg-register-btn: #222831;
@@ -70,6 +71,7 @@
   --color-teacher-badge: #ffffff;
   --color-drawer-avatar: #ffdc86;
   --color-book-trial-form-border: #8a8a89;
+  --color-menu-text: #afafaf;
   --color-menu-item-hover: #999999;
   --color-bg-register-btn: #ffdc86;
   --color-bg-toggle-theme-btn: #ffdc86;
@@ -109,6 +111,7 @@
   --color-register-btn: light-dark(#ffffff, #222831);
   --color-teacher-badge: light-dark(#121417, #ffffff);
   --color-drawer-avatar: light-dark(#ffffff, #ffdc86);
+  --color-menu-text: light-dark(#8f8f8f, #afafaf);
   --color-menu-item-hover: light-dark(#d9d9d9, #999999);
   --color-bg-register-btn: light-dark(#121417, #ffdc86);
   --color-bg-toggle-theme-btn: light-dark(hsla(210, 14%, 13%, 0.8), #ffdc86);

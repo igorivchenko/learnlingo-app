@@ -4,6 +4,14 @@
   width: 100%;
 }
 
+.menuItem .menuText {
+  color: var(--color-menu-text);
+}
+
+.menuText svg {
+  fill: var(--color-menu-text);
+}
+
 .menuItem span,
 .menuLink {
   display: flex;

@@ -25,6 +25,7 @@ const TeachersList = ({ isLoading, teachers, variants }) => {
           margin={2.3}
         />
       )}
+
       {!isLoading && teachers.length === 0 && <TeachersListEmptyState />}
 
       {teachers.length > 0 && (

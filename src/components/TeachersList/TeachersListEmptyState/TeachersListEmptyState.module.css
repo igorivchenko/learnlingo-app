@@ -43,6 +43,7 @@
 .emptyStateTeachers {
   display: inline-block;
   width: 0;
+  margin-top: 30px;
   margin-inline: auto;
   text-align: center;
   border-right: 0.12em solid currentColor;

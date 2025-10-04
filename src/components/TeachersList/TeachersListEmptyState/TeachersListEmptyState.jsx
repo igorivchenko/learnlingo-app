@@ -1,7 +1,5 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import s from './TeachersListEmptyState.module.css';
-import { IoMdHome } from 'react-icons/io';
-import { LiaChalkboardTeacherSolid } from 'react-icons/lia';
 import { ROUTES } from '@/constants';
 
 const TeachersListEmptyState = () => {
@@ -16,24 +14,7 @@ const TeachersListEmptyState = () => {
     ? s.emptyStateFavorites
     : s.emptyStateTeachers;
 
-  return (
-    <>
-      <p className={messageClass}>{message}</p>
-
-      <div className={s.linkWrapper}>
-        <Link className={s.link} to={ROUTES.HOME}>
-          <IoMdHome />
-          Home
-        </Link>
-        {isFavorites && (
-          <Link className={s.link} to={ROUTES.TEACHERS}>
-            <LiaChalkboardTeacherSolid />
-            Teachers
-          </Link>
-        )}
-      </div>
-    </>
-  );
+  return <p className={messageClass}>{message}</p>;
 };
 
 export default TeachersListEmptyState;

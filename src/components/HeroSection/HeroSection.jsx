@@ -7,14 +7,14 @@ import Section from '@/components/Section';
 import { useResponsive } from '@/hooks/useResponsive';
 
 const HeroSection = () => {
-  const { isMobile } = useResponsive();
+  const { isTablet } = useResponsive();
 
-  const heroContentInitial = isMobile
-    ? { opacity: 0, y: -80 }
+  const heroContentInitial = isTablet
+    ? { opacity: 0, y: -80, scale: 0.8 }
     : { opacity: 0, x: -80 };
 
-  const heroContentAnimate = { opacity: 1, x: 0, y: 0 };
-  const heroContentExit = isMobile
+  const heroContentAnimate = { opacity: 1, x: 0, y: 0, scale: 1 };
+  const heroContentExit = isTablet
     ? { opacity: 0, y: -80 }
     : { opacity: 0, x: -80 };
 
@@ -28,7 +28,7 @@ const HeroSection = () => {
             exit={heroContentExit}
           >
             <HeroContent />
-          </SlideAnimation>{' '}
+          </SlideAnimation>
           <SlideAnimation
             initial={{ opacity: 0, x: 80 }}
             animate={{ opacity: 1, x: 0 }}

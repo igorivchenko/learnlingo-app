@@ -4,6 +4,7 @@ import { lazy } from 'react';
 import PrivateRoute from './PrivateRoute';
 import BackToTop from './ScrollToTop';
 import SettingsModal from './Modals/SettingsModal';
+import MainLayout from './Layouts/MainLayout';
 
 const HomePage = lazy(() => import('@/pages/HomePage'));
 const FavoritesPage = lazy(() => import('@/pages/FavoritesPage'));
@@ -18,16 +19,19 @@ function App() {
   return (
     <>
       <Routes location={background || location}>
-        <Route path={ROUTES.HOME} element={<HomePage />} />
-        <Route path={ROUTES.TEACHERS} element={<TeachersPage />} />
-        <Route
-          path={ROUTES.FAVORITES}
-          element={
-            <PrivateRoute>
-              <FavoritesPage />
-            </PrivateRoute>
-          }
-        />
+        <Route element={<MainLayout />}>
+          <Route path={ROUTES.HOME} element={<HomePage />} />
+          <Route path={ROUTES.TEACHERS} element={<TeachersPage />} />
+          <Route
+            path={ROUTES.FAVORITES}
+            element={
+              <PrivateRoute>
+                <FavoritesPage />
+              </PrivateRoute>
+            }
+          />
+        </Route>
+
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
 

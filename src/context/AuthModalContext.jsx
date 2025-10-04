@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 import { MODES } from '@/constants';
-import AuthModal from '@/components/AuthModal';
+import AuthModal from '@/components/Modals/AuthModal';
 
 const AuthModalContext = createContext();
 

@@ -1,0 +1,59 @@
+* {
+  scrollbar-color: var(--color-scrollbar) transparent;
+}
+
+.modal {
+  position: relative;
+
+  display: grid;
+  gap: 20px;
+
+  width: 90%;
+  height: 90%;
+  max-width: 680px;
+  max-height: max-content;
+
+  background-color: var(--color-bg-hero-content);
+  border-radius: 12px;
+  padding: 64px;
+
+  overflow: auto;
+
+  @media (width < 479.98px) {
+    padding: 56px 28px;
+  }
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  width: 32px;
+  height: 32px;
+
+  color: var(--color-main);
+  background-color: transparent;
+  border: none;
+
+  transition: color 0.2s;
+  cursor: pointer;
+
+  @media (width < 479.98px) {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.close-button svg {
+  stroke: var(--color-main);
+}
+
+.close-button:hover svg {
+  color: var(--color-accent);
+}

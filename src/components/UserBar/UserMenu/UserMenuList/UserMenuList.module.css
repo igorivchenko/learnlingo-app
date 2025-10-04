@@ -1,0 +1,24 @@
+.customMenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 100;
+
+  min-width: 200px;
+  padding: 6px 0 8px;
+
+  background-color: var(--color-bg-popper);
+  border-radius: 6px;
+  box-shadow: var(--shadow-popper);
+
+  opacity: 0;
+  transform: translate(-50%, -10px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.customMenu.open {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}

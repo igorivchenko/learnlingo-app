@@ -1,24 +1,23 @@
-import clsx from 'clsx';
-import s from './UserMenu.module.css';
 import { useSelector } from 'react-redux';
 import { selectUser } from '@/redux/auth/selectors';
+import UserMenuList from './UserMenuList';
+import { ROUTES } from '@/constants';
 
 const UserMenu = ({ open, onMouseEnter, onMouseLeave }) => {
   const { email } = useSelector(selectUser);
 
+  const menuItems = [
+    { label: email, icon: 'icon-account' },
+    { label: 'Settings', icon: 'icon-settings', link: ROUTES.SETTINGS },
+  ];
+
   return (
-    <ul
-      className={clsx(s.customMenu, { [s.open]: open })}
+    <UserMenuList
+      open={open}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-    >
-      <li className={s.menuItem}>
-        <span>{email}</span>
-      </li>
-      <li className={s.menuItem}>
-        <span>Settings</span>
-      </li>
-    </ul>
+      items={menuItems}
+    />
   );
 };
 

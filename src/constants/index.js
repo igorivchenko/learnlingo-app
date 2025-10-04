@@ -4,6 +4,7 @@ export const ROUTES = {
   REGISTER: '/register',
   TEACHERS: '/teachers',
   FAVORITES: '/favorites',
+  SETTINGS: '/settings',
 };
 
 export const MODES = {

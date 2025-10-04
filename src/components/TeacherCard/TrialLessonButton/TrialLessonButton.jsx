@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import s from './TrialLessonButton.module.css';
-import BookTrialModal from '@/components/BookTrialModal';
+import BookTrialModal from '@/components/Modals/BookTrialModal';
 
 const TrialLessonButton = () => {
   const [open, setOpen] = useState(false);

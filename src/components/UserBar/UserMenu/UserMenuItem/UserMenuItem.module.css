@@ -1,0 +1,42 @@
+.menuItem {
+  padding-inline: 8px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.menuItem span,
+.menuLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: var(--color-main);
+  transition: background-color 0.2s ease;
+}
+
+.menuLink:hover {
+  background-color: var(--color-menu-item-hover);
+  color: var(--color-main);
+}
+
+.menuItem:hover span {
+  background-color: var(--color-menu-item-hover);
+}
+
+.menuItem:first-child {
+  box-shadow: 0 3px 2px -3px var(--color-menu-item-hover);
+}
+
+.menuItem:first-child:hover span {
+  background-color: transparent;
+  cursor: auto;
+}
+
+.menuItem:nth-child(2) {
+  padding-top: 8px;
+}
+
+.menuIcon {
+  fill: var(--color-main);
+}

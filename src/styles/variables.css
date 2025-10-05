@@ -31,6 +31,7 @@
   --color-register-btn: #ffffff;
   --color-teacher-badge: #121417;
   --color-drawer-avatar: #ffffff;
+  --color-modal-close-hover: #ececec;
   --color-menu-text: #8f8f8f;
   --color-menu-item-hover: #d9d9d9;
   --color-book-trial-form-border: rgba(18, 20, 23, 0.2);
@@ -43,13 +44,13 @@
   --color-bg-burgerMenu: #fbe9ba;
   --color-bg-select: #ffffff;
   --color-bg-user-avatar: #fbe9ba;
+  --color-bg-popper: #f8f8f8;
   --color-bg-card: #ffffff;
   --card-color-main: #121417;
   --card-color-secondary: #8a8a89;
   --card-image-border-color: #fbe9ba;
   --card-icon-stroke-color: #121417;
   --card-icon-favorite-color: #ffc531;
-  --color-bg-popper: #f8f8f8;
 }
 
 /* Dark theme */
@@ -71,6 +72,7 @@
   --color-teacher-badge: #ffffff;
   --color-drawer-avatar: #ffdc86;
   --color-book-trial-form-border: #8a8a89;
+  --color-modal-close-hover: #676767;
   --color-menu-text: #afafaf;
   --color-menu-item-hover: #999999;
   --color-bg-register-btn: #ffdc86;
@@ -82,13 +84,13 @@
   --color-bg-burgerMenu: #222831;
   --color-bg-select: rgb(228, 232, 235);
   --color-bg-user-avatar: #fbe9ba;
+  --color-bg-popper: #222831;
   --color-bg-card: rgb(228, 232, 235);
   --card-color-main: #121417;
   --card-color-secondary: hsla(210, 14%, 13%, 0.5);
   --card-image-border-color: #ffc531;
   --card-icon-stroke-color: #121417;
   --card-icon-favorite-color: #ffc531;
-  --color-bg-popper: #222831;
 }
 
 /* System theme */
@@ -125,8 +127,8 @@
   --color-bg-burgerMenu: light-dark(#fbe9ba, #222831);
   --color-bg-select: light-dark(#ffffff, rgb(228, 232, 235));
   --color-bg-user-avatar: #fbe9ba;
-  --color-bg-card: light-dark(#ffffff, rgb(228, 232, 235));
   --color-bg-popper: light-dark(#f8f8f8, #222831);
+  --color-bg-card: light-dark(#ffffff, rgb(228, 232, 235));
   --card-color-main: #121417;
   --card-color-secondary: light-dark(#8a8a89, hsla(210, 14%, 13%, 0.5));
   --card-image-border-color: light-dark(#fbe9ba, #ffc531);

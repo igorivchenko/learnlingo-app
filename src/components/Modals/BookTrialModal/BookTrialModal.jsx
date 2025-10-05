@@ -13,7 +13,7 @@ const BookTrialModal = ({ open, handleClose }) => {
       aria-describedby="modal-description"
       sx={bookTrialModalSx.modal}
     >
-      <Grow in={open} timeout={200}>
+      <Grow in={open} timeout={200} exit={false}>
         <Box className={s.modal}>
           <Typography
             sx={bookTrialModalSx.title}

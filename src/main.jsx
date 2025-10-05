@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
 import { PersistGate } from 'redux-persist/integration/react';
 import ThemeProvider from './components/ThemeProvider';
+import ModalProvider from './components/ModalProvider';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -24,6 +25,7 @@ createRoot(document.getElementById('root')).render(
         <PersistGate loading={null} persistor={persistor}>
           <ThemeProvider />
           <App />
+          <ModalProvider />
         </PersistGate>
       </Provider>
     </BrowserRouter>

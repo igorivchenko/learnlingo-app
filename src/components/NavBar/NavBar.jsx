@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-const NavBar = ({ isDrawer = false, onLinkClick }) => {
+const NavBar = ({ isDrawer = false, closeDrawer }) => {
   const buildLinkClass = ({ isActive }) => {
     return clsx(s.link, isActive && s.active);
   };
@@ -36,7 +36,7 @@ const NavBar = ({ isDrawer = false, onLinkClick }) => {
                   <NavLink
                     to={to}
                     className={buildLinkClass}
-                    onClick={onLinkClick}
+                    onClick={closeDrawer}
                   >
                     {label}
                   </NavLink>

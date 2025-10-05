@@ -1,8 +1,10 @@
-import { useTeacher } from '@/context/TeacherContext';
+import { useSelector } from 'react-redux';
 import s from './BookTrialTeacherBadge.module.css';
+import { selectCurrentTeacher } from '@/redux/modals/selectors';
 
 const BookTrialTeacherBadge = () => {
-  const { name, surname, avatar_url } = useTeacher();
+  const currentTeacher = useSelector(selectCurrentTeacher);
+  const { name, surname, avatar_url } = currentTeacher;
 
   return (
     <div className={s.badgeWrapper}>

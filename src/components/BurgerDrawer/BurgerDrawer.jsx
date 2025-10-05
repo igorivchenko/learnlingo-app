@@ -49,10 +49,10 @@ const BurgerDrawer = ({ open, onClose, openMenu }) => {
           />
         )}
         {openMenu === MENU_TYPES.MAIN && (
-          <NavBar isDrawer={true} onLinkClick={onClose} />
+          <NavBar isDrawer={true} closeDrawer={onClose} />
         )}
         {openMenu === MENU_TYPES.SETTINGS && (
-          <SettingsMenu onLinkClick={onClose} closeDrawer={onClose} />
+          <SettingsMenu closeDrawer={onClose} />
         )}
       </Drawer>
     </>

@@ -5,11 +5,14 @@ export const ROUTES = {
   TEACHERS: '/teachers',
   FAVORITES: '/favorites',
   SETTINGS: '/settings',
+  SETTINGS_ACCOUNT: '/settings/account',
+  SETTINGS_NOTIFICATIONS: '/settings/notifications',
 };
 
 export const MODES = {
   LOGIN: 'login',
   REGISTER: 'register',
+  SETTINGS: 'settings',
 };
 
 export const MENU_TYPES = {
@@ -26,4 +29,10 @@ export const CONTEXTS = {
 export const USERBAR_VARIANTS = {
   HEADER: 'header',
   DRAWER: 'drawer',
+};
+
+export const MODAL_TYPES = {
+  AUTH: 'AUTH',
+  BOOK_TRIAL: 'BOOK_TRIAL',
+  SETTINGS: 'SETTINGS',
 };

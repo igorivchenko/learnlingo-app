@@ -1,14 +1,22 @@
-import { useAuthModal } from '@/context/AuthModalContext';
 import s from './RegisterButton.module.css';
-import { MODES } from '@/constants';
+import { useDispatch } from 'react-redux';
+import { MODAL_TYPES, MODES } from '@/constants';
+import { openModal } from '@/redux/modals/slice';
 
 const RegisterButton = ({ closeDrawer }) => {
-  const { openModal } = useAuthModal();
+  const dispatch = useDispatch();
 
   const handleClick = () => {
-    openModal(MODES.REGISTER, () => {
-      closeDrawer?.();
-    });
+    dispatch(
+      openModal({
+        type: MODAL_TYPES.AUTH,
+        props: {
+          mode: MODES.REGISTER,
+        },
+      })
+    );
+
+    closeDrawer?.();
   };
 
   return (

@@ -15,6 +15,7 @@ import themeReducer from './theme/slice';
 import teachersReducer from './teachers/slice';
 import favoriteReducer from './favorite/slice';
 import filtersReducer from './filters/slice';
+import modalReducer from './modals/slice';
 
 const persistConfig = {
   key: 'auth',
@@ -46,6 +47,7 @@ export const store = configureStore({
     favorite: persistedFavoriteReducer,
     theme: persistedThemeReducer,
     filters: filtersReducer,
+    modal: modalReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

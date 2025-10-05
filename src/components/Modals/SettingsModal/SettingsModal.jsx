@@ -1,12 +1,15 @@
-import { Box, Grow, Modal, Typography } from '@mui/material';
+import { Box, Grow, Modal, Slide } from '@mui/material';
 import s from './SettingsModal.module.css';
-import { useNavigate } from 'react-router-dom';
 import { settingsModalSx } from './SettingsModal.sx';
+import { useResponsive } from '@/hooks/useResponsive';
 
-const SettingsModal = () => {
+import { useNavigate } from 'react-router-dom';
+
+const SettingsModal = ({ children }) => {
+  const { isMobile } = useResponsive();
   const navigate = useNavigate();
 
-  const handleClose = () => navigate(-1);
+  const handleClose = () => navigate('/');
 
   return (
     <Modal
@@ -16,28 +19,15 @@ const SettingsModal = () => {
       aria-describedby="modal-description"
       sx={settingsModalSx.modal}
     >
-      <Grow in={open} timeout={200}>
-        <Box className={s.modal}>
-          <Typography
-            sx={settingsModalSx.title}
-            className={s.title}
-            id="modal-modal-title"
-            component="h2"
-          >
-            Settings
-          </Typography>
-
-          <button
-            type="button"
-            className={s['close-button']}
-            onClick={handleClose}
-          >
-            <svg width="32" height="32">
-              <use href="/icons.svg#icon-close"></use>
-            </svg>
-          </button>
-        </Box>
-      </Grow>
+      {isMobile ? (
+        <Slide direction="right" in={open} timeout={300}>
+          <Box className={s.modal}>{children}</Box>
+        </Slide>
+      ) : (
+        <Grow in={open} timeout={200}>
+          <Box className={s.modal}>{children}</Box>
+        </Grow>
+      )}
     </Modal>
   );
 };

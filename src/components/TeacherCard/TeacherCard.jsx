@@ -7,13 +7,26 @@ import TeacherCardInfo from './TeacherCardInfo';
 import TeacherCardList from './TeacherCardList';
 import TeacherDetails from './TeacherDetails';
 import TrialLessonButton from './TrialLessonButton';
-import { TeacherProvider } from '@/context/TeacherContext';
 import { useResponsive } from '@/hooks/useResponsive';
+import { useDispatch } from 'react-redux';
+import { openModal } from '@/redux/modals/slice';
+import { TeacherProvider } from '@/context/TeacherContext';
+import { MODAL_TYPES } from '@/constants';
 
 const TeacherCard = ({ teacher }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const toggleExpanded = () => setIsExpanded(prev => !prev);
   const { isTabletL } = useResponsive();
+  const dispatch = useDispatch();
+
+  const handleBookLesson = () => {
+    dispatch(
+      openModal({
+        type: MODAL_TYPES.BOOK_TRIAL,
+        props: { teacher },
+      })
+    );
+  };
 
   return (
     <TeacherProvider teacher={teacher}>
@@ -54,7 +67,7 @@ const TeacherCard = ({ teacher }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <TrialLessonButton />
+              <TrialLessonButton onClick={handleBookLesson} />
             </motion.div>
           )}
         </div>

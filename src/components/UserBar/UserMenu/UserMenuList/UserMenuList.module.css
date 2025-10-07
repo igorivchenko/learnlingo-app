@@ -4,8 +4,12 @@
   left: 50%;
   z-index: 100;
 
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
   min-width: 200px;
-  padding: 6px 0 8px;
+  padding-block: 8px;
 
   background-color: var(--color-bg-popper);
   border-radius: 6px;
@@ -21,4 +25,34 @@
   opacity: 1;
   transform: translate(-50%, 0);
   pointer-events: auto;
+}
+
+.menuItem {
+  padding-inline: 8px;
+  width: 100%;
+}
+
+.menuItem:first-child {
+  padding: 0 6px 6px;
+  box-shadow: 0 3px 2px -3px var(--color-menu-item-hover);
+}
+
+.menuItem:first-child button {
+  padding: 4px;
+  color: var(--color-menu-text);
+  line-height: 1.1;
+  user-select: text;
+  cursor: auto;
+}
+
+.menuItem:first-child button svg {
+  fill: var(--color-menu-text);
+}
+
+.menuItem:first-child:hover button {
+  background-color: transparent;
+}
+
+.menuItem:nth-child(2) {
+  padding: 4px 8px 0;
 }

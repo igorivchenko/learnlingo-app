@@ -3,6 +3,7 @@ import { closeModal } from '@/redux/modals/slice';
 import { useDispatch, useSelector } from 'react-redux';
 import AuthModal from '@/components/Modals/AuthModal';
 import BookTrialModal from '@/components/Modals/BookTrialModal';
+import SettingsModal from '@/components/Modals/SettingsModal';
 import { MODAL_TYPES } from '@/constants';
 
 const ModalProvider = () => {
@@ -20,6 +21,8 @@ const ModalProvider = () => {
       return (
         <BookTrialModal open={true} handleClose={handleClose} {...props} />
       );
+    case MODAL_TYPES.SETTINGS:
+      return <SettingsModal open={true} handleClose={handleClose} {...props} />;
     default:
       return null;
   }

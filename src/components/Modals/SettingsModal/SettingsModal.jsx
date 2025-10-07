@@ -3,17 +3,23 @@ import s from './SettingsModal.module.css';
 import { settingsModalSx } from './SettingsModal.sx';
 import { useResponsive } from '@/hooks/useResponsive';
 
-import { useNavigate } from 'react-router-dom';
-
-const SettingsModal = ({ children }) => {
+const SettingsModal = ({ open, handleClose }) => {
   const { isMobile } = useResponsive();
-  const navigate = useNavigate();
 
-  const handleClose = () => navigate('/');
+  const content = (
+    <Box className={s.modal}>
+      <h2 style={{ textAlign: 'center' }}>SettingsModal</h2>
+      <button className={s.close} onClick={handleClose}>
+        <svg width="20" height="20">
+          <use href="/icons.svg#icon-close"></use>
+        </svg>
+      </button>
+    </Box>
+  );
 
   return (
     <Modal
-      open
+      open={open}
       onClose={handleClose}
       aria-labelledby="modal-title"
       aria-describedby="modal-description"
@@ -21,11 +27,11 @@ const SettingsModal = ({ children }) => {
     >
       {isMobile ? (
         <Slide direction="right" in={open} timeout={300}>
-          <Box className={s.modal}>{children}</Box>
+          {content}
         </Slide>
       ) : (
         <Grow in={open} timeout={200}>
-          <Box className={s.modal}>{children}</Box>
+          {content}
         </Grow>
       )}
     </Modal>

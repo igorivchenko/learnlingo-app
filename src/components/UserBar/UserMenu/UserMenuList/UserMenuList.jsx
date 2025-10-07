@@ -10,7 +10,9 @@ const UserMenuList = ({ open, onMouseEnter, onMouseLeave, items = [] }) => {
       onMouseLeave={onMouseLeave}
     >
       {items.map(item => (
-        <UserMenuItem key={item.label} {...item} />
+        <li className={s.menuItem} key={item.label}>
+          <UserMenuItem {...item} />
+        </li>
       ))}
     </ul>
   );

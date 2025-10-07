@@ -1,0 +1,23 @@
+.divider {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-block: 0.75rem;
+}
+
+.divider span {
+  padding-inline: 0.5rem;
+  background-color: var(--color-bg-hero-content);
+  z-index: 1;
+}
+
+.divider::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  content: '';
+  background-color: #3d444d;
+}

@@ -4,11 +4,12 @@ import {
   updateProfile,
   signInWithEmailAndPassword,
   signOut,
+  signInWithPopup,
 } from 'firebase/auth';
 import { setDoc, doc, getDoc } from 'firebase/firestore';
 
 import { handleHttpError } from '@/utils/handleHttpError';
-import { auth, db } from '@/config/firebase.config';
+import { auth, db, googleProvider } from '@/config/firebase.config';
 
 export const signUpUser = createAsyncThunk(
   'auth/signUpUser',
@@ -70,6 +71,29 @@ export const signInUser = createAsyncThunk(
       };
     } catch (err) {
       return rejectWithValue(handleHttpError(err));
+    }
+  }
+);
+
+export const signInWithGoogle = createAsyncThunk(
+  'auth/signInWithGoogle',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { user } = await signInWithPopup(auth, googleProvider);
+      const token = await user.getIdToken();
+      const userRef = doc(db, 'users', user.uid);
+
+      const userData = {
+        name: user.displayName,
+        email: user.email,
+        photoURL: user.photoURL,
+      };
+
+      await setDoc(userRef, userData, { merge: true });
+
+      return { id: user.uid, token, ...userData };
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   }
 );

@@ -30,6 +30,8 @@ import { selectIsLoading } from '@/redux/auth/selectors';
 import { resetFavoritesTeachers } from '@/redux/favorite/slice';
 import { authModalSx } from './AuthModal.sx';
 import { useResponsive } from '@/hooks/useResponsive';
+import AuthDivider from './AuthDivider';
+import AuthGoogle from './AuthGoogle';
 
 const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
   const dispatch = useDispatch();
@@ -187,7 +189,6 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
             </FormHelperText>
           )}
         </FormControl>
-
         <Button
           type="submit"
           variant="contained"
@@ -205,6 +206,8 @@ const AuthModal = ({ mode = MODES.LOGIN, open, handleClose }) => {
         </Button>
       </form>
 
+      <AuthDivider />
+      <AuthGoogle handleClose={handleClose} />
       <button type="button" className={s['close-button']} onClick={handleClose}>
         <svg width="32" height="32">
           <use href="/icons.svg#icon-close"></use>

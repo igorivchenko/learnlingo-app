@@ -104,5 +104,8 @@ export const authModalSx = {
     color: 'var(--color-secondary)',
     backgroundColor: 'var(--color-button)',
     borderRadius: '12px',
+    '&:hover': {
+      backgroundColor: 'var(--color-accent)',
+    },
   },
 };

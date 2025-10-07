@@ -8,7 +8,7 @@ const SettingsModal = ({ open, handleClose }) => {
 
   const content = (
     <Box className={s.modal}>
-      <h2 style={{ textAlign: 'center' }}>SettingsModal</h2>
+      <h2 style={{ textAlign: 'center' }}>Settings</h2>
       <button className={s.close} onClick={handleClose}>
         <svg width="20" height="20">
           <use href="/icons.svg#icon-close"></use>

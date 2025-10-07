@@ -37,6 +37,7 @@ const UserBar = ({ noName = false, variant = USERBAR_VARIANTS.HEADER }) => {
         aria-expanded={open ? 'true' : undefined}
         className={s.userBar}
         sx={{
+          padding: '6px 0',
           '&:hover': {
             backgroundColor: 'transparent',
           },

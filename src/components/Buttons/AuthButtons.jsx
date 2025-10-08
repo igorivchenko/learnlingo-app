@@ -7,6 +7,7 @@ import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
 import UserBar from '@/components/UserBar';
 import ToggleThemeButton from './ToggleThemeButton';
+import SplashButton from './SplashButton';
 
 const AuthButtons = ({
   isAuthButtons = false,
@@ -20,6 +21,7 @@ const AuthButtons = ({
     <>
       {isAuth ? (
         <div className={s.userBarWrapper}>
+          <SplashButton />
           <ToggleThemeButton />
           <UserBar />
           <LogoutButton />

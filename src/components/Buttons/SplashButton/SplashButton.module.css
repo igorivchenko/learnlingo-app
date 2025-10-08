@@ -7,34 +7,15 @@
   border-radius: 12px;
   height: 32px;
   width: 32px;
-  color: var(--color-bg-toggle-theme-btn);
+  fill: var(--color-bg-toggle-theme-btn);
   background-color: var(--color-register-btn);
   border: 1px solid hsl(210, 14%, 22%);
   border-color: hsla(210, 14%, 22%, 0.5);
   outline: 0;
   cursor: pointer;
-
-  @media (width < 767.98px) {
-    margin-left: 8px;
-  }
 }
 
-.button:hover {
+.button:hover,
+.active {
   background-color: var(--color-bg-toggle-theme-btn-hover);
-}
-
-.icon {
-  position: absolute;
-  transition: opacity 0.2s ease;
-  width: 24px;
-  height: 24px;
-}
-
-.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.visible {
-  opacity: 1;
 }

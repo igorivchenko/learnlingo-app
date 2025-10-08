@@ -5,8 +5,8 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { getSystemTheme } from '@/utils/getSystemTheme';
 import { useEffect, useState } from 'react';
-import { Tooltip, tooltipClasses } from '@mui/material';
 import clsx from 'clsx';
+import AppTooltip from '@/components/AppTooltip';
 
 const ToggleThemeButton = ({ className }) => {
   const theme = useSelector(selectTheme);
@@ -46,20 +46,7 @@ const ToggleThemeButton = ({ className }) => {
     theme === 'dark' || (theme === 'system' && systemTheme === 'dark');
 
   return (
-    <Tooltip
-      title={!isDark ? 'Turn off the light' : 'Turn on the light'}
-      placement="bottom"
-      slotProps={{
-        popper: {
-          sx: {
-            [`&.${tooltipClasses.popper}[data-popper-placement*="bottom"] .${tooltipClasses.tooltip}`]:
-              {
-                marginTop: '4px',
-              },
-          },
-        },
-      }}
-    >
+    <AppTooltip title={!isDark ? 'Turn off the light' : 'Turn on the light'}>
       <button
         className={clsx(s.button, className)}
         type="button"
@@ -72,7 +59,7 @@ const ToggleThemeButton = ({ className }) => {
           <LightModeIcon />
         </span>
       </button>
-    </Tooltip>
+    </AppTooltip>
   );
 };
 

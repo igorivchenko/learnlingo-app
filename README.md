@@ -6,13 +6,16 @@
 
 ## Project Description
 
-This application was created for a company that provides online language
-tutors.  
-Users can explore the company’s benefits, browse the catalog of tutors, filter
-them by specific parameters, add tutors to their "Favorites" list, and book a
-trial lesson.  
-The functionality is available for both non-registered and registered users, but
-some features are accessible only after logging in.
+LearnLingo connects users with online language tutors.  
+Users can explore benefits, browse and filter tutors, add favorites, and book
+trial lessons.  
+Some features require registration. The app includes an AI Assistant that helps
+navigate the platform, find tutors, view details, understand lesson formats, and
+get general information with personalized guidance.
+
+## Live Demo
+
+Check out the app online: [LearnLingo App](https://learnlingo-app.vercel.app)
 
 ---
 
@@ -70,13 +73,22 @@ some features are accessible only after logging in.
      - for registered users – allows adding/removing tutors from "Favorites"
        with state persistence after page reload.
 
-5. **Modals**:
+5. **AI Assistant**:
+
+   - Helps users navigate the platform and find suitable tutors.
+   - Provides tutor details, including ratings, experience, and pricing.
+   - Explains lesson formats (private, group, conversation practice, test prep,
+     kids & teens programs).
+   - Offers general company information (location, contact, social media,
+     hours).
+
+6. **Modals**:
 
    - trial lesson booking form (validated with `react-hook-form` and `yup`),
    - login/registration form,
    - both can be closed using standard methods (button, backdrop, Esc).
 
-6. **Routing**:
+7. **Routing**:
 
    - implemented using **React Router**,
    - routes: `/`, `/teachers`, `/favorites`.
@@ -94,6 +106,7 @@ some features are accessible only after logging in.
 - ⚡ **Vite**
 - 🎬 **Framer Motion** (for animations of lists, tutor cards, buttons, and
   modals)
+- 🤖 **AI Assistant** (for guidance and recommendations)
 
 ---
 

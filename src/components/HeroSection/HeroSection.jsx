@@ -10,10 +10,10 @@ const HeroSection = () => {
   const { isTablet } = useResponsive();
 
   const heroContentInitial = isTablet
-    ? { opacity: 0, y: -80, scale: 0.8 }
+    ? { opacity: 0, scale: 0.8 }
     : { opacity: 0, x: -80 };
 
-  const heroContentAnimate = { opacity: 1, x: 0, y: 0, scale: 1 };
+  const heroContentAnimate = { opacity: 1, x: 0, scale: 1 };
   const heroContentExit = isTablet
     ? { opacity: 0, y: -80 }
     : { opacity: 0, x: -80 };

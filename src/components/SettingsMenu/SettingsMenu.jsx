@@ -3,11 +3,11 @@ import s from './SettingsMenu.module.css';
 import { useDispatch } from 'react-redux';
 import { signOutUser } from '@/redux/auth/operations';
 import { errorToast, successToast } from '@/utils/toastUtils';
-import { useLocation, Link } from 'react-router-dom';
+import { openModal } from '@/redux/modals/slice';
+import { MODAL_TYPES } from '@/constants';
 
 const SettingsMenu = ({ closeDrawer }) => {
   const dispatch = useDispatch();
-  const location = useLocation();
 
   const onLogoutClick = async () => {
     try {
@@ -19,8 +19,17 @@ const SettingsMenu = ({ closeDrawer }) => {
     closeDrawer?.();
   };
 
+  const onSettingsClick = () => {
+    dispatch(
+      openModal({
+        type: MODAL_TYPES.SETTINGS,
+      })
+    );
+    closeDrawer?.();
+  };
+
   const buttons = [
-    { label: 'Settings', link: '/settings' },
+    { label: 'Settings', onClick: onSettingsClick },
     { label: 'Log Out', onClick: onLogoutClick },
   ];
 
@@ -33,30 +42,17 @@ const SettingsMenu = ({ closeDrawer }) => {
 
   return (
     <div className={s.wrapper}>
-      {buttons.map((btn, idx) =>
-        btn.link ? (
-          <motion.div key={btn.label} {...motionProps(idx)}>
-            <Link
-              to={btn.link}
-              state={{ background: location }}
-              className={s.button}
-              onClick={closeDrawer}
-            >
-              {btn.label}
-            </Link>
-          </motion.div>
-        ) : (
-          <motion.button
-            key={btn.label}
-            type="button"
-            className={s.button}
-            onClick={btn.onClick}
-            {...motionProps(idx)}
-          >
-            {btn.label}
-          </motion.button>
-        )
-      )}
+      {buttons.map((btn, idx) => (
+        <motion.button
+          key={btn.label}
+          type="button"
+          className={s.button}
+          onClick={btn.onClick}
+          {...motionProps(idx)}
+        >
+          {btn.label}
+        </motion.button>
+      ))}
     </div>
   );
 };

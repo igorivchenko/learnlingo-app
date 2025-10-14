@@ -5,23 +5,32 @@
 .modal {
   position: relative;
 
-  display: grid;
-  gap: 20px;
-
   width: 90%;
   height: 90%;
-  max-width: 680px;
-  max-height: max-content;
+  max-width: 580px;
+  max-height: 500px;
 
   background-color: var(--color-bg-hero-content);
   border-radius: 12px;
-  padding: 14px;
+  padding: 36px 30px;
 
   overflow: auto;
 
   @media (width < 479.98px) {
     padding: 56px 28px;
   }
+}
+
+.themeContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 14px;
+}
+
+.title {
+  padding-block: 14px;
+  border-bottom: 1px solid var(--color-border-bottom-modal);
 }
 
 .nav {
@@ -32,7 +41,7 @@
 .close {
   position: absolute;
   top: 10px;
-  left: 10px;
+  right: 10px;
 
   display: flex;
   align-items: center;

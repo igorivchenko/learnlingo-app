@@ -32,10 +32,11 @@
   --color-google-button: #ffffff;
   --color-teacher-badge: #121417;
   --color-drawer-avatar: #ffffff;
+  --color-book-trial-form-border: rgba(18, 20, 23, 0.2);
+  --color-border-bottom-modal: #00000026;
   --color-modal-close-hover: #ececec;
   --color-menu-text: #8f8f8f;
   --color-menu-item-hover: #d9d9d9;
-  --color-book-trial-form-border: rgba(18, 20, 23, 0.2);
   --color-bg-register-btn: #222831;
   --color-bg-google-button: #212831;
   --color-bg-toggle-theme-btn: hsla(210, 14%, 13%, 0.8);
@@ -93,6 +94,7 @@
   --color-teacher-badge: #ffffff;
   --color-drawer-avatar: #ffdc86;
   --color-book-trial-form-border: #8a8a89;
+  --color-border-bottom-modal: #ffffff26;
   --color-modal-close-hover: #676767;
   --color-menu-text: #afafaf;
   --color-menu-item-hover: #999999;
@@ -156,6 +158,8 @@
   --color-drawer-avatar: light-dark(#ffffff, #ffdc86);
   --color-menu-text: light-dark(#8f8f8f, #afafaf);
   --color-menu-item-hover: light-dark(#d9d9d9, #999999);
+  --color-border-bottom-modal: light-dark(#00000026, #ffffff26);
+  --color-modal-close-hover: light-dark(#ececec, #676767);
   --color-bg-register-btn: light-dark(#121417, #ffdc86);
   --color-bg-google-button: light-dark(#222831, rgb(228, 232, 235));
   --color-bg-toggle-theme-btn: light-dark(hsla(210, 14%, 13%, 0.8), #ffdc86);

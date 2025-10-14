@@ -4,15 +4,11 @@ export const ROUTES = {
   REGISTER: '/register',
   TEACHERS: '/teachers',
   FAVORITES: '/favorites',
-  SETTINGS: '/settings',
-  SETTINGS_ACCOUNT: '/settings/account',
-  SETTINGS_NOTIFICATIONS: '/settings/notifications',
 };
 
 export const MODES = {
   LOGIN: 'login',
   REGISTER: 'register',
-  SETTINGS: 'settings',
 };
 
 export const MENU_TYPES = {

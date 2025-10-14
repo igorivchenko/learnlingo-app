@@ -17,4 +17,29 @@ export const settingsModalSx = {
       textAlign: 'center',
     },
   },
+  select: {
+    fontSize: 14,
+    fontWeight: 700,
+    color: 'inherit',
+    '& .MuiSelect-select': { padding: '10px 14px' },
+    '& .MuiOutlinedInput-notchedOutline': {
+      border: '1px solid var(--color-border-bottom-modal)',
+    },
+    '&:hover .MuiOutlinedInput-notchedOutline': {
+      borderColor: 'var(--color-border-bottom-modal)',
+    },
+    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+      borderColor: 'var(--color-accent)',
+      boxShadow: '0 0 5px var(--color-accent)',
+    },
+    '& .MuiSelect-icon': { color: 'var(--color-text-main)' },
+  },
+  selectMenu: {
+    PaperProps: {
+      sx: {
+        bgcolor: 'var(--color-bg-popper)',
+        color: 'var(--color-text-main)',
+      },
+    },
+  },
 };

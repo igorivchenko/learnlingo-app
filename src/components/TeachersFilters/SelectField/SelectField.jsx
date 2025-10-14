@@ -88,6 +88,7 @@ const SelectField = ({
           );
         }}
         MenuProps={{
+          disableScrollLock: true,
           PaperProps: {
             sx: {
               marginTop: '4px',

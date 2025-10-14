@@ -1,0 +1,46 @@
+.chatHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px 22px;
+  background-color: var(--color-bg-chatbot-header);
+}
+
+.headerInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.headerInfo svg {
+  flex-shrink: 0;
+  padding: 6px;
+  fill: var(--color-bot-icon);
+  background-color: var(--color-bg-bot-header-icon);
+  border-radius: 50%;
+}
+
+.logoText {
+  color: var(--color-chatbot-toggler);
+  font-size: 1.31rem;
+  font-weight: 600;
+}
+
+.headerBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--color-chatbot-toggler);
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.headerBtn:hover {
+  background-color: var(--color-bg-header-icon-down);
+}

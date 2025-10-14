@@ -36,3 +36,8 @@ export const MODAL_TYPES = {
   BOOK_TRIAL: 'BOOK_TRIAL',
   SETTINGS: 'SETTINGS',
 };
+
+export const CHAT_ROLES = {
+  USER: 'user',
+  MODEL: 'model',
+};

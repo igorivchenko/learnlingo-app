@@ -132,7 +132,6 @@ export const getFavoriteTeachers = createAsyncThunk(
         hasMore,
       };
     } catch (err) {
-      console.error('Error in getTeachers:', err);
       return rejectWithValue(handleHttpError(err));
     }
   }

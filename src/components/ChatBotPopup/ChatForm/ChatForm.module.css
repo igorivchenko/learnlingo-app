@@ -1,0 +1,59 @@
+.chatForm {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-bot-white);
+  border-radius: 32px;
+  outline: 1px solid #fbe9ba;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  transition: outline 0.1s;
+}
+
+.chatForm:focus-within {
+  outline: 2px solid var(--color-accent);
+}
+
+.messageInput {
+  width: 100%;
+  border: none;
+  outline: none;
+  color: var(--color-secondary);
+  background-color: transparent;
+  height: 47px;
+  padding: 0 17px;
+  font-size: 0.95rem;
+}
+
+.footerBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 35px;
+  height: 35px;
+  margin-right: 6px;
+  font-size: 1.1rem;
+  color: var(--color-bot-icon);
+  border: none;
+  outline: none;
+  background-color: var(--color-bg-bot-footer-icon);
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+.footerBtn svg {
+  transition: transform 0.15s ease;
+}
+
+.footerBtn:hover svg {
+  transform: rotate(-90deg);
+}
+
+.messageInput:valid ~ .footerBtn {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}

@@ -4,10 +4,13 @@ import Fab from '@mui/material/Fab';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Fade from '@mui/material/Fade';
 import { useEffect, useState } from 'react';
+import { useResponsive } from '@/hooks/useResponsive';
+import { scrollUpButtonSx } from './scrollUpButton.sx';
 
-function ScrollTop({ children }) {
+function ScrollToTop({ children }) {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isScrollingUp, setIsScrollingUp] = useState(false);
+  const { isMobile } = useResponsive();
 
   const trigger = useScrollTrigger({
     disableHysteresis: true,
@@ -37,7 +40,7 @@ function ScrollTop({ children }) {
       <Box
         onClick={handleClick}
         role="presentation"
-        sx={{ position: 'fixed', bottom: 20, right: 20 }}
+        sx={scrollUpButtonSx.wrapper(isMobile)}
       >
         {children}
       </Box>
@@ -45,12 +48,20 @@ function ScrollTop({ children }) {
   );
 }
 
-export default function BackToTop() {
+const ScrollUpButton = () => {
+  const { isMobile } = useResponsive();
+
   return (
-    <ScrollTop>
-      <Fab size="medium" aria-label="scroll back to top">
+    <ScrollToTop>
+      <Fab
+        size="medium"
+        aria-label="scroll back to top"
+        sx={scrollUpButtonSx.fab(isMobile)}
+      >
         <KeyboardArrowUpIcon />
       </Fab>
-    </ScrollTop>
+    </ScrollToTop>
   );
-}
+};
+
+export default ScrollUpButton;

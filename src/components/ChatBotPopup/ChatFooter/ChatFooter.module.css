@@ -1,0 +1,13 @@
+.chatFooter {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--color-bg-chatbot);
+  padding: 15px 22px 20px;
+}
+
+@media (width < 520px) {
+  .chatFooter {
+    padding: 10px 15px 15px;
+  }
+}

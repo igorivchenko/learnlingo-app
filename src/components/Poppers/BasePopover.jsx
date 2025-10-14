@@ -20,6 +20,7 @@ const BasePopover = ({
       anchorOrigin={anchorOrigin}
       transformOrigin={transformOrigin}
       sx={{ ...basePopoverSx.popover, ...sx }}
+      disableScrollLock
     >
       {children}
     </Popover>

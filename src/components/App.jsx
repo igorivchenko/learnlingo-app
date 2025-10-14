@@ -2,8 +2,9 @@ import { Route, Routes } from 'react-router-dom';
 import { ROUTES } from '@/constants';
 import { lazy } from 'react';
 import PrivateRoute from './PrivateRoute';
-import BackToTop from './ScrollToTop';
 import MainLayout from './Layouts/MainLayout';
+import ScrollUpButton from './Buttons/ScrollUpButton';
+import ChatBotPopup from './ChatBotPopup';
 
 const HomePage = lazy(() => import('@/pages/HomePage'));
 const FavoritesPage = lazy(() => import('@/pages/FavoritesPage'));
@@ -28,8 +29,8 @@ function App() {
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-
-      <BackToTop />
+      <ChatBotPopup />
+      <ScrollUpButton />
     </>
   );
 }

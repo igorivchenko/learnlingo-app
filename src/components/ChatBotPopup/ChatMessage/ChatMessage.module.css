@@ -1,0 +1,43 @@
+.message {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.userMessage {
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.botMessage svg {
+  align-self: flex-end;
+  flex-shrink: 0;
+  padding: 6px;
+  fill: var(--color-bot-icon);
+  background-color: var(--color-bg-bot-icon);
+  border-radius: 50%;
+}
+
+.messageText {
+  padding: 13px 16px;
+  max-width: 75%;
+  word-wrap: break-word;
+  white-space: pre-line;
+  font-size: 0.95rem;
+  border-radius: 13px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+.botText {
+  background-color: var(--color-bg-bot-text);
+  color: var(--color-bot-text);
+}
+
+.userText {
+  background-color: var(--color-bg-user-text);
+  color: var(--color-secondary);
+}
+
+.errorMessage .messageText {
+  color: red;
+}

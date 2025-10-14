@@ -1,7 +1,9 @@
 .list {
   display: flex;
   align-items: center;
-  gap: 28px;
+  flex-wrap: wrap;
+  column-gap: 28px;
+  row-gap: 4px;
 
   @media (width < 1023.98px) {
     gap: 6px;

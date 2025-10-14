@@ -1,0 +1,56 @@
+.chatbotToggler {
+  position: fixed;
+  bottom: 30px;
+  right: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: none;
+  outline: none;
+  background-color: var(--color-bg-chatbot-toggler);
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  @media (width < 767.98px) {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.chatbotToggler:hover svg {
+  color: var(--color-bot-icon);
+}
+
+.icon,
+.iconClose {
+  position: absolute;
+  font-size: 28px;
+  color: var(--color-chatbot-toggler);
+
+  @media (width < 767.98px) {
+    font-size: 24px;
+  }
+}
+
+.iconClose {
+  opacity: 0;
+  transform: rotate(90deg);
+  transition: opacity 0.2s ease;
+}
+
+.active {
+  transform: rotate(90deg);
+}
+
+.active .icon {
+  opacity: 0;
+}
+
+.active .iconClose {
+  opacity: 1;
+}
